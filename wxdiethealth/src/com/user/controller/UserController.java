@@ -143,6 +143,28 @@ import com.user.service.UserService;
 			return "user/user_info";
 		}
 		
+		@RequestMapping("advice_info")
+		public String showAdviceInfo(HttpServletRequest request,Model model){
+			HttpSession session = request.getSession();
+			String pId = (String)session.getAttribute("pId");
+			Map<String, Object> param = new HashMap<String, Object>();
+			param.put("pId", pId);
+			model.addAttribute("user", userService.showUserInfo(param));
+			return "user/advice_info";
+		}
+		
+		@RequestMapping("saveAdvice")
+		public void saveAdvice(HttpServletRequest request, HttpServletResponse response){
+			Map<String, Object> param = FormDataCollectUtil.getInstance().getFormData(request);
+			try {
+				String str = userService.saveAdvice(param);
+				response.setContentType("text/html;charset=utf-8");
+				response.getWriter().print(str);
+			} catch (Exception e) {
+				log.error(e);
+			}
+		}
+		
 		@RequestMapping("user_edit")
 		public String patientEdit(HttpServletRequest request, Model model){
 			HttpSession session = request.getSession();

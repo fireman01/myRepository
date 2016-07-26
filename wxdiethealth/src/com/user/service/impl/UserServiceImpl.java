@@ -149,5 +149,10 @@ public class UserServiceImpl implements UserService {
 		userDao.updateUser(map);
 		return "1";
 	}
+	@Override
+	public String saveAdvice(Map<String, Object> param) {
+		userDao.saveAdvice(param);
+		return "1";
+	}
 
 }

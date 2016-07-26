@@ -30,6 +30,10 @@ public interface  DietService {
 	public List<Map<String, Object>> getDietList(Map<String, Object> map);
 
 	public int countDietTotal(Map<String, Object> map);
+	
+	public List<Map<String, Object>> getSportList(Map<String, Object> map);
+
+	public int countSportTotal(Map<String, Object> map);
 
 	public List<Map<String, Object>> showDietInfo(Map<String, Object> param);
 
@@ -41,7 +45,15 @@ public interface  DietService {
 
 	public Map<String, Object> showAdviceInfo(Map<String, Object> param);
 	
-	public int getTargetEnergy(String snacks, String pId);
+	public Map<String, Object> showSportInfo(Map<String, Object> param);
+	
+	public int getTargetEnergy(String pId);
 
-	public List<Map<String, Object>> getTypeList(String snacks);
+	public List<Map<String, Object>> getTypeList(String pId);
+
+	public String saveSportInfo(Map<String, Object> param);
+	
+	public String saveSnacks(Map<String, Object> param);
+	
+	public Map<String, Object> getSnacks(Map<String, Object> param);
 }

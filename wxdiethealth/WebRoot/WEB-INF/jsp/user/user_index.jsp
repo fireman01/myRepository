@@ -24,7 +24,7 @@ String userImage = session.getAttribute("userImage").toString();
 <div class="hd" style="background:url(<%=path %>/image/bg.jpg)">
 <div class="imgtest">
 <div class="center">
-<img alt="用户头像" src="<%=userImage%>">
+<a onclick="window.location.href='user_edit'"><img alt="用户头像" src="<%=userImage%>" /></a>
  </div>  
 </div>
 		<h1 class="page_title"><%=name %>,您好</h1>
@@ -32,7 +32,7 @@ String userImage = session.getAttribute("userImage").toString();
 	<div class="bd">
 		<div class="weui_grids">
 		<a class="weui_grid js_grid" data-id="button"
-				onclick="window.location.href='../diet/snack'">
+				onclick="window.location.href='../diet/diet_edit'">
 				<div class="weui_grid_icon">
 					<img src="<%=path %>/weUI/example/images/icon_nav_article.png"
 						alt="饮食录入">
@@ -70,12 +70,36 @@ String userImage = session.getAttribute("userImage").toString();
 				<p class="weui_grid_label">血糖记录</p>
 			</a>
 			 <a class="weui_grid js_grid" data-id="cell"
-				onclick="window.location.href='doctor_info'">
+				onclick="window.location.href='advice_info'">
 				<div class="weui_grid_icon">
 					<img src="<%=path %>/weUI/example/images/icon_nav_tab.png"
 						alt="健康资讯">
 				</div>
-				<p class="weui_grid_label">医生信息</p>
+				<p class="weui_grid_label">医生建议</p>
+			</a>
+			<a class="weui_grid js_grid" data-id="cell"
+				onclick="window.location.href='../diet/sport_edit'">
+				<div class="weui_grid_icon">
+					<img src="<%=path %>/weUI/example/images/icon_nav_tab.png"
+						alt="运动量录入">
+				</div>
+				<p class="weui_grid_label">运动量录入</p>
+			</a>
+			<a class="weui_grid js_grid" data-id="cell"
+				onclick="window.location.href='../diet/sport_list'">
+				<div class="weui_grid_icon">
+					<img src="<%=path %>/weUI/example/images/icon_nav_tab.png"
+						alt="运动量记录">
+				</div>
+				<p class="weui_grid_label">运动量记录</p>
+			</a>
+			<a class="weui_grid js_grid" data-id="cell"
+				onclick="window.location.href='../diet/snack'">
+				<div class="weui_grid_icon">
+					<img src="<%=path %>/weUI/example/images/icon_nav_tab.png"
+						alt="加餐偏好">
+				</div>
+				<p class="weui_grid_label">加餐偏好</p>
 			</a>
 		</div>
 	</div>

@@ -2,28 +2,24 @@ package com.diet.service.impl;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.Set;
 
-
-
-
-
-
-
-
+import org.aspectj.weaver.ArrayAnnotationValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.common.util.CacheUtil;
 import com.common.util.CommonUtil;
 import com.common.util.SpringContextUtil;
+import com.dictionary.service.DictionaryService;
 import com.diet.mapper.DietMapper;
 import com.diet.service.DietService;
 import com.user.mapper.UserMapper;
@@ -144,6 +140,18 @@ public class DietServiceImpl implements DietService {
 	public int countDietTotal(Map<String, Object> map) {
 		return dietDao.countDietTotal(map).size();
 	}
+	
+	@Override
+	public List<Map<String, Object>> getSportList(Map<String, Object> map) {
+		return dietDao.getSportList(map);
+	}
+	
+	
+	@Override
+	public int countSportTotal(Map<String, Object> map) {
+		return dietDao.countSportTotal(map).size();
+	}
+	
 	
 	@Override
 	public List<Map<String, Object>> showDietInfo(Map<String, Object> param) {
@@ -297,7 +305,38 @@ public class DietServiceImpl implements DietService {
 	}
 	
 	@Override
-	public int getTargetEnergy(String snacks, String pId) {
+	public Map<String, Object> showSportInfo(Map<String, Object> param) {
+		Map<String, Object> map = dietDao.showSportInfo(param);
+		if(map!=null){
+			DictionaryService dictionaryService = (DictionaryService)SpringContextUtil.getBeanById("DictionaryService");
+			List<Map<String, Object>> sprotTypeList = dictionaryService.getDictionaryListByType("6");
+			List<Map<String, Object>> sportTimeList = dictionaryService.getDictionaryListByType("7");
+			String[] types = map.get("type").toString().split(",");
+			String[] nums = map.get("num").toString().split(",");
+			List<Map<String, Object>> sportInfo = new ArrayList<Map<String,Object>>();
+			for(int i=0; i<types.length; i++){
+				Map<String, Object> tmp = new HashMap<String, Object>();
+				for(int j=0; j<sprotTypeList.size(); j++){
+					if(sprotTypeList.get(j).get("id").toString().equals(types[i])){
+						tmp.put("type", sprotTypeList.get(j).get("name").toString());
+						break;
+					}
+				}
+				for(int k=0; k<sportTimeList.size(); k++){
+					if(sportTimeList.get(k).get("id").toString().equals(nums[i])){
+						tmp.put("num", sportTimeList.get(k).get("name").toString());
+						break;
+					}
+				}
+				sportInfo.add(tmp);
+			}
+			map.put("sportList", sportInfo);
+		}
+		return map;
+	}
+	
+	@Override
+	public int getTargetEnergy(String pId) {
 		int energy = 0;
 		UserMapper userMapper = (UserMapper)SpringContextUtil.getBeanById("userMapper");
 		Map<String, Object> param = new HashMap<String, Object>();
@@ -316,8 +355,12 @@ public class DietServiceImpl implements DietService {
 	}
 	
 	@Override
-	public List<Map<String, Object>> getTypeList(String snacks) {
+	public List<Map<String, Object>> getTypeList(String pId) {
 		List<Map<String,Object>> list = new LinkedList<Map<String,Object>>();
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("pId", pId);
+		Map<String, Object> map = dietDao.getSnacks(param);
+		String snacks = map==null?"":map.get("snacks").toString();
 		Map<String,Object> diettype1 = new HashMap<String, Object>();
 		diettype1.put("value", "1");
 		diettype1.put("name", "早餐");
@@ -346,5 +389,33 @@ public class DietServiceImpl implements DietService {
 			}
 		}
 		return list;
+	}
+	
+	@Override
+	public String saveSportInfo(Map<String, Object> param) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String today = sdf.format(new Date());
+		param.put("date", today);
+		if(dietDao.checkSportUpdate(param)>0){
+			dietDao.updateSportInfo(param);
+		}else{
+			dietDao.saveSportInfo(param);
+		}
+		return "1";
+	}
+	
+	@Override
+	public String saveSnacks(Map<String, Object> param) {
+		if(dietDao.countSnacks(param)>0){
+			dietDao.updateSnacks(param);
+		}else{
+			dietDao.saveSnacks(param);
+		}
+		return "1";
+	}
+	
+	@Override
+	public Map<String, Object> getSnacks(Map<String, Object> param) {
+		return dietDao.getSnacks(param);
 	}
 }

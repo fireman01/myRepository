@@ -44,6 +44,11 @@
 	effectType=#{effectType},drugNum=#{drugNum},weight=#{weight},prepregnancyWeight=#{prepregnancyWeight},doctorId=#{doctorId},diabetesType=#{diabetesType}
 	WHERE p_id = #{pId}
 	</update> 
+	
+	<update id="saveAdvice" parameterType="object">
+	UPDATE patient SET advice = #{advice}
+	WHERE p_id = #{pId}
+	</update> 
 	 
 	 <select id="getDoctorList" parameterType="object" resultType="map">
 		SELECT * FROM doctor where state='2'

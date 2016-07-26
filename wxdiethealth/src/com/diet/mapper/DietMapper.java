@@ -44,12 +44,20 @@ public interface DietMapper {
 	void updateBloodGlucoseInfo(Map<String, Object> param);
 	
 	void saveBloodGlucoseInfo(Map<String, Object> param);
+	
+	void saveSportInfo(Map<String, Object> param);
 
 	List<Map<String, Object>>  getDietList(Map<String, Object> map);
+	
+	List<Map<String, Object>>  getSportList(Map<String, Object> map);
 
 	List<Map<String, Object>> countDietTotal(Map<String, Object> map);
+	
+	List<Map<String, Object>> countSportTotal(Map<String, Object> map);
 
 	List<Map<String, Object>> showDietInfo(Map<String, Object> param);
+	
+	Map<String, Object> showSportInfo(Map<String, Object> param);
 
 	List<Map<String, Object>> getBloodGlucoseList(Map<String, Object> map);
 
@@ -59,7 +67,19 @@ public interface DietMapper {
 	
 	void updateAdvice(Map<String, Object> param);
 	
+    void saveSnacks(Map<String, Object> param);
+	
+	void updateSnacks(Map<String, Object> param);
+	
+	int countSnacks(Map<String, Object> map);
+	 
 	int countAdvice(Map<String, Object> map);
 
 	Map<String, Object> getAdviceInfo(Map<String, Object> param);
+
+	void updateSportInfo(Map<String, Object> param);
+
+	int checkSportUpdate(Map<String, Object> param);
+
+	Map<String, Object> getSnacks(Map<String, Object> param);
 }

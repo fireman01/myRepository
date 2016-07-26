@@ -18,7 +18,7 @@ String path = request.getContextPath();
 </head>
 <body>
 <div  data-role="header">
- <a href="" data-role="button"  onclick="window.location.href='doctor_index'">主页</a>
+ <a href="" data-role="button"  onclick="window.location.href='admin_index'">主页</a>
 <h1>用户信息</h1>
 </div>
 <div data-role="content">

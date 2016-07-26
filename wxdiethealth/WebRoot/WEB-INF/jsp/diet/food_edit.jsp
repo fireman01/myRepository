@@ -19,6 +19,7 @@ String path = request.getContextPath();
 
 <div data-role="page" id="pageone">
 	<div data-role="header">
+	<a href="" data-role="button" onclick="window.location.href='../user/admin_index'">首页</a>
 		<h1>编辑食物信息</h1>
 	</div>
 	<div data-role="content">
@@ -41,27 +42,47 @@ String path = request.getContextPath();
 				id="name" required="true" placeholder="名称" value="${food.name }">
 		</div>
 		<div data-role="fieldcontain">
-			<label for="energy">能量：</label> <input type="text" name="energy"
+			<label for="energy">能量（千卡）：</label> <input type="text" name="energy"
 				id="energy" required="true" placeholder="能量" value="${food.energy }">
 		</div>
 		<div data-role="fieldcontain">
-			<label for="protein">蛋白质：</label> <input type="text" name="protein"
+			<label for="protein">蛋白质（克）：</label> <input type="text" name="protein"
 				id="protein" required="true" placeholder="蛋白质"
 				value="${food.protein }">
 		</div>
 		<div data-role="fieldcontain">
-			<label for="fat">脂肪：</label> <input type="text" name="fat" id="fat"
+			<label for="fat">脂肪（克）：</label> <input type="text" name="fat" id="fat"
 				required="true" placeholder="脂肪" value="${food.fat }">
 		</div>
 		<div data-role="fieldcontain">
-			<label for="carbohydrate">碳水化合物：</label> <input type="text"
+			<label for="carbohydrate">碳水化合物（克）：</label> <input type="text"
 				name="carbohydrate" id="carbohydrate" required="true"
 				placeholder="碳水化合物" value="${food.carbohydrate }">
 		</div>
 		<div data-role="fieldcontain">
-			<label for="cellulose">膳食纤维：</label> <input type="text"
+			<label for="cellulose">膳食纤维（克）：</label> <input type="text"
 				name="cellulose" id="cellulose" required="true" placeholder="纤维素"
 				value="${food.cellulose }">
+		</div>
+		<div data-role="fieldcontain">
+			<label for="calcium">钙（毫克）：</label> <input type="text"
+				name="calcium" id="calcium" required="true" placeholder="钙" value="${food.calcium }">
+		</div>
+		<div data-role="fieldcontain">
+			<label for="ferrum">铁（毫克）：</label> <input type="text"
+				name="ferrum" id="ferrum" required="true" placeholder="铁" value="${food.ferrum }">
+		</div>
+		<div data-role="fieldcontain">
+			<label for="zinc">锌（毫克）：</label> <input type="text"
+				name="zinc" id="zinc" required="true" placeholder="锌" value="${food.zinc }"> 
+		</div>
+		<div data-role="fieldcontain">
+			<label for="carotene">胡萝卜素（微克）：</label> <input type="text"
+				name="carotene" id="carotene" required="true" placeholder="胡萝卜素" value="${food.carotene }">
+		</div>
+		<div data-role="fieldcontain">
+			<label for="lutein">叶黄素（微克）：</label> <input type="text"
+				name="lutein" id="lutein" required="true" placeholder="叶黄素" value="${food.lutein }">
 		</div>
 		<div data-role="fieldcontain">
 			<label for="ordername">升糖指数：</label> <input type="text"
@@ -108,9 +129,14 @@ var fat = $('#fat').val();
 var carbohydrate = $('#carbohydrate').val();
 var cellulose = $('#cellulose').val();
 var ordername = $('#ordername').val();
+var calcium = $('#calcium').val();
+var ferrum = $('#ferrum').val();
+var zinc = $('#zinc').val();
+var carotene = $('#carotene').val();
+var lutein = $('#lutein').val();
 
- $.post("saveFoodInfo",{id:id,type:type,name:name,energy:energy,protein:protein,
-	 fat:fat,carbohydrate:carbohydrate,cellulose:cellulose,ordername:ordername},function(text){
+ $.post("saveFoodInfo",{id:id,type:type,name:name,energy:energy,protein:protein,calcium:calcium,ferrum:ferrum,
+	 fat:fat,carbohydrate:carbohydrate,cellulose:cellulose,ordername:ordername,zinc:zinc,carotene:carotene,lutein:lutein},function(text){
 		if(text=="1"){
 			alert("保存成功！");
 			window.location.href="food_list";

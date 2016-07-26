@@ -5,7 +5,7 @@ String path = request.getContextPath();
 
 <html>
 <head>
-<title>选择加餐</title>
+<title>设置加餐偏好</title>
 <meta content="width=device-width" name="viewport" />
 <link rel="shortcut icon" href="<%=path %>/favicon.ico" />
 <link rel="stylesheet" type="text/css"
@@ -20,11 +20,12 @@ String path = request.getContextPath();
 		<div data-role="header">
 			<a href="" data-role="button"
 				onclick="window.location.href='../user/user_index'">主页</a>
-			<h1>选择加餐</h1>
+			<h1>设置加餐偏好</h1>
 		</div>
 		<div data-role="content">
 			<fieldset data-role="controlgroup">
 				<legend>选择加餐类型</legend>
+				<input id="snackInfo" type="hidden" value="${snackInfo }">
 				<label for="breakfast">上午加餐</label> 
 				<input type="checkbox" name="favcolor" id="breakfast" value="4"> 
 				<label for="lunch">下午加餐</label> 
@@ -35,7 +36,7 @@ String path = request.getContextPath();
 			
 			 <div data-role="fieldcontain">
    			   <button onclick="onSubmit();">确认</button>
-   			   <button onclick="window.location.href='diet_edit?snacks='">跳过</button>
+   			   <button onclick="window.location.href='../user/user_index'">返回</button>
    			 </div>
 		</div>
 	</div>
@@ -44,18 +45,41 @@ String path = request.getContextPath();
 <script src="<%=path %>/js/jquery-2.2.2.min.js"></script>
 <script src="<%=path %>/jquerymobile/jquery.mobile-1.4.5.min.js"></script>
 <script type="text/javascript">
+var snackInfo = $('#snackInfo').val();
+if(snackInfo!=""){
+	var strs= new Array()
+	strs = snackInfo.split("|");
+	for(var i=0; i<strs.length; i++){
+		if(strs[i]=="4"){
+			$("#breakfast").attr("checked",true);
+		}
+		if(strs[i]=="5"){
+			$("#lunch").attr("checked",true);
+		}
+		if(strs[i]=="6"){
+			$("#dinner").attr("checked",true);
+		}
+	}
+} 
 function onSubmit(){
-	var sancks = "";
+	var snacks = "";
 	if($('#breakfast').is(':checked')==true){
-		sancks +=$('#breakfast').val()+"|";
+		snacks +=$('#breakfast').val()+"|";
 	}
 	if($('#lunch').is(':checked')==true){
-		sancks +=$('#lunch').val()+"|";
+		snacks +=$('#lunch').val()+"|";
 	}
 	if($('#dinner').is(':checked')==true){
-		sancks +=$('#dinner').val();
+		snacks +=$('#dinner').val();
 	}
-	window.location.href='diet_edit?snacks='+sancks;
+	 $.post("saveSnacks",{snacks:snacks},function(text){
+			if(text=="1"){
+				alert("设置成功！");
+				window.location.href="../user/user_index";
+			}else{
+				alert("设置失败！")
+			}
+		}); 
 	
 }
 </script>

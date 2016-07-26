@@ -33,8 +33,10 @@ String path = request.getContextPath();
 				<label for="type">类型：</label> <select name="type" required="true"
 					id="type" value="${dict.type }">
 					<option value="1"">科室</option>
-					<option value="2"">餐前血糖标准</option>
-					<option value="3"">餐后血糖标准</option>
+					<option value="2"">怀孕前患病餐前血糖标准</option>
+					<option value="3"">怀孕前患病餐后血糖标准</option>
+					<option value="4"">怀孕时患病餐前血糖标准</option>
+					<option value="5"">怀孕时患病餐后血糖标准</option>
 				</select>
 			</div>
 

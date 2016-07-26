@@ -52,13 +52,20 @@
 	<include refid="foodsql" />
 	</select>
 	<update id="updateFoodInfo" parameterType="object">
-	UPDATE food SET type = #{type},name = #{name},energy=#{energy},protein=#{protein},fat=#{fat},carbohydrate=#{carbohydrate},cellulose=#{cellulose},ordername=#{ordername}
+	UPDATE food SET type = #{type},name = #{name},energy=#{energy},protein=#{protein},fat=#{fat},carbohydrate=#{carbohydrate},
+	cellulose=#{cellulose},calcium=#{calcium},ferrum=#{ferrum},zinc=#{zinc},carotene=#{carotene},lutein=#{lutein},ordername=#{ordername}
 	WHERE id = #{id}
 	</update> 
 	 <insert id="saveFoodInfo" parameterType="object">
-	INSERT INTO food(id,name,type,energy,protein,fat,carbohydrate,cellulose,ordername)
-	values(#{id},#{name},#{type},#{energy},#{protein},#{fat},#{carbohydrate},#{cellulose},#{ordername})
+	INSERT INTO food(id,name,type,energy,protein,fat,carbohydrate,cellulose,calcium,ferrum,zinc,carotene,lutein,ordername)
+	values(#{id},#{name},#{type},#{energy},#{protein},#{fat},#{carbohydrate},#{cellulose},#{calcium},#{ferrum},#{zinc},#{carotene},#{lutein},#{ordername})
 	</insert>
+	
+	 <insert id="saveSportInfo" parameterType="object">
+	INSERT INTO sport(p_id,date,type,num)
+	values(#{pId},#{date},#{type},#{num})
+	</insert>
+	
 	 <delete id="deleteFoodInfo">
      DELETE FROM food WHERE id = #{id}
     </delete>
@@ -84,6 +91,10 @@
 	select count(*) FROM bloodglucose WHERE p_id = #{pId} and date = #{date}
 	</select>
 	
+	<select id="checkSportUpdate" parameterType="object" resultType="int">
+	select count(*) FROM sport WHERE p_id = #{pId} and date = #{date}
+	</select>
+	
 	<select id="getDietList" parameterType="object" resultType="hashmap">
 		SELECT * FROM dietdetailinfo where p_id = #{pId}
 		<include refid="dietsql" />
@@ -97,13 +108,28 @@
 		</if>
 	</sql>
 	
+	<select id="getSportList" parameterType="object" resultType="hashmap">
+		SELECT * FROM sport where p_id = #{pId}
+		ORDER BY date DESC
+		LIMIT  #{pageNum},#{numPerPage}		
+	</select>
+	
 	<select id="countDietTotal" parameterType="object"
 		resultType="hashmap">
 		SELECT * FROM dietdetailinfo where p_id = #{pId} GROUP BY date
 	</select>
 	
+	<select id="countSportTotal" parameterType="object"
+		resultType="hashmap">
+		SELECT * FROM sport where p_id = #{pId} 
+	</select>
+	
 	 <select id="showDietInfo" parameterType="object" resultType="map">
 	select * FROM dietdetailinfo WHERE p_id = #{pId} and date = #{date}
+	</select>
+	
+	 <select id="showSportInfo" parameterType="object" resultType="map">
+	select * FROM sport WHERE p_id = #{pId} and date = #{date}
 	</select>
 	
 	<select id="getBloodGlucoseList" parameterType="object" resultType="map">
@@ -125,6 +151,40 @@
 	
 	<update id="updateAdvice" parameterType="object">
 	UPDATE advice SET content = #{content}
+	WHERE p_id = #{pId} and date = #{date} 
+	</update> 
+	
+	<!-- <insert id="saveSnacks" parameterType="object">
+	INSERT INTO foodhabits(p_id,breakfirst,lunch,dinner,brunch,snack,supper)
+	values(#{pId},#{breakfirst},#{lunch},#{dinner},#{brunch},#{snack},#{supper})
+	</insert> -->
+	<insert id="saveSnacks" parameterType="object">
+	INSERT INTO foodhabits(p_id,snacks)
+	values(#{pId},#{snacks})
+	</insert>
+	<update id="updateSnacks" parameterType="object">
+	UPDATE foodhabits SET snacks=#{snacks}
+	WHERE p_id = #{pId} 
+	</update>
+	
+	<!-- <update id="updateSnacks" parameterType="object">
+	UPDATE foodhabits SET breakfirst = #{breakfirst},lunch=#{lunch},dinner=#{dinner},
+	brunch=#{brunch},snack=#{snack},supper=#{supper}
+	WHERE p_id = #{pId} 
+	</update>  -->
+	
+	<select id="countSnacks" parameterType="object"
+		resultType="int">
+		SELECT count(1) FROM foodhabits t where t.p_id = #{pId}
+	</select>
+	
+	<select id="getSnacks" parameterType="object"
+		resultType="map">
+		SELECT * FROM foodhabits t where t.p_id = #{pId}
+	</select>
+	
+	<update id="updateSportInfo" parameterType="object">
+	UPDATE sport SET type = #{type}, num=#{num}
 	WHERE p_id = #{pId} and date = #{date} 
 	</update> 
 	

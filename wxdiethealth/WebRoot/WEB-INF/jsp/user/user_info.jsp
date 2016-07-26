@@ -105,6 +105,14 @@ String path = request.getContextPath();
     <label for="pregnancy">孕期周数：</label>
     <span>第${user.pregnancy }周</span>
    </div>
+     <div data-role="fieldcontain">
+     <input type="hidden" value="${user.p_id }" id="pId"> 
+		<label for="advice">建议：</label>
+		<textarea name="advice" id="advice">${user.advice }</textarea>
+	</div>
+	<div data-role="fieldcontain">
+     <input type="button" value="提交" onclick="onSubmit();">
+   </div>
 </div>
 </body>
 <script src="<%=path %>/js/jquery-2.2.2.min.js"></script>
@@ -115,5 +123,17 @@ if(value=="1"){
 	$("#hiddenDIV").show();
 	
 }
+function onSubmit(){
+	var advice = $('#advice').val();
+	var pId = $('#pId').val();
+	 $.post("saveAdvice",{advice:advice,pId:pId},function(text){
+			if(text=="1"){
+				alert("保存成功！");
+			}else{
+				alert("保存失败！")
+			}
+		}); 
+}
+
 </script>
 </html>

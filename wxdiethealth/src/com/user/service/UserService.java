@@ -67,5 +67,7 @@ public interface  UserService {
 	public String updatePatientState(Map<String, Object> param);
 
 	public String updateUser(Map<String, Object> map);
+	
+	public String saveAdvice(Map<String, Object> param);
 
 }

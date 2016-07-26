@@ -41,9 +41,9 @@
 				<div class="ui-block-c" style="text-align:center;">次</div>
 			</div>
 			<div data-role="fieldcontain">
-				<span>餐前标准：${standard1.name }mmol/L</span>
+				<span id="before">餐前标准：${standard1.name }mmol/L</span>
 			</div>
-			<span>餐后标准：${standard2.name }mmol/L</span>
+			<span id="after">餐后标准：${standard2.name }mmol/L</span>
 		</div>
 		<div data-role="content">
 			<div class="ui-grid-d" id="bggrid">
@@ -164,6 +164,9 @@
 }
 
 function count(){
+	
+	var beforeValue = $('#before').text().split("-");
+	var afterValue = $('#after').text().split("-");
 	var low = 0;
 	var height = 0;
 	var normol = 0;
@@ -171,10 +174,10 @@ function count(){
 	for(var i=0; i<divs.length; i++){
 		if(!isNaN(divs[i].innerText)){
 			var value = parseFloat(divs[i].innerText);
-			if(value<4.4){
+			if(value<parseFloat(beforeValue[0])){
 				low++;
 				divs[i].style.color = "red";
-			}else if(value>6.1){
+			}else if(value>parseFloat(beforeValue[1])){
 				divs[i].style.color = "red";
 				height++;
 			}else{
@@ -186,10 +189,10 @@ function count(){
 	for(var i=0; i<divs.length; i++){
 		if(!isNaN(divs[i].innerText)){
 			var value = parseFloat(divs[i].innerText);
-			if(value<4.8){
+			if(value<parseFloat(afterValue[0])){
 				low++;
 				divs[i].style.color = "red";
-			}else if(value>8.8){
+			}else if(value>parseFloat(afterValue[1])){
 				divs[i].style.color = "red";
 				height++;
 			}else{

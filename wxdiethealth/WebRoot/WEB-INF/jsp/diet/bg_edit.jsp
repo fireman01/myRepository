@@ -77,6 +77,55 @@ function onSubmit(){
 	var bloodGlucoseBeforeDinner = $('#bloodGlucoseBeforeDinner').val();
 	var bloodGlucoseAfterDinner = $('#bloodGlucoseAfterDinner').val();
 	var bloodGlucoseBeforeSleep = $('#bloodGlucoseBeforeSleep').val();
+	if(isNaN(bloodGlucoseBeforeBreakfast)){
+		alert("非法输入！");
+		return;
+	}else if(bloodGlucoseBeforeBreakfast>0&&bloodGlucoseBeforeBreakfast<20){
+		alert("非法输入！");
+		return;
+	}
+	if(isNaN(bloodGlucoseAfterBreakfast)){
+		alert("非法输入！");
+		return;
+	}else if(bloodGlucoseAfterBreakfast>0&&bloodGlucoseAfterBreakfast<20){
+		alert("非法输入！");
+		return;
+	}
+	if(isNaN(bloodGlucoseBeforeLunch)){
+		alert("非法输入！");
+		return;
+	}else if(bloodGlucoseBeforeLunch>0&&bloodGlucoseBeforeLunch<20){
+		alert("非法输入！");
+		return;
+	}
+	if(isNaN(bloodGlucoseAfterLunch)){
+		alert("非法输入！");
+		return;
+	}else if(bloodGlucoseAfterLunch>0&&bloodGlucoseAfterLunch<20){
+		alert("非法输入！");
+		return;
+	}
+	if(isNaN(bloodGlucoseBeforeDinner)){
+		alert("非法输入！");
+		return;
+	}else if(bloodGlucoseBeforeDinner>0&&bloodGlucoseBeforeDinner<20){
+		alert("非法输入！");
+		return;
+	}
+	if(isNaN(bloodGlucoseAfterDinner)){
+		alert("非法输入！");
+		return;
+	}else if(bloodGlucoseAfterDinner>0&&bloodGlucoseAfterDinner<20){
+		alert("非法输入！");
+		return;
+	}
+	if(isNaN(bloodGlucoseBeforeSleep)){
+		alert("非法输入！");
+		return;
+	}else if(bloodGlucoseBeforeSleep>0&&bloodGlucoseBeforeSleep<20){
+		alert("非法输入！");
+		return;
+	}
 	
 	$.post("saveBloodGlucose",{pId:pId,bloodGlucoseBeforeBreakfast:bloodGlucoseBeforeBreakfast,bloodGlucoseAfterBreakfast:bloodGlucoseAfterBreakfast,
 		bloodGlucoseBeforeLunch:bloodGlucoseBeforeLunch,bloodGlucoseAfterLunch:bloodGlucoseAfterLunch,bloodGlucoseBeforeDinner:bloodGlucoseBeforeDinner,

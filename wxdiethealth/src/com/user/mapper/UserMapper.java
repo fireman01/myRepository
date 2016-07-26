@@ -75,5 +75,7 @@ public interface UserMapper {
 	List<Map<String, Object>> getPatientListWithState(Map<String, Object> map);
 
 	void updatePatientState(Map<String, Object> param);
+	
+	void saveAdvice(Map<String, Object> param);
     
 }
