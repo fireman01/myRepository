@@ -48,7 +48,7 @@
 						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="mainfood" items="${mainfoodList}" varStatus="s">
 						  <option value="${mainfood.id }" energy="${mainfood.energy }" protein="${mainfood.protein }" fat="${mainfood.fat }" 
-						  carbohydrate="${mainfood.carbohydrate }" cellulose="${mainfood.cellulose }" calcium="${mainfood.calcium }" ferrum="${mainfood.ferrum }" zinc="${mainfood.zinc }" carotene="${mainfood.carotene }" lutein="${mainfood.lutein }">${mainfood.name }</option>
+						  carbohydrate="${mainfood.carbohydrate }" cellulose="${mainfood.cellulose }" calcium="${mainfood.calcium }" ferrum="${mainfood.ferrum }" zinc="${mainfood.zinc }" carotene="${mainfood.carotene }">${mainfood.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -66,7 +66,7 @@
 						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="mainfood" items="${mainfoodList}" varStatus="s">
 						  <option value="${mainfood.id }" energy="${mainfood.energy }" protein="${mainfood.protein }" fat="${mainfood.fat }" carbohydrate="${mainfood.carbohydrate }" 
-						  cellulose="${mainfood.cellulose }" calcium="${mainfood.calcium }" ferrum="${mainfood.ferrum }" zinc="${mainfood.zinc }" carotene="${mainfood.carotene }" lutein="${mainfood.lutein }">${mainfood.name }</option>
+						  cellulose="${mainfood.cellulose }" calcium="${mainfood.calcium }" ferrum="${mainfood.ferrum }" zinc="${mainfood.zinc }" carotene="${mainfood.carotene }">${mainfood.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -81,7 +81,7 @@
 						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="mainfood" items="${mainfoodList}" varStatus="s">
 						  <option value="${mainfood.id }" energy="${mainfood.energy }" protein="${mainfood.protein }" fat="${mainfood.fat }" carbohydrate="${mainfood.carbohydrate }" 
-						  cellulose="${mainfood.cellulose }" calcium="${mainfood.calcium }" ferrum="${mainfood.ferrum }" zinc="${mainfood.zinc }" carotene="${mainfood.carotene }" lutein="${mainfood.lutein }">${mainfood.name }</option>
+						  cellulose="${mainfood.cellulose }" calcium="${mainfood.calcium }" ferrum="${mainfood.ferrum }" zinc="${mainfood.zinc }" carotene="${mainfood.carotene }">${mainfood.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -96,7 +96,7 @@
 						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="mainfood" items="${mainfoodList}" varStatus="s">
 						  <option value="${mainfood.id }" energy="${mainfood.energy }" protein="${mainfood.protein }" fat="${mainfood.fat }" carbohydrate="${mainfood.carbohydrate }" 
-						  cellulose="${mainfood.cellulose }" calcium="${mainfood.calcium }" ferrum="${mainfood.ferrum }" zinc="${mainfood.zinc }" carotene="${mainfood.carotene }" lutein="${mainfood.lutein }">${mainfood.name }</option>
+						  cellulose="${mainfood.cellulose }" calcium="${mainfood.calcium }" ferrum="${mainfood.ferrum }" zinc="${mainfood.zinc }" carotene="${mainfood.carotene }">${mainfood.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -111,7 +111,7 @@
 						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="mainfood" items="${mainfoodList}" varStatus="s">
 						  <option value="${mainfood.id }" energy="${mainfood.energy }" protein="${mainfood.protein }" fat="${mainfood.fat }" carbohydrate="${mainfood.carbohydrate }" 
-						  cellulose="${mainfood.cellulose }" calcium="${mainfood.calcium }" ferrum="${mainfood.ferrum }" zinc="${mainfood.zinc }" carotene="${mainfood.carotene }" lutein="${mainfood.lutein }">${mainfood.name }</option>
+						  cellulose="${mainfood.cellulose }" calcium="${mainfood.calcium }" ferrum="${mainfood.ferrum }" zinc="${mainfood.zinc }" carotene="${mainfood.carotene }">${mainfood.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -136,7 +136,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						   <c:forEach var="meat" items="${meatList}" varStatus="s">
 						  <option value="${meat.id }" energy="${meat.energy }" protein="${meat.protein }" fat="${meat.fat }" carbohydrate="${meat.carbohydrate }" 
-						  cellulose="${meat.cellulose }" calcium="${meat.calcium }" ferrum="${meat.ferrum }" zinc="${meat.zinc }" carotene="${meat.carotene }" lutein="${meat.lutein }">${meat.name }</option>
+						  cellulose="${meat.cellulose }" calcium="${meat.calcium }" ferrum="${meat.ferrum }" zinc="${meat.zinc }" carotene="${meat.carotene }">${meat.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -153,7 +153,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						   <c:forEach var="meat" items="${meatList}" varStatus="s">
 						  <option value="${meat.id }" energy="${meat.energy }" protein="${meat.protein }" fat="${meat.fat }" carbohydrate="${meat.carbohydrate }" 
-						  cellulose="${meat.cellulose }" calcium="${meat.calcium }" ferrum="${meat.ferrum }" zinc="${meat.zinc }" carotene="${meat.carotene }" lutein="${meat.lutein }">${meat.name }</option>
+						  cellulose="${meat.cellulose }" calcium="${meat.calcium }" ferrum="${meat.ferrum }" zinc="${meat.zinc }" carotene="${meat.carotene }">${meat.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -169,7 +169,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						   <c:forEach var="meat" items="${meatList}" varStatus="s">
 						  <option value="${meat.id }" energy="${meat.energy }" protein="${meat.protein }" fat="${meat.fat }" carbohydrate="${meat.carbohydrate }" 
-						  cellulose="${meat.cellulose }" calcium="${meat.calcium }" ferrum="${meat.ferrum }" zinc="${meat.zinc }" carotene="${meat.carotene }" lutein="${meat.lutein }">${meat.name }</option>
+						  cellulose="${meat.cellulose }" calcium="${meat.calcium }" ferrum="${meat.ferrum }" zinc="${meat.zinc }" carotene="${meat.carotene }">${meat.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -186,7 +186,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						   <c:forEach var="meat" items="${meatList}" varStatus="s">
 						  <option value="${meat.id }" energy="${meat.energy }" protein="${meat.protein }" fat="${meat.fat }" carbohydrate="${meat.carbohydrate }" 
-						  cellulose="${meat.cellulose }" calcium="${meat.calcium }" ferrum="${meat.ferrum }" zinc="${meat.zinc }" carotene="${meat.carotene }" lutein="${meat.lutein }">${meat.name }</option>
+						  cellulose="${meat.cellulose }" calcium="${meat.calcium }" ferrum="${meat.ferrum }" zinc="${meat.zinc }" carotene="${meat.carotene }">${meat.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -202,7 +202,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						   <c:forEach var="meat" items="${meatList}" varStatus="s">
 						  <option value="${meat.id }" energy="${meat.energy }" protein="${meat.protein }" fat="${meat.fat }" carbohydrate="${meat.carbohydrate }" 
-						  cellulose="${meat.cellulose }" calcium="${meat.calcium }" ferrum="${meat.ferrum }" zinc="${meat.zinc }" carotene="${meat.carotene }" lutein="${meat.lutein }">${meat.name }</option>
+						  cellulose="${meat.cellulose }" calcium="${meat.calcium }" ferrum="${meat.ferrum }" zinc="${meat.zinc }" carotene="${meat.carotene }">${meat.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -227,7 +227,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="vegetables" items="${vegetablesList}" varStatus="s">
 						  <option value="${vegetables.id }" energy="${vegetables.energy }" protein="${vegetables.protein }" fat="${vegetables.fat }" carbohydrate="${vegetables.carbohydrate }" 
-						  cellulose="${vegetables.cellulose }" calcium="${vegetables.calcium }" ferrum="${vegetables.ferrum }" zinc="${vegetables.zinc }" carotene="${vegetables.carotene }" lutein="${vegetables.lutein }">${vegetables.name }</option>
+						  cellulose="${vegetables.cellulose }" calcium="${vegetables.calcium }" ferrum="${vegetables.ferrum }" zinc="${vegetables.zinc }" carotene="${vegetables.carotene }">${vegetables.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -243,7 +243,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="vegetables" items="${vegetablesList}" varStatus="s">
 						  <option value="${vegetables.id }" energy="${vegetables.energy }" protein="${vegetables.protein }" fat="${vegetables.fat }" carbohydrate="${vegetables.carbohydrate }" 
-						  cellulose="${vegetables.cellulose }" calcium="${vegetables.calcium }" ferrum="${vegetables.ferrum }" zinc="${vegetables.zinc }" carotene="${vegetables.carotene }" lutein="${vegetables.lutein }">${vegetables.name }</option>
+						  cellulose="${vegetables.cellulose }" calcium="${vegetables.calcium }" ferrum="${vegetables.ferrum }" zinc="${vegetables.zinc }" carotene="${vegetables.carotene }">${vegetables.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -259,7 +259,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="vegetables" items="${vegetablesList}" varStatus="s">
 						  <option value="${vegetables.id }" energy="${vegetables.energy }" protein="${vegetables.protein }" fat="${vegetables.fat }" carbohydrate="${vegetables.carbohydrate }" 
-						  cellulose="${vegetables.cellulose }" calcium="${vegetables.calcium }" ferrum="${vegetables.ferrum }" zinc="${vegetables.zinc }" carotene="${vegetables.carotene }" lutein="${vegetables.lutein }">${vegetables.name }</option>
+						  cellulose="${vegetables.cellulose }" calcium="${vegetables.calcium }" ferrum="${vegetables.ferrum }" zinc="${vegetables.zinc }" carotene="${vegetables.carotene }">${vegetables.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -274,7 +274,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="vegetables" items="${vegetablesList}" varStatus="s">
 						  <option value="${vegetables.id }" energy="${vegetables.energy }" protein="${vegetables.protein }" fat="${vegetables.fat }" carbohydrate="${vegetables.carbohydrate }" 
-						  cellulose="${vegetables.cellulose }" calcium="${vegetables.calcium }" ferrum="${vegetables.ferrum }" zinc="${vegetables.zinc }" carotene="${vegetables.carotene }" lutein="${vegetables.lutein }">${vegetables.name }</option>
+						  cellulose="${vegetables.cellulose }" calcium="${vegetables.calcium }" ferrum="${vegetables.ferrum }" zinc="${vegetables.zinc }" carotene="${vegetables.carotene }">${vegetables.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -289,7 +289,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="vegetables" items="${vegetablesList}" varStatus="s">
 						  <option value="${vegetables.id }" energy="${vegetables.energy }" protein="${vegetables.protein }" fat="${vegetables.fat }" carbohydrate="${vegetables.carbohydrate }" 
-						  cellulose="${vegetables.cellulose }" calcium="${vegetables.calcium }" ferrum="${vegetables.ferrum }" zinc="${vegetables.zinc }" carotene="${vegetables.carotene }" lutein="${vegetables.lutein }">${vegetables.name }</option>
+						  cellulose="${vegetables.cellulose }" calcium="${vegetables.calcium }" ferrum="${vegetables.ferrum }" zinc="${vegetables.zinc }" carotene="${vegetables.carotene }">${vegetables.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -314,7 +314,7 @@
 						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						 <c:forEach var="drink" items="${drinkList}" varStatus="s">
 						  <option value="${drink.id }" energy="${drink.energy }" protein="${drink.protein }" fat="${drink.fat }" carbohydrate="${drink.carbohydrate }" 
-						  cellulose="${drink.cellulose }" calcium="${drink.calcium }" ferrum="${drink.ferrum }" zinc="${drink.zinc }" carotene="${drink.carotene }" lutein="${drink.lutein }">${drink.name }</option>
+						  cellulose="${drink.cellulose }" calcium="${drink.calcium }" ferrum="${drink.ferrum }" zinc="${drink.zinc }" carotene="${drink.carotene }">${drink.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -330,7 +330,7 @@
 						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						 <c:forEach var="drink" items="${drinkList}" varStatus="s">
 						  <option value="${drink.id }" energy="${drink.energy }" protein="${drink.protein }" fat="${drink.fat }" carbohydrate="${drink.carbohydrate }" 
-						  cellulose="${drink.cellulose }" calcium="${drink.calcium }" ferrum="${drink.ferrum }" zinc="${drink.zinc }" carotene="${drink.carotene }" lutein="${drink.lutein }">${drink.name }</option>
+						  cellulose="${drink.cellulose }" calcium="${drink.calcium }" ferrum="${drink.ferrum }" zinc="${drink.zinc }" carotene="${drink.carotene }">${drink.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -346,7 +346,7 @@
 						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						 <c:forEach var="drink" items="${drinkList}" varStatus="s">
 						  <option value="${drink.id }" energy="${drink.energy }" protein="${drink.protein }" fat="${drink.fat }" carbohydrate="${drink.carbohydrate }" 
-						  cellulose="${drink.cellulose }" calcium="${drink.calcium }" ferrum="${drink.ferrum }" zinc="${drink.zinc }" carotene="${drink.carotene }" lutein="${drink.lutein }">${drink.name }</option>
+						  cellulose="${drink.cellulose }" calcium="${drink.calcium }" ferrum="${drink.ferrum }" zinc="${drink.zinc }" carotene="${drink.carotene }">${drink.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -362,7 +362,7 @@
 						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						 <c:forEach var="drink" items="${drinkList}" varStatus="s">
 						  <option value="${drink.id }" energy="${drink.energy }" protein="${drink.protein }" fat="${drink.fat }" carbohydrate="${drink.carbohydrate }" 
-						  cellulose="${drink.cellulose }" calcium="${drink.calcium }" ferrum="${drink.ferrum }" zinc="${drink.zinc }" carotene="${drink.carotene }" lutein="${drink.lutein }">${drink.name }</option>
+						  cellulose="${drink.cellulose }" calcium="${drink.calcium }" ferrum="${drink.ferrum }" zinc="${drink.zinc }" carotene="${drink.carotene }">${drink.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -378,7 +378,7 @@
 						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						 <c:forEach var="drink" items="${drinkList}" varStatus="s">
 						  <option value="${drink.id }" energy="${drink.energy }" protein="${drink.protein }" fat="${drink.fat }" carbohydrate="${drink.carbohydrate }" 
-						  cellulose="${drink.cellulose }" calcium="${drink.calcium }" ferrum="${drink.ferrum }" zinc="${drink.zinc }" carotene="${drink.carotene }" lutein="${drink.lutein }">${drink.name }</option>
+						  cellulose="${drink.cellulose }" calcium="${drink.calcium }" ferrum="${drink.ferrum }" zinc="${drink.zinc }" carotene="${drink.carotene }">${drink.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -395,7 +395,7 @@
 				</div>
 			</div>
 			<div data-role="collapsible">
-				<h1>坚果</h1>
+				<h1>干果/油/零食</h1>
 				<div id="nut">
 				<div data-role="fieldcontain" name="nuttype" id="nuttype1">
 					<label for="diettype">种类：</label> <select name="diettype"  onchange="typechange('nut','1')"
@@ -403,7 +403,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="nut" items="${nutList}" varStatus="s">
 						  <option value="${nut.id }" energy="${nut.energy }" protein="${nut.protein }" fat="${nut.fat }" carbohydrate="${nut.carbohydrate }" 
-						  cellulose="${nut.cellulose }" calcium="${nut.calcium }" ferrum="${nut.ferrum }" zinc="${nut.zinc }" carotene="${nut.carotene }" lutein="${nut.lutein }">${nut.name }</option>
+						  cellulose="${nut.cellulose }" calcium="${nut.calcium }" ferrum="${nut.ferrum }" zinc="${nut.zinc }" carotene="${nut.carotene }">${nut.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -419,7 +419,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="nut" items="${nutList}" varStatus="s">
 						  <option value="${nut.id }" energy="${nut.energy }" protein="${nut.protein }" fat="${nut.fat }" carbohydrate="${nut.carbohydrate }" 
-						  cellulose="${nut.cellulose }" calcium="${nut.calcium }" ferrum="${nut.ferrum }" zinc="${nut.zinc }" carotene="${nut.carotene }" lutein="${nut.lutein }">${nut.name }</option>
+						  cellulose="${nut.cellulose }" calcium="${nut.calcium }" ferrum="${nut.ferrum }" zinc="${nut.zinc }" carotene="${nut.carotene }">${nut.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -435,7 +435,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="nut" items="${nutList}" varStatus="s">
 						  <option value="${nut.id }" energy="${nut.energy }" protein="${nut.protein }" fat="${nut.fat }" carbohydrate="${nut.carbohydrate }" 
-						  cellulose="${nut.cellulose }" calcium="${nut.calcium }" ferrum="${nut.ferrum }" zinc="${nut.zinc }" carotene="${nut.carotene }" lutein="${nut.lutein }">${nut.name }</option>
+						  cellulose="${nut.cellulose }" calcium="${nut.calcium }" ferrum="${nut.ferrum }" zinc="${nut.zinc }" carotene="${nut.carotene }">${nut.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -450,7 +450,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="nut" items="${nutList}" varStatus="s">
 						  <option value="${nut.id }" energy="${nut.energy }" protein="${nut.protein }" fat="${nut.fat }" carbohydrate="${nut.carbohydrate }" 
-						  cellulose="${nut.cellulose }" calcium="${nut.calcium }" ferrum="${nut.ferrum }" zinc="${nut.zinc }" carotene="${nut.carotene }" lutein="${nut.lutein }">${nut.name }</option>
+						  cellulose="${nut.cellulose }" calcium="${nut.calcium }" ferrum="${nut.ferrum }" zinc="${nut.zinc }" carotene="${nut.carotene }">${nut.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -465,7 +465,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="nut" items="${nutList}" varStatus="s">
 						  <option value="${nut.id }" energy="${nut.energy }" protein="${nut.protein }" fat="${nut.fat }" carbohydrate="${nut.carbohydrate }" 
-						  cellulose="${nut.cellulose }" calcium="${nut.calcium }" ferrum="${nut.ferrum }" zinc="${nut.zinc }" carotene="${nut.carotene }" lutein="${nut.lutein }">${nut.name }</option>
+						  cellulose="${nut.cellulose }" calcium="${nut.calcium }" ferrum="${nut.ferrum }" zinc="${nut.zinc }" carotene="${nut.carotene }">${nut.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -489,7 +489,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						 <c:forEach var="fruits" items="${fruitsList}" varStatus="s">
 						  <option value="${fruits.id }" energy="${fruits.energy }" protein="${fruits.protein }" fat="${fruits.fat }" carbohydrate="${fruits.carbohydrate }" 
-						  cellulose="${fruits.cellulose }" calcium="${fruits.calcium }" ferrum="${fruits.ferrum }" zinc="${fruits.zinc }" carotene="${fruits.carotene }" lutein="${fruits.lutein }">${fruits.name }</option>
+						  cellulose="${fruits.cellulose }" calcium="${fruits.calcium }" ferrum="${fruits.ferrum }" zinc="${fruits.zinc }" carotene="${fruits.carotene }">${fruits.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -505,7 +505,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						 <c:forEach var="fruits" items="${fruitsList}" varStatus="s">
 						  <option value="${fruits.id }" energy="${fruits.energy }" protein="${fruits.protein }" fat="${fruits.fat }" carbohydrate="${fruits.carbohydrate }" 
-						  cellulose="${fruits.cellulose }" calcium="${fruits.calcium }" ferrum="${fruits.ferrum }" zinc="${fruits.zinc }" carotene="${fruits.carotene }" lutein="${fruits.lutein }">${fruits.name }</option>
+						  cellulose="${fruits.cellulose }" calcium="${fruits.calcium }" ferrum="${fruits.ferrum }" zinc="${fruits.zinc }" carotene="${fruits.carotene }">${fruits.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -521,7 +521,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						 <c:forEach var="fruits" items="${fruitsList}" varStatus="s">
 						  <option value="${fruits.id }" energy="${fruits.energy }" protein="${fruits.protein }" fat="${fruits.fat }" carbohydrate="${fruits.carbohydrate }" 
-						  cellulose="${fruits.cellulose }" calcium="${fruits.calcium }" ferrum="${fruits.ferrum }" zinc="${fruits.zinc }" carotene="${fruits.carotene }" lutein="${fruits.lutein }">${fruits.name }</option>
+						  cellulose="${fruits.cellulose }" calcium="${fruits.calcium }" ferrum="${fruits.ferrum }" zinc="${fruits.zinc }" carotene="${fruits.carotene }">${fruits.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -537,7 +537,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						 <c:forEach var="fruits" items="${fruitsList}" varStatus="s">
 						  <option value="${fruits.id }" energy="${fruits.energy }" protein="${fruits.protein }" fat="${fruits.fat }" carbohydrate="${fruits.carbohydrate }" 
-						  cellulose="${fruits.cellulose }" calcium="${fruits.calcium }" ferrum="${fruits.ferrum }" zinc="${fruits.zinc }" carotene="${fruits.carotene }" lutein="${fruits.lutein }">${fruits.name }</option>
+						  cellulose="${fruits.cellulose }" calcium="${fruits.calcium }" ferrum="${fruits.ferrum }" zinc="${fruits.zinc }" carotene="${fruits.carotene }">${fruits.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -553,7 +553,7 @@
 						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						 <c:forEach var="fruits" items="${fruitsList}" varStatus="s">
 						  <option value="${fruits.id }" energy="${fruits.energy }" protein="${fruits.protein }" fat="${fruits.fat }" carbohydrate="${fruits.carbohydrate }" 
-						  cellulose="${fruits.cellulose }" calcium="${fruits.calcium }" ferrum="${fruits.ferrum }" zinc="${fruits.zinc }" carotene="${fruits.carotene }" lutein="${fruits.lutein }">${fruits.name }</option>
+						  cellulose="${fruits.cellulose }" calcium="${fruits.calcium }" ferrum="${fruits.ferrum }" zinc="${fruits.zinc }" carotene="${fruits.carotene }">${fruits.name }</option>
 						   </c:forEach>
 					</select>
 				</div>
@@ -587,7 +587,7 @@
 				<div class="ui-block-e"
 					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">膳食纤维</div>
 						<div class="ui-block-f"
-					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">碳水化合物</div>
+					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;&nbsp;钙&nbsp;&nbsp;</div>
 					</div> 
 					
 					</div>
@@ -597,15 +597,13 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;食物名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				</div>
 						<div class="ui-block-b"
-					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;&nbsp;脂肪&nbsp;&nbsp;</div>
+					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;&nbsp;&nbsp;&nbsp;脂肪&nbsp;&nbsp;&nbsp;&nbsp;</div>
 						<div class="ui-block-c"
-					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;叶黄素&nbsp;</div>
+					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;&nbsp;&nbsp;&nbsp;锌&nbsp;&nbsp;&nbsp;&nbsp;</div>
 						<div class="ui-block-d"
-					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;&nbsp;锌&nbsp;&nbsp;</div>
+					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;&nbsp;胡萝卜素&nbsp;&nbsp;</div>
 						<div class="ui-block-e"
-					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">胡萝卜素</div>
-						<div class="ui-block-f"
-					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;&nbsp;钙&nbsp;&nbsp;</div>
+					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;&nbsp;碳水化合物&nbsp;&nbsp;</div>
 					
 			</div> 
 
@@ -644,18 +642,16 @@ var targetsumenergy = parseInt(${energy});
 		+'</div><div class="ui-block-e" style="border: 1px solid black;text-align:center;width:17%;border-style:none ridge ridge none;">'
 		+parseFloat(num*parseFloat(option[0].attributes.cellulose.value)/100)
 		+'</div><div class="ui-block-f" style="border: 1px solid black;text-align:center;border-style:none ridge ridge none;">'
-		+parseFloat(num*parseFloat(option[0].attributes.carbohydrate.value)/100)+'</div>';
+		+parseFloat(num*parseFloat(option[0].attributes.calcium.value)/100)+'</div>';
 		var html1 ='<div class="ui-block-a" style="border: 1px solid black;text-align:center;width:26.5%;border-style:none ridge ridge ridge;">'
-			+option.text()+'</div><div class="ui-block-b"style="border: 1px solid black;text-align:center;width:12.4%;border-style:none ridge ridge none;" name="energyinfo">'
+			+option.text()+'</div><div class="ui-block-b"style="border: 1px solid black;text-align:center;width:16.1%;border-style:none ridge ridge none;" name="energyinfo">'
 			+parseFloat(num*parseFloat(option[0].attributes.fat.value)/100)
-			+'</div><div class="ui-block-c" style="border: 1px solid black;text-align:center;width:14.6%;border-style:none ridge ridge none;">'
-			+parseFloat(num*parseFloat(option[0].attributes.lutein.value)/100)+'</div>'
-			+'<div class="ui-block-d" style="border: 1px solid black;text-align:center;width:8.1%;border-style:none ridge ridge none;">'
-			+parseFloat(num*parseFloat(option[0].attributes.zinc.value)/100)
-			+'</div><div class="ui-block-e" style="border: 1px solid black;text-align:center;width:17%;border-style:none ridge ridge none;">'
+			+'</div><div class="ui-block-c" style="border: 1px solid black;text-align:center;width:11.9%;border-style:none ridge ridge none;">'
+			+parseFloat(num*parseFloat(option[0].attributes.zinc.value)/100)+'</div>'
+			+'<div class="ui-block-d" style="border: 1px solid black;text-align:center;width:20.8%;border-style:none ridge ridge none;">'
 			+parseFloat(num*parseFloat(option[0].attributes.carotene.value)/100)
-			+'</div><div class="ui-block-f" style="border: 1px solid black;text-align:center;border-style:none ridge ridge none;">'
-			+parseFloat(num*parseFloat(option[0].attributes.calcium.value)/100)+'</div>';
+			+'</div><div class="ui-block-e" style="border: 1px solid black;text-align:center;width:24.7%;border-style:none ridge ridge none;">'
+			+parseFloat(num*parseFloat(option[0].attributes.carbohydrate.value)/100);
 			if($('#detail'+id+idnum).html()==undefined){
 			$('#detailtable').after("<div class='ui-grid-e' id='detail"+id+idnum+"'></div>");
 			$('#detail'+id+idnum).append(html);
@@ -688,16 +684,14 @@ var targetsumenergy = parseInt(${energy});
 				+'</div><div class="ui-block-f" style="border: 1px solid black;text-align:center;border-style:none ridge ridge none;">'
 				+parseFloat(num*parseFloat(option[0].attributes.carbohydrate.value)/100)+'</div>';
 				var html1 ='<div class="ui-block-a" style="border: 1px solid black;text-align:center;width:26.5%;border-style:none ridge ridge ridge;">'
-					+option.text()+'</div><div class="ui-block-b"style="border: 1px solid black;text-align:center;width:12.4%;border-style:none ridge ridge none;" name="energyinfo">'
+					+option.text()+'</div><div class="ui-block-b"style="border: 1px solid black;text-align:center;width:16.1%;border-style:none ridge ridge none;" name="energyinfo">'
 					+parseFloat(num*parseFloat(option[0].attributes.fat.value)/100)
-					+'</div><div class="ui-block-c" style="border: 1px solid black;text-align:center;width:14.6%;border-style:none ridge ridge none;">'
-					+parseFloat(num*parseFloat(option[0].attributes.lutein.value)/100)+'</div>'
-					+'<div class="ui-block-d" style="border: 1px solid black;text-align:center;width:8.1%;border-style:none ridge ridge none;">'
-					+parseFloat(num*parseFloat(option[0].attributes.zinc.value)/100)
-					+'</div><div class="ui-block-e" style="border: 1px solid black;text-align:center;width:17%;border-style:none ridge ridge none;">'
+					+'</div><div class="ui-block-c" style="border: 1px solid black;text-align:center;width:11.9%;border-style:none ridge ridge none;">'
+					+parseFloat(num*parseFloat(option[0].attributes.zinc.value)/100)+'</div>'
+					+'<div class="ui-block-d" style="border: 1px solid black;text-align:center;width:20.8%;border-style:none ridge ridge none;">'
 					+parseFloat(num*parseFloat(option[0].attributes.carotene.value)/100)
-					+'</div><div class="ui-block-f" style="border: 1px solid black;text-align:center;border-style:none ridge ridge none;">'
-					+parseFloat(num*parseFloat(option[0].attributes.calcium.value)/100)+'</div>';
+					+'</div><div class="ui-block-e" style="border: 1px solid black;text-align:center;width:24.7%;border-style:none ridge ridge none;">'
+					+parseFloat(num*parseFloat(option[0].attributes.carbohydrate.value)/100);
 			$('#detail'+id+idnum).html(html);
 			$('#detail'+id+idnum+"1").html(html1);
 		}

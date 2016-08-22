@@ -30,7 +30,7 @@ String path = request.getContextPath();
 				<option value="2">肉类</option>
 				<option value="3">蔬菜</option>
 				<option value="4">饮品</option>
-				<option value="5">坚果</option>
+				<option value="5">干果/油/零食</option>
 				<option value="6">水果</option>
 			</select>
 		</div>
@@ -76,10 +76,6 @@ String path = request.getContextPath();
 				name="carotene" id="carotene" required="true" placeholder="胡萝卜素">
 		</div>
 		<div data-role="fieldcontain">
-			<label for="lutein">叶黄素（微克）：</label> <input type="text"
-				name="lutein" id="lutein" required="true" placeholder="叶黄素">
-		</div>
-		<div data-role="fieldcontain">
 			<label for="ordername">升糖指数：</label> <input type="text"
 				name="ordername" id="ordername" required="true" placeholder="排序">
 		</div>
@@ -109,11 +105,10 @@ var calcium = $('#calcium').val();
 var ferrum = $('#ferrum').val();
 var zinc = $('#zinc').val();
 var carotene = $('#carotene').val();
-var lutein = $('#lutein').val();
 
 
  $.post("saveFoodInfo",{type:type,name:name,energy:energy,protein:protein,calcium:calcium,ferrum:ferrum,
-	 fat:fat,carbohydrate:carbohydrate,cellulose:cellulose,ordername:ordername,zinc:zinc,carotene:carotene,lutein:lutein},function(text){
+	 fat:fat,carbohydrate:carbohydrate,cellulose:cellulose,ordername:ordername,zinc:zinc,carotene:carotene},function(text){
 		if(text=="1"){
 			alert("保存成功！");
 			window.location.href="food_list";

@@ -253,7 +253,7 @@ public class DietServiceImpl implements DietService {
 		for(Entry<String, Object> entry : param.entrySet()){
 				String key = entry.getKey();
 				if(key!=null&&!"id".equals(key)&&!"type".equals(key)&&!"name".equals(key)&&!"ordername".equals(key)){
-					param.put(key, nf.format(num*((Float)entry.getValue())));
+					param.put(key, nf.format(num*((Float)entry.getValue())/100));
 				}
 		}
 		return param;
