@@ -23,8 +23,9 @@ String path = request.getContextPath();
 			<h1>设置加餐偏好</h1>
 		</div>
 		<div data-role="content">
+		<span>餐饮类型默认为早中晚三餐，如有加餐需求请选择</span>
+		<br/>
 			<fieldset data-role="controlgroup">
-				<legend>选择加餐类型</legend>
 				<input id="snackInfo" type="hidden" value="${snackInfo }">
 				<label for="breakfast">上午加餐</label> 
 				<input type="checkbox" name="favcolor" id="breakfast" value="4"> 

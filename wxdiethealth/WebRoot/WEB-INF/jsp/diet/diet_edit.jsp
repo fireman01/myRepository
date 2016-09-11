@@ -2,8 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%
-	String path = request.getContextPath();
-	String pId = session.getAttribute("pId").toString();
+ 	String path = request.getContextPath();
+	String pId = session.getAttribute("pId").toString(); 
 %>
 <html>
 <head>
@@ -17,7 +17,8 @@
 	href="<%=path%>/jquerymobile/pink.min.css"> 
  <link rel="stylesheet" type="text/css"
 	href="<%=path%>/jquerymobile/pink.icons.min.css"> 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+	<link rel="stylesheet" href="<%=path%>/jquerymobile/jquery.mobile.structure-1.4.5.min.css" />
+<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> -->
 </head>
 
 <body>
@@ -574,39 +575,18 @@
 			</div>
 		</div>
 		<div id="detailcontent">
-			 <div class="ui-grid-e" id="detailtable"> 
-				<div class="ui-block-a" style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge ridge;">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;食物名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 <div class="ui-grid-c" id="detailtable"> 
+				<div class="ui-block-a" style="border: 1px solid black;text-align:center;width:31%;border-style:ridge ridge ridge ridge;">
+					食物名称
 				</div>
 				<div class="ui-block-b"
-					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;&nbsp;能量&nbsp;&nbsp;</div>
+					style="border: 1px solid black;text-align:center;width:22.5%;border-style:ridge ridge ridge none;">能量</div>
 				<div class="ui-block-c"
-					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;蛋白质&nbsp;</div>
+					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">蛋白质</div>
 					<div class="ui-block-d"
-					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;&nbsp;铁&nbsp;&nbsp;</div>
-				<div class="ui-block-e"
-					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">膳食纤维</div>
-						<div class="ui-block-f"
-					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;&nbsp;钙&nbsp;&nbsp;</div>
-					</div> 
+					style="border: 1px solid black;text-align:center;width:21.5%;border-style:ridge ridge ridge none;">脂肪</div>
 					
 					</div>
-					<div data-role="fieldcontain"></div>
-					<div class="ui-grid-e" id="detailtable1"> 
-				<div class="ui-block-a" style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge ridge;">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;食物名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				</div>
-						<div class="ui-block-b"
-					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;&nbsp;&nbsp;&nbsp;脂肪&nbsp;&nbsp;&nbsp;&nbsp;</div>
-						<div class="ui-block-c"
-					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;&nbsp;&nbsp;&nbsp;锌&nbsp;&nbsp;&nbsp;&nbsp;</div>
-						<div class="ui-block-d"
-					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;&nbsp;胡萝卜素&nbsp;&nbsp;</div>
-						<div class="ui-block-e"
-					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">&nbsp;&nbsp;碳水化合物&nbsp;&nbsp;</div>
-					
-			</div> 
-
 	
 			<div data-role="fieldcontain">
      <input type="button" value="提交" onclick="onSubmit();">
@@ -628,42 +608,26 @@ var drinkCount = 1;
 var nutCount = 1;
 var fruitsCount = 1;
 var targetsumenergy = parseInt(${energy});
-	var pId = "<%=pId%>";
+	var pId = "<%=pId%>"; 
 	function typechange(id,idnum){
 		var option = $('#'+id+"type"+idnum).find("select option:selected");
 		var num = parseInt($('#'+id+"num"+idnum).find("input").val());
-		var html ='<div class="ui-block-a" style="border: 1px solid black;text-align:center;width:26.5%;border-style:none ridge ridge ridge;">'
-		+option.text()+'</div><div class="ui-block-b"style="border: 1px solid black;text-align:center;width:12.4%;border-style:none ridge ridge none;" name="energyinfo">'
+		var html ='<div class="ui-block-a" style="border: 1px solid black;text-align:center;width:31%;border-style:none ridge ridge ridge;">'
+		+option.text()+'</div><div class="ui-block-b"style="border: 1px solid black;text-align:center;width:22.5%;border-style:none ridge ridge none;" name="energyinfo">'
 		+parseFloat(num*parseFloat(option[0].attributes.energy.value)/100)
-		+'</div><div class="ui-block-c" style="border: 1px solid black;text-align:center;width:14.6%;border-style:none ridge ridge none;">'
+		+'</div><div class="ui-block-c" style="border: 1px solid black;text-align:center;border-style:none ridge ridge none;">'
 		+parseFloat(num*parseFloat(option[0].attributes.protein.value)/100)+'</div>'
-		+'<div class="ui-block-d" style="border: 1px solid black;text-align:center;width:8.1%;border-style:none ridge ridge none;">'
-		+parseFloat(num*parseFloat(option[0].attributes.ferrum.value)/100)
-		+'</div><div class="ui-block-e" style="border: 1px solid black;text-align:center;width:17%;border-style:none ridge ridge none;">'
-		+parseFloat(num*parseFloat(option[0].attributes.cellulose.value)/100)
-		+'</div><div class="ui-block-f" style="border: 1px solid black;text-align:center;border-style:none ridge ridge none;">'
-		+parseFloat(num*parseFloat(option[0].attributes.calcium.value)/100)+'</div>';
-		var html1 ='<div class="ui-block-a" style="border: 1px solid black;text-align:center;width:26.5%;border-style:none ridge ridge ridge;">'
-			+option.text()+'</div><div class="ui-block-b"style="border: 1px solid black;text-align:center;width:16.1%;border-style:none ridge ridge none;" name="energyinfo">'
-			+parseFloat(num*parseFloat(option[0].attributes.fat.value)/100)
-			+'</div><div class="ui-block-c" style="border: 1px solid black;text-align:center;width:11.9%;border-style:none ridge ridge none;">'
-			+parseFloat(num*parseFloat(option[0].attributes.zinc.value)/100)+'</div>'
-			+'<div class="ui-block-d" style="border: 1px solid black;text-align:center;width:20.8%;border-style:none ridge ridge none;">'
-			+parseFloat(num*parseFloat(option[0].attributes.carotene.value)/100)
-			+'</div><div class="ui-block-e" style="border: 1px solid black;text-align:center;width:24.7%;border-style:none ridge ridge none;">'
-			+parseFloat(num*parseFloat(option[0].attributes.carbohydrate.value)/100);
+		+'<div class="ui-block-d" style="border: 1px solid black;text-align:center;width:21.5%;border-style:none ridge ridge none;">'
+		+parseFloat(num*parseFloat(option[0].attributes.fat.value)/100)
+		+'</div>';
 			if($('#detail'+id+idnum).html()==undefined){
-			$('#detailtable').after("<div class='ui-grid-e' id='detail"+id+idnum+"'></div>");
+			$('#detailtable').after("<div class='ui-grid-c' id='detail"+id+idnum+"'></div>");
 			$('#detail'+id+idnum).append(html);
-			$('#detailtable1').after("<div class='ui-grid-e' id='detail"+id+idnum+"1'></div>");
-			$('#detail'+id+idnum+'1').append(html1);
 		}else{
 			if(option.text()=="请选择"){
 				$('#detail'+id+idnum).remove();
-				$('#detail'+id+idnum+"1").remove();
 			}else{
 				$('#detail'+id+idnum).html(html);
-				$('#detail'+id+idnum+"1").html(html1);
 			}
 		}
 			updateEnergy();
@@ -672,28 +636,15 @@ var targetsumenergy = parseInt(${energy});
 		var sumenergy = parseInt($('#sumenergy').text());
 		var option = $('#'+id+"type"+idnum).find("select option:selected");
 		if(option.val()!=0){
-			var html ='<div class="ui-block-a" style="border: 1px solid black;text-align:center;width:26.5%;border-style:none ridge ridge ridge;">'
-				+option.text()+'</div><div class="ui-block-b"style="border: 1px solid black;text-align:center;width:12.4%;border-style:none ridge ridge none;" name="energyinfo">'
+			var html ='<div class="ui-block-a" style="border: 1px solid black;text-align:center;width:31%;border-style:none ridge ridge ridge;">'
+				+option.text()+'</div><div class="ui-block-b"style="border: 1px solid black;text-align:center;width:22.5%;border-style:none ridge ridge none;" name="energyinfo">'
 				+parseFloat(num*parseFloat(option[0].attributes.energy.value)/100)
-				+'</div><div class="ui-block-c" style="border: 1px solid black;text-align:center;width:14.6%;border-style:none ridge ridge none;">'
+				+'</div><div class="ui-block-c" style="border: 1px solid black;text-align:center;border-style:none ridge ridge none;">'
 				+parseFloat(num*parseFloat(option[0].attributes.protein.value)/100)+'</div>'
-				+'<div class="ui-block-d" style="border: 1px solid black;text-align:center;width:8.1%;border-style:none ridge ridge none;">'
-				+parseFloat(num*parseFloat(option[0].attributes.ferrum.value)/100)
-				+'</div><div class="ui-block-e" style="border: 1px solid black;text-align:center;width:17%;border-style:none ridge ridge none;">'
-				+parseFloat(num*parseFloat(option[0].attributes.cellulose.value)/100)
-				+'</div><div class="ui-block-f" style="border: 1px solid black;text-align:center;border-style:none ridge ridge none;">'
-				+parseFloat(num*parseFloat(option[0].attributes.carbohydrate.value)/100)+'</div>';
-				var html1 ='<div class="ui-block-a" style="border: 1px solid black;text-align:center;width:26.5%;border-style:none ridge ridge ridge;">'
-					+option.text()+'</div><div class="ui-block-b"style="border: 1px solid black;text-align:center;width:16.1%;border-style:none ridge ridge none;" name="energyinfo">'
-					+parseFloat(num*parseFloat(option[0].attributes.fat.value)/100)
-					+'</div><div class="ui-block-c" style="border: 1px solid black;text-align:center;width:11.9%;border-style:none ridge ridge none;">'
-					+parseFloat(num*parseFloat(option[0].attributes.zinc.value)/100)+'</div>'
-					+'<div class="ui-block-d" style="border: 1px solid black;text-align:center;width:20.8%;border-style:none ridge ridge none;">'
-					+parseFloat(num*parseFloat(option[0].attributes.carotene.value)/100)
-					+'</div><div class="ui-block-e" style="border: 1px solid black;text-align:center;width:24.7%;border-style:none ridge ridge none;">'
-					+parseFloat(num*parseFloat(option[0].attributes.carbohydrate.value)/100);
+				+'<div class="ui-block-d" style="border: 1px solid black;text-align:center;width:21.5%;border-style:none ridge ridge none;">'
+				+parseFloat(num*parseFloat(option[0].attributes.fat.value)/100)
+				+'</div>';
 			$('#detail'+id+idnum).html(html);
-			$('#detail'+id+idnum+"1").html(html1);
 		}
 		updateEnergy();
 	}

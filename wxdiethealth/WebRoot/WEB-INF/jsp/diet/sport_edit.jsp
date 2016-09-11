@@ -128,16 +128,23 @@ function onSubmit(){
 		if(sprotType1==sprotType2||sprotType1==sprotType3){
 			alert("运动类型重复！");
 			return;
+		}else if(time1=="0"){
+			alert("运动时间不能为空！");
+			return;
 		}else{
 			type+=sprotType1;
 			time += time1;
 		}
 	}else{
 		alert("请选择运动类型！");
+		return;
 	}
 	if(sprotType2!="0"){
 		if(sprotType2==sprotType3){
 			alert("运动类型重复！");
+			return;
+		}else if(time2=="0"){
+			alert("运动时间不能为空！");
 			return;
 		}else{
 			type+=","+sprotType2;
@@ -145,8 +152,14 @@ function onSubmit(){
 		}
 	}
 	if(sprotType3!="0"){
-		type+=","+sprotType3;
-		time +=","+ time3;
+		if(time3=="0"){
+			alert("运动时间不能为空！");
+			return;
+		}else{
+			type+=","+sprotType3;
+			time +=","+ time3;
+		}
+		
 	}
 	 $.post("../diet/saveSport",{type:type,num:time},function(text){
 			if(text=="1"){

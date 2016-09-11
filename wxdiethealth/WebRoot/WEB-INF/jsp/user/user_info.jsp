@@ -7,7 +7,7 @@ String path = request.getContextPath();
 <html>
 <head>
 
-<title>用户信息修改</title>
+<title>用户信息</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta content="width=device-width" name="viewport" />
