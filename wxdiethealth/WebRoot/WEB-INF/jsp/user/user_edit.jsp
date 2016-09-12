@@ -51,36 +51,36 @@ String path = request.getContextPath();
     <div data-role="fieldcontain">
     <label for="diabetesType">患病时间：</label>
     <select name="diabetesType" id="diabetesType" required="true" value="${user.diabetesType }">
-      <option value="0">怀孕前</option>
-      <option value="1">怀孕时</option>
+    <option <c:if test="${user.diabetesType==0 }">selected</c:if> value="0">怀孕前</option>
+    <option <c:if test="${user.diabetesType==1 }">selected</c:if> value="1">怀孕时</option>
     </select>
    </div>
    <div data-role="fieldcontain">
 			<label for="height">是否使用降糖药物：</label> <select name="isUsedDrug"
 				id="isUsedDrug" required="true" onchange="selectChange();">
-				<option value="0">否</option>
-				<option value="1">是</option>
+				  <option <c:if test="${user.isUsedDrug==0 }">selected</c:if> value="0">否</option>
+   				  <option <c:if test="${user.isUsedDrug==1 }">selected</c:if> value="1">是</option>
 			</select>
 		</div>
 		<div id="hiddenDIV" style="display:none;">
 		<div data-role="fieldcontain">
 			<label for="height">药物类型：</label> <select name="effectType"
 				id="effectType" required="true">
-				<option value="0">长效</option>
-				<option value="1">短效</option>
+				<option <c:if test="${user.effectType==0 }">selected</c:if> value="0">长效</option>
+   				<option <c:if test="${user.effectType==1 }">selected</c:if> value="1">短效</option>
 			</select>
 		</div>
 		<div data-role="fieldcontain">
 			<label for="weight">药物使用量：</label> <input type="range" name="drugNum"
-				id="drugNum" required="true" min="0" max="100" value="2">
+				id="drugNum" required="true" min="0" max="100" value="2" value="${user.drugNum }">
 		</div>
 		</div>
     <div data-role="fieldcontain">
     <label for="strength">工作强度：</label>
     <select name="strength" id="strength" required="true" value="${user.strength }">
-      <option value="0">轻度劳动</option>
-      <option value="1">中度劳动</option>
-      <option value="2">重度劳动</option>
+    <option <c:if test="${user.strength==0 }">selected</c:if> value="0">轻度劳动</option>
+    <option <c:if test="${user.strength==1 }">selected</c:if> value="1">中度劳动</option>
+    <option <c:if test="${user.strength==2 }">selected</c:if> value="2">重度劳动</option>
     </select>
    </div>
     <div data-role="fieldcontain">
@@ -89,11 +89,15 @@ String path = request.getContextPath();
    </div>
     <div data-role="fieldcontain">
     <label for="doctorId">主治医师：</label>
+    
     <select name="doctorId" id="doctorId" required="false" value="${user.doctorId }">
       <c:forEach var="doctor" items="${doctorlist}" varStatus="s">
-       <option value="${doctor.d_id }">${doctor.name }</option>
-      </c:forEach>
+      <option value="${doctor.d_id }"
+           <c:if test="${doctor.d_id==user.doctorId}">selected</c:if>>${doctor.name }
+       </option>
+     </c:forEach>
     </select>
+     
    </div>
      <div data-role="fieldcontain">
      <button onclick="onSubmit();">提交</button>
@@ -103,6 +107,10 @@ String path = request.getContextPath();
 <script src="<%=path %>/js/jquery-2.2.2.min.js"></script>
 <script src="<%=path %>/jquerymobile/jquery.mobile-1.4.5.min.js"></script>
 <script type="text/javascript">
+var isUsedDrug = $("#isUsedDrug").val();
+if(isUsedDrug==1){
+	$("#hiddenDIV").show();
+}
 function selectChange(){
 	var isUsedDrug = $("#isUsedDrug").val();
 	if(isUsedDrug==1){
