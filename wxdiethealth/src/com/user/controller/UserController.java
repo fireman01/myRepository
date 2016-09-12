@@ -193,6 +193,8 @@ import com.user.service.UserService;
 				map = userService.checkUser(param);
 				if(map==null){
 					session.setAttribute("isBinded", "false");
+					session.setAttribute("name", "");
+					session.setAttribute("userImage", "");
 				}else{
 					session.setAttribute("isBinded", "true");
 					session.setAttribute("dId", id);

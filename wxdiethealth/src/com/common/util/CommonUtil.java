@@ -1,6 +1,7 @@
 package com.common.util;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -29,8 +30,10 @@ import com.user.pojo.WeixinUserInfo;
  */
 public class CommonUtil {
 	
-	public static String APPID = "wx84ee0f61c8ab5c10";
-	public static String APPSECRET = "00a9b2f6be0f56a6c123b2e677a1d634";
+/*	public static String APPID = "wx84ee0f61c8ab5c10";
+	public static String APPSECRET = "00a9b2f6be0f56a6c123b2e677a1d634";*/
+	public static String APPID = "wx1377619b56deea31";
+	public static String APPSECRET = "40ae350dc3b67aaa1e1c90497d8d0b71";
 	
 	private static Logger log = Logger.getLogger(CommonUtil.class);
 
@@ -39,8 +42,7 @@ public class CommonUtil {
 	 // 凭证获取（GET）
     private  static String token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
     
-    private  static String user_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID"
-    		+"&secret=APPSECRET&code=CODE&grant_type=authorization_code";
+    private  static String user_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=APPSECRET&code=CODE&grant_type=authorization_code";
     
 	public static CommonUtil getInstance() {
 		if (instance == null) {
@@ -126,10 +128,14 @@ public class CommonUtil {
      */
     public static JSONObject httpRequest(String requestUrl, String requestMethod, String outputStr) {
         JSONObject jsonObject = null;
+        InputStream inputStream = null;
+        InputStreamReader inputStreamReader = null;
+        BufferedReader bufferedReader = null;
+        HttpsURLConnection conn  = null;
         try {
 
             URL url = new URL(requestUrl);
-            HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+            conn = (HttpsURLConnection) url.openConnection();
             
             conn.setDoOutput(true);
             conn.setDoInput(true);
@@ -146,26 +152,30 @@ public class CommonUtil {
             }
 
             // 从输入流读取返回内容
-            InputStream inputStream = conn.getInputStream();
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "utf-8");
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            inputStream = conn.getInputStream();
+            inputStreamReader = new InputStreamReader(inputStream, "utf-8");
+            bufferedReader = new BufferedReader(inputStreamReader);
             String str = null;
             StringBuffer buffer = new StringBuffer();
             while ((str = bufferedReader.readLine()) != null) {
                 buffer.append(str);
             }
-
-            // 释放资源
-            bufferedReader.close();
-            inputStreamReader.close();
-            inputStream.close();
-            inputStream = null;
-            conn.disconnect();
             jsonObject = JSONObject.fromObject(buffer.toString());
         } catch (ConnectException ce) {
             log.error("连接超时：{}", ce);
         } catch (Exception e) {
             log.error("https请求异常：{}", e);
+        }finally{
+        	  // 释放资源
+            try {
+            	if(bufferedReader!=null)
+				bufferedReader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+            if(conn!=null){
+            	 conn.disconnect();
+            }
         }
         return jsonObject;
     }
@@ -281,13 +291,19 @@ public class CommonUtil {
     private static String getOpenIdByCode(String code){
     	String url = user_url.replace("APPID", APPID).replace("APPSECRET", APPSECRET).replace("CODE", code);
     	JSONObject obj = httpRequest(url,"GET",null);
-    	String openId = obj.get("openid").toString();
+    	String openId = "";
+    	if(obj!=null){
+    		openId = obj.get("openid").toString();
+    	}
     	return openId;
     }
     public static WeixinUserInfo getUserInfoByCode(String code){
     	String url = user_url.replace("APPID", APPID).replace("APPSECRET", APPSECRET).replace("CODE", code);
     	JSONObject obj = httpRequest(url,"GET",null);
-    	String openId = obj.get("openid").toString();
+    	String openId = "";
+    	if(obj!=null){
+    		openId = obj.get("openid").toString();
+    	}
     	return getUserInfo(getToken().getAccessToken(),openId);
     }
 
