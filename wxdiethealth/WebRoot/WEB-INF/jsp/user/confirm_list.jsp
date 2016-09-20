@@ -22,7 +22,7 @@ String path = request.getContextPath();
 <body>
 <div data-role="page" id="pageone">
   <div data-role="header">
-   <a href="" data-role="button" onclick="window.location.href='doctor_index'">首页</a>
+   <a href="" data-role="button" onclick="javascript:history.back(-1);">首页</a>
     <h1>患者信息列表</h1>
   </div>
 

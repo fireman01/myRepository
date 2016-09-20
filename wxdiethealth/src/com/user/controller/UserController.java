@@ -177,7 +177,7 @@ import com.user.service.UserService;
 		}
 		
 		@RequestMapping("toIndex")
-		 public void toIndex(HttpServletRequest request,HttpServletResponse response){
+		 public String toIndex(HttpServletRequest request,HttpServletResponse response){
 			HttpSession session = request.getSession();
 			String code = request.getParameter("code");
 			WeixinUserInfo user = CommonUtil.getUserInfoByCode(code);
@@ -208,14 +208,8 @@ import com.user.service.UserService;
 				session.setAttribute("name", map.get("name"));
 				session.setAttribute("userImage", user.getHeadImgUrl());
 			}
-			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-			try {
-				dispatcher.forward(request, response);
-			} catch (ServletException e) {
-				log.error(e);
-			} catch (IOException e) {
-				log.error(e);
-			}
+			
+			return "redirect:"+page;
 		}
 		
 		

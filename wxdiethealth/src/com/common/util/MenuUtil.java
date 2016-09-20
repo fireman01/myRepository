@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Random;
 
 
 /**
@@ -32,9 +33,9 @@ public class MenuUtil {
 	public static String createMenu() {
 		// 此处改为自己想要的结构体，替换即可
 		String menu = "{\"button\":[{\"type\":\"view\",\"name\":\"绑定业务\",\"url\":\"https://open.weixin.qq.com/connect/oauth2/authorize?appid="
-			    +APPID+"&redirect_uri=http://yuntangbao.top/diethealth/user/user_bind&response_type=code&scope=snsapi_base&state=1#wechat_redirect\"},"
+			    +APPID+"&redirect_uri=http://yuntangbao.top/diethealth/user/user_bind&response_type=code&scope=snsapi_userinfo&state="+new Random().nextInt(10000)+"#wechat_redirect\"},"
 				+"{\"type\":\"view\",\"name\":\"我的业务\",\"url\":\"https://open.weixin.qq.com/connect/oauth2/authorize?appid="
-			    +APPID+"&redirect_uri=http://yuntangbao.top/diethealth/user/toIndex&response_type=code&scope=snsapi_base&state=1#wechat_redirect\"}";
+			    +APPID+"&redirect_uri=http://yuntangbao.top/diethealth/user/toIndex&response_type=code&scope=snsapi_userinfo&state="+new Random().nextInt(10000)+"#wechat_redirect\"}";
 		/*String menu = "{\"button\":[{\"type\":\"view\",\"name\":\"绑定业务\",\"url\":\"https://open.weixin.qq.com/connect/oauth2/authorize?appid="
 			    +APPID+"&redirect_uri=http://rrgcll2mwr.proxy.qqbrowser.cc/diethealth/user/user_bind&response_type=code&scope=snsapi_base&state=1#wechat_redirect\"},"
 				+"{\"type\":\"view\",\"name\":\"我的业务\",\"url\":\"https://open.weixin.qq.com/connect/oauth2/authorize?appid="
