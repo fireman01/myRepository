@@ -100,6 +100,30 @@ public class DietServiceImpl implements DietService {
 			String today = sdf.format(new Date());
 			param.put("date", today);
 		}
+		Map<String, Object> map = dietDao.showBloodGlucoseInfo(param);
+		if(null!=map){
+			Set<Entry<String,Object>> set = map.entrySet();
+			Iterator<Entry<String,Object>> it = set.iterator();
+			while(it.hasNext()){
+				Entry<String,Object> entry = it.next();
+				if(!"p_id".equals(entry.getKey())&&!"date".equals(entry.getKey())){
+					float value = (Float)entry.getValue();
+					if(value==0){
+						map.put(entry.getKey(),"-");
+					}
+				}
+			}
+		}
+		return map;
+	}
+	
+	@Override
+	public Map<String, Object> getBloodGlucoseInfo(Map<String, Object> param) {
+		if(param.get("date")==null){
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String today = sdf.format(new Date());
+			param.put("date", today);
+		}
 		return dietDao.showBloodGlucoseInfo(param);
 	}
 

@@ -265,15 +265,13 @@
 					<div class="ui-block-d" style="border: 1px solid black;width:26%;text-align:center;border-style:none ridge ridge none;">${fruits.carbohydrate }</div>
 				</div>
 				</c:forEach>
-					
-				
 				<div data-role="fieldcontain">
 				<p>备注：${diet.remarks }</p>
 			</div>
-			</c:forEach>
 			<div data-role="fieldcontain">
-				<p>医生建议：${advice.content }</p>
+				<p>医生建议：${diet.advice }</p>
 			</div>
+			</c:forEach>
 		</div>
 	</div>
 </body>

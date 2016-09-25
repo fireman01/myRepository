@@ -77,5 +77,11 @@ public interface UserMapper {
 	void updatePatientState(Map<String, Object> param);
 	
 	void saveAdvice(Map<String, Object> param);
+
+	List<Map<String, Object>> getAdviceListWithPage(Map<String, Object> map);
+	
+	Map<String, Object> getAdviceInfo(Map<String, Object> map);
+
+	int countAdviceTotal(Map<String, Object> map);
     
 }

@@ -155,4 +155,19 @@ public class UserServiceImpl implements UserService {
 		return "1";
 	}
 
+	@Override
+	public List<Map<String, Object>> getAdviceListWithPage(Map<String, Object> map) {
+		return userDao.getAdviceListWithPage(map);
+	}
+	
+	@Override
+	public Map<String, Object> getAdviceInfo(Map<String, Object> map) {
+		return userDao.getAdviceInfo(map);
+	}
+
+	@Override
+	public int countAdviceTotal(Map<String, Object> map) {
+		return userDao.countAdviceTotal(map);
+	}
+
 }

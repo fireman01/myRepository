@@ -372,8 +372,10 @@
 			</c:forEach>
 			<div data-role="fieldcontain">
 			<input type="hidden" value="${bg.p_id }" id="pId"> 
-				<label for="content">建议：</label>
-				<textarea name="content" id="content">${advice.content }</textarea>
+			</div>
+			<div data-role="fieldcontain">
+				<p>医生建议：</p>
+				<textarea id="content">${advice.content }</textarea>
 			</div>
 				<div data-role="fieldcontain">
      <input type="button" value="提交" onclick="onSubmit();">

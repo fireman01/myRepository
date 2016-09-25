@@ -71,10 +71,14 @@ public class DietController {
 		Map<String, Object> map = FormDataCollectUtil.getInstance().getFormDataWithPage(request);
 		List<Map<String, Object>> list = dietService.getFoodListWithPage(map);
 		model.addAttribute("foodList",list);
-		model.addAttribute("curPage",map.get("curPage"));
 		int total = dietService.countFoodTotal();
 		int numPerPage = (Integer)map.get("numPerPage");
 		int totalPage = (int)Math.ceil((total*1.0)/numPerPage);
+		if(totalPage==0){
+			model.addAttribute("curPage",0);
+		}else{
+			model.addAttribute("curPage",map.get("curPage"));
+		}
 		model.addAttribute("totalPage",totalPage);
 		return "diet/food_list";
 	}
@@ -87,10 +91,14 @@ public class DietController {
 		map.put("pId", pId);
 		List<Map<String, Object>> list = dietService.getDietList(map);
 		model.addAttribute("dietList",list);
-		model.addAttribute("curPage",map.get("curPage"));
 		int total = dietService.countDietTotal(map);
 		int numPerPage = (Integer)map.get("numPerPage");
 		int totalPage = (int)Math.ceil((total*1.0)/numPerPage);
+		if(totalPage==0){
+			model.addAttribute("curPage",0);
+		}else{
+			model.addAttribute("curPage",map.get("curPage"));
+		}
 		model.addAttribute("totalPage",totalPage);
 		return "diet/diet_list";
 	}
@@ -103,10 +111,14 @@ public class DietController {
 		map.put("pId", pId);
 		List<Map<String, Object>> list = dietService.getSportList(map);
 		model.addAttribute("sportList",list);
-		model.addAttribute("curPage",map.get("curPage"));
 		int total = dietService.countSportTotal(map);
 		int numPerPage = (Integer)map.get("numPerPage");
 		int totalPage = (int)Math.ceil((total*1.0)/numPerPage);
+		if(totalPage==0){
+			model.addAttribute("curPage",0);
+		}else{
+			model.addAttribute("curPage",map.get("curPage"));
+		}
 		model.addAttribute("totalPage",totalPage);
 		return "diet/sport_list";
 	}
@@ -116,11 +128,15 @@ public class DietController {
 		Map<String, Object> map = FormDataCollectUtil.getInstance().getFormDataWithPage(request);
 		List<Map<String, Object>> list = dietService.getDietList(map);
 		model.addAttribute("dietList",list);
-		model.addAttribute("curPage",map.get("curPage"));
 		int total = dietService.countDietTotal(map);
 		int numPerPage = (Integer)map.get("numPerPage");
 		int totalPage = (int)Math.ceil((total*1.0)/numPerPage);
 		model.addAttribute("totalPage",totalPage);
+		if(totalPage==0){
+			model.addAttribute("curPage",0);
+		}else{
+			model.addAttribute("curPage",map.get("curPage"));
+		}
 		return "diet/dietary_list";
 	}
 	
@@ -139,6 +155,7 @@ public class DietController {
 	public String patientEdit(HttpServletRequest request, Model model){
 		Map<String, Object> param = FormDataCollectUtil.getInstance().getFormData(request);
 		model.addAttribute("food", dietService.showFoodInfo(param));
+		model.addAttribute("curPage",param.get("curPage"));
 		return "diet/food_edit";
 	}
 	
@@ -162,8 +179,8 @@ public class DietController {
 		Map<String, Object> param = FormDataCollectUtil.getInstance().getFormData(request);
 		model.addAttribute("dietList", dietService.showDietInfo(param));
 		model.addAttribute("bg", dietService.showBloodGlucoseInfo(param));
-		model.addAttribute("advice", dietService.showAdviceInfo(param));
 		model.addAttribute("sportInfo", dietService.showSportInfo(param));
+		model.addAttribute("advice", dietService.showAdviceInfo(param));
 		return "diet/dietary_info";
 	}
 	
@@ -173,7 +190,7 @@ public class DietController {
 		String pId = (String)session.getAttribute("pId");
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("pId", pId);
-		model.addAttribute("bg", dietService.showBloodGlucoseInfo(param));
+		model.addAttribute("bg", dietService.getBloodGlucoseInfo(param));
 		return "diet/bg_edit";
 	}
 	
@@ -233,11 +250,15 @@ public class DietController {
 			model.addAttribute("standard1",dictionaryService.getDictionaryListByType("4").get(0));
 			model.addAttribute("standard2",dictionaryService.getDictionaryListByType("5").get(0));
 		}
-		model.addAttribute("curPage",map.get("curPage"));
 		int total = dietService.countBloodGlucoseTotal(map);
 		int numPerPage = (Integer)map.get("numPerPage");
 		int totalPage = (int)Math.ceil((total*1.0)/numPerPage);
 		model.addAttribute("totalPage",totalPage);
+		if(totalPage==0){
+			model.addAttribute("curPage",0);
+		}else{
+			model.addAttribute("curPage",map.get("curPage"));
+		}
 		return "diet/bg_list";
 	}
 	
@@ -281,9 +302,6 @@ public class DietController {
 	public void saveAdvice(HttpServletRequest request, HttpServletResponse response){
 		Map<String, Object> param = FormDataCollectUtil.getInstance().getFormData(request);
 		try {
-			HttpSession session = request.getSession();
-			String dId = (String)session.getAttribute("dId");
-			param.put("dId", dId);
 			String str = dietService.saveAdvice(param);
 			response.setContentType("text/html;charset=utf-8");
 			response.getWriter().print(str);

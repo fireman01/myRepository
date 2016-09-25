@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 %>
@@ -18,6 +19,7 @@ String path = request.getContextPath();
 </head>
 
 <div data-role="page" id="pageone">
+<input type="hidden" id="curPage" value="${curPage}">
 	<div data-role="header">
 	<a href="" data-role="button" onclick="window.location.href='../user/admin_index'">首页</a>
 		<h1>编辑食物信息</h1>
@@ -26,15 +28,15 @@ String path = request.getContextPath();
 		<div data-role="fieldcontain" style="display:none;">
 			<input type="text" id="id" value="${food.id }">
 		</div>
-		<div data-role="fieldcontain">
+		<div data-role="fieldcontain" id="aaa">
 			<label for="type">类型：</label> <select name="type" id="type"
 				required="true" value="${food.type }">
-				<option value="1">主食</option>
-				<option value="2">肉类</option>
-				<option value="3">蔬菜</option>
-				<option value="4">饮品</option>
-				<option value="5">干果/油/零食</option>
-				<option value="6">水果</option>
+				<option <c:if test="${food.type==1 }">selected</c:if>  value="1">主食</option>
+				<option <c:if test="${food.type==2 }">selected</c:if>  value="2">肉类</option>
+				<option <c:if test="${food.type==3 }">selected</c:if>  value="3">蔬菜</option>
+				<option <c:if test="${food.type==4 }">selected</c:if>  value="4">饮品</option>
+				<option <c:if test="${food.type==5 }">selected</c:if>  value="5">干果/油/零食</option>
+				<option <c:if test="${food.type==6 }">selected</c:if>  value="6">水果</option>
 			</select>
 		</div>
 		<div data-role="fieldcontain">
@@ -88,7 +90,7 @@ String path = request.getContextPath();
 		<div data-role="fieldcontain">
 			<input type="button" value="提交" onclick="onSubmit();"> <input
 				type="button" value="删除" onclick="onDelete();"> <input
-				type="button" value="返回" onclick="window.location.href='food_list'">
+				type="button" value="返回" onclick="window.location.href='food_list?curPage=${curPage}'">
 		</div>
 	</div>
 	<div data-role="footer">
@@ -108,7 +110,7 @@ function onDelete(){
 	    $.post("deleteFoodInfo",{id:id,type:type},function(text){
 		if(text=="1"){
 			alert("删除成功！");
-			window.location.href="food_list";
+			window.location.href="food_list?curPage="+$('#curPage').val();
 		}else{
 			alert("删除失败！")
 		}
@@ -134,7 +136,7 @@ var carotene = $('#carotene').val();
 	 fat:fat,carbohydrate:carbohydrate,cellulose:cellulose,ordername:ordername,zinc:zinc,carotene:carotene},function(text){
 		if(text=="1"){
 			alert("保存成功！");
-			window.location.href="food_list";
+			window.location.href="food_list?curPage="+$('#curPage').val();
 		}else{
 			alert("保存失败！")
 		}

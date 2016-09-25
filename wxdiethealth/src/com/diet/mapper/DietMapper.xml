@@ -53,12 +53,12 @@
 	</select>
 	<update id="updateFoodInfo" parameterType="object">
 	UPDATE food SET type = #{type},name = #{name},energy=#{energy},protein=#{protein},fat=#{fat},carbohydrate=#{carbohydrate},
-	cellulose=#{cellulose},calcium=#{calcium},ferrum=#{ferrum},zinc=#{zinc},carotene=#{carotene},lutein=#{lutein},ordername=#{ordername}
+	cellulose=#{cellulose},calcium=#{calcium},ferrum=#{ferrum},zinc=#{zinc},carotene=#{carotene},ordername=#{ordername}
 	WHERE id = #{id}
 	</update> 
 	 <insert id="saveFoodInfo" parameterType="object">
-	INSERT INTO food(id,name,type,energy,protein,fat,carbohydrate,cellulose,calcium,ferrum,zinc,carotene,lutein,ordername)
-	values(#{id},#{name},#{type},#{energy},#{protein},#{fat},#{carbohydrate},#{cellulose},#{calcium},#{ferrum},#{zinc},#{carotene},#{lutein},#{ordername})
+	INSERT INTO food(id,name,type,energy,protein,fat,carbohydrate,cellulose,calcium,ferrum,zinc,carotene,ordername)
+	values(#{id},#{name},#{type},#{energy},#{protein},#{fat},#{carbohydrate},#{cellulose},#{calcium},#{ferrum},#{zinc},#{carotene},#{ordername})
 	</insert>
 	
 	 <insert id="saveSportInfo" parameterType="object">

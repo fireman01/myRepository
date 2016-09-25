@@ -24,6 +24,8 @@ public interface  DietService {
 	public int countFoodTotal();
 
 	public Map<String, Object> showBloodGlucoseInfo(Map<String, Object> param);
+	
+	public Map<String, Object> getBloodGlucoseInfo(Map<String, Object> param);
 
 	public String saveBloodGlucoseInfo(Map<String, Object> param);
 

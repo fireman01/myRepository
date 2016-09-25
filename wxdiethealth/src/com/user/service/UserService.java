@@ -70,4 +70,10 @@ public interface  UserService {
 	
 	public String saveAdvice(Map<String, Object> param);
 
+	public Map<String, Object> getAdviceInfo(Map<String, Object> map);
+	
+	public List<Map<String, Object>> getAdviceListWithPage(Map<String, Object> map);
+
+	public int countAdviceTotal(Map<String, Object> map);
+
 }

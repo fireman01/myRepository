@@ -105,14 +105,14 @@ String path = request.getContextPath();
     <label for="pregnancy">孕期周数：</label>
     <span>第${user.pregnancy }周</span>
    </div>
-     <div data-role="fieldcontain">
+    <%--  <div data-role="fieldcontain">
      <input type="hidden" value="${user.p_id }" id="pId"> 
 		<label for="advice">建议：</label>
 		<textarea name="advice" id="advice">${user.advice }</textarea>
 	</div>
 	<div data-role="fieldcontain">
      <input type="button" value="提交" onclick="onSubmit();">
-   </div>
+   </div> --%>
 </div>
 </body>
 <script src="<%=path %>/js/jquery-2.2.2.min.js"></script>

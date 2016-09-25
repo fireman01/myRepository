@@ -44,9 +44,9 @@
 				<h1>主食</h1>
 				<div id="mainfood">
 				<div data-role="fieldcontain" name="mainfoodtype" id="mainfoodtype1">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('mainfood','1')"
+					<label for="diettype">种类：</label> <select name="mainfoodtype" onchange="typechange('mainfood','1')"
 						required="true">
-						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
+						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0" selected>请选择</option>
 						  <c:forEach var="mainfood" items="${mainfoodList}" varStatus="s">
 						  <option value="${mainfood.id }" energy="${mainfood.energy }" protein="${mainfood.protein }" fat="${mainfood.fat }" 
 						  carbohydrate="${mainfood.carbohydrate }" cellulose="${mainfood.cellulose }" calcium="${mainfood.calcium }" ferrum="${mainfood.ferrum }" zinc="${mainfood.zinc }" carotene="${mainfood.carotene }">${mainfood.name }</option>
@@ -62,7 +62,7 @@
 				
 				
 				<div data-role="fieldcontain" name="mainfoodtype" id="mainfoodtype2" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('mainfood','2')"
+					<label for="diettype">种类：</label> <select name="mainfoodtype" onchange="typechange('mainfood','2')"
 						required="true">
 						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="mainfood" items="${mainfoodList}" varStatus="s">
@@ -77,7 +77,7 @@
 						required="true" value="200" min="0" max="1000">
 				</div>
 				<div data-role="fieldcontain" name="mainfoodtype" id="mainfoodtype3" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('mainfood','3')"
+					<label for="diettype">种类：</label> <select name="mainfoodtype" onchange="typechange('mainfood','3')"
 						required="true">
 						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="mainfood" items="${mainfoodList}" varStatus="s">
@@ -92,7 +92,7 @@
 						required="true" value="200" min="0" max="1000">
 				</div>
 				<div data-role="fieldcontain" name="mainfoodtype" id="mainfoodtype4" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('mainfood','4')"
+					<label for="diettype">种类：</label> <select name="mainfoodtype" onchange="typechange('mainfood','4')"
 						required="true">
 						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="mainfood" items="${mainfoodList}" varStatus="s">
@@ -107,7 +107,7 @@
 						required="true" value="200" min="0" max="1000">
 				</div>
 				<div data-role="fieldcontain" name="mainfoodtype" id="mainfoodtype5" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('mainfood',5')"
+					<label for="diettype">种类：</label> <select name="mainfoodtype" onchange="typechange('mainfood',5')"
 						required="true">
 						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
 						  <c:forEach var="mainfood" items="${mainfoodList}" varStatus="s">
@@ -312,7 +312,7 @@
 				<div data-role="fieldcontain" name="drinktype" id="drinktype1">
 					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('drink','1')"
 						required="true">
-						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
+						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0" selected>请选择</option>
 						 <c:forEach var="drink" items="${drinkList}" varStatus="s">
 						  <option value="${drink.id }" energy="${drink.energy }" protein="${drink.protein }" fat="${drink.fat }" carbohydrate="${drink.carbohydrate }" 
 						  cellulose="${drink.cellulose }" calcium="${drink.calcium }" ferrum="${drink.ferrum }" zinc="${drink.zinc }" carotene="${drink.carotene }">${drink.name }</option>
@@ -657,8 +657,12 @@ var targetsumenergy = parseInt(${energy});
 			$('#detail'+id+len).remove();
 			updateEnergy();
 		}else{
-			alert("不可移除!");
+			 for(var i=1; i<6; i++){
+				$('#'+id+"type"+i).find("select option[value='0']").attr("selected","selected");
+			}
+			//alert("不可移除!");
 			countChange(id,true);
+			updateEnergy();
 		}
 		
 	}

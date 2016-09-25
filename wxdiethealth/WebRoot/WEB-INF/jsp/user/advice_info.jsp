@@ -27,8 +27,7 @@ String path = request.getContextPath();
 		<h1>医生建议</h1>
 	</div>
 	<div data-role="content">
-		<div data-role="fieldcontain">
-			<label for="name">建议：</label><p>${user.advice}</p>
+			<p>${advice.content}</p>
 		</div>
 	</div>
 	<div data-role="footer">

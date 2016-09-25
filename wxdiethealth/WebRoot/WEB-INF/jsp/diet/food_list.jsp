@@ -27,7 +27,7 @@ String path = request.getContextPath();
   <div data-role="content">
     <ul data-role="listview" data-autodividers="false" data-inset="true" data-filter="true" data-filter-placeholder="搜索名称 ">
      <c:forEach var="food" items="${foodList}" varStatus="s">
-    <li><a href="" onclick="window.location.href='food_edit?id=${food.id }'">${food.name }</a></li>
+    <li><a href="" onclick="window.location.href='food_edit?id=${food.id }&curPage=${curPage }'">${food.name }</a></li>
     </c:forEach>
   </ul>
   </div>

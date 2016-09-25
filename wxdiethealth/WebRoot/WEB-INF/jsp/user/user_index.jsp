@@ -70,7 +70,7 @@ String userImage = session.getAttribute("userImage").toString();
 				<p class="weui_grid_label">血糖记录</p>
 			</a>
 			 <a class="weui_grid js_grid" data-id="cell"
-				onclick="window.location.href='advice_info'">
+				onclick="window.location.href='advice_list'">
 				<div class="weui_grid_icon">
 					<img src="<%=path %>/weUI/example/images/icon_nav_tab.png"
 						alt="健康资讯">

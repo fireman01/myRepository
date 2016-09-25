@@ -143,7 +143,7 @@ import com.user.service.UserService;
 			return "user/user_info";
 		}
 		
-		@RequestMapping("advice_info")
+		/*@RequestMapping("advice_info")
 		public String showAdviceInfo(HttpServletRequest request,Model model){
 			HttpSession session = request.getSession();
 			String pId = (String)session.getAttribute("pId");
@@ -151,7 +151,7 @@ import com.user.service.UserService;
 			param.put("pId", pId);
 			model.addAttribute("user", userService.showUserInfo(param));
 			return "user/advice_info";
-		}
+		}*/
 		
 		@RequestMapping("saveAdvice")
 		public void saveAdvice(HttpServletRequest request, HttpServletResponse response){
@@ -219,7 +219,7 @@ import com.user.service.UserService;
 			return "user/user_index";
 		}
 		
- 	    @RequestMapping("/add_user")
+ 	    @RequestMapping("add_user")
 	    public void addUser(HttpServletRequest request, HttpServletResponse response) {
 			Map<String, Object> map = FormDataCollectUtil.getInstance()
 					.getFormData(request);
@@ -424,6 +424,34 @@ import com.user.service.UserService;
 			} catch (Exception e) {
 				log.error(e);
 			}
+		}
+		
+		@RequestMapping("advice_list")
+		public String getAdviceListWithPage(HttpServletRequest request,Model model){
+			Map<String, Object> map = FormDataCollectUtil.getInstance().getFormDataWithPage(request);
+			HttpSession session = request.getSession();
+			String pId = (String)session.getAttribute("pId");
+			map.put("pId", pId);
+			List<Map<String, Object>> list = userService.getAdviceListWithPage(map);
+			model.addAttribute("adviceList",list);
+			int total = userService.countAdviceTotal(map);
+			int numPerPage = (Integer)map.get("numPerPage");
+			int totalPage = (int)Math.ceil((total*1.0)/numPerPage);
+			if(totalPage==0){
+				model.addAttribute("curPage",0);
+			}else{
+				model.addAttribute("curPage",map.get("curPage"));
+			}
+			model.addAttribute("totalPage",totalPage);
+			return "user/advice_list";
+		}
+		
+		@RequestMapping("advice_info")
+		public String getAdviceList(HttpServletRequest request,Model model){
+			Map<String, Object> map = FormDataCollectUtil.getInstance().getFormDataWithPage(request);
+			Map<String, Object> info = userService.getAdviceInfo(map);
+			model.addAttribute("advice",info);
+			return "user/advice_info";
 		}
 		
 	}
