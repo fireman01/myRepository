@@ -371,7 +371,8 @@
 			</div>
 			</c:forEach>
 			<div data-role="fieldcontain">
-			<input type="hidden" value="${bg.p_id }" id="pId"> 
+			<input type="hidden" value="${pId }" id="pId">
+			<input type="hidden" value="${date}" id="bgdate">
 			</div>
 			<div data-role="fieldcontain">
 				<p>医生建议：</p>
@@ -390,7 +391,8 @@
 function onSubmit(){
 	var content = $('#content').val();
 	var pId = $('#pId').val();
-	 $.post("saveAdvice",{content:content,pId:pId},function(text){
+	var date = $('#bgdate').val();
+	 $.post("saveAdvice",{content:content,pId:pId,date:date},function(text){
 			if(text=="1"){
 				alert("保存成功！");
 			}else{

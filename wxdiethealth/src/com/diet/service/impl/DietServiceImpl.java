@@ -312,9 +312,6 @@ public class DietServiceImpl implements DietService {
 	
 	@Override
 	public String saveAdvice(Map<String, Object> param) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String today = sdf.format(new Date());
-		param.put("date", today);
 		if(dietDao.countAdvice(param)>0){
 			dietDao.updateAdvice(param);
 		}else{

@@ -181,6 +181,8 @@ public class DietController {
 		model.addAttribute("bg", dietService.showBloodGlucoseInfo(param));
 		model.addAttribute("sportInfo", dietService.showSportInfo(param));
 		model.addAttribute("advice", dietService.showAdviceInfo(param));
+		model.addAttribute("date", param.get("date"));
+		model.addAttribute("pId", param.get("pId"));
 		return "diet/dietary_info";
 	}
 	
