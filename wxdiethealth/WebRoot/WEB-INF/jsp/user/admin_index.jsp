@@ -29,7 +29,7 @@ String name = session.getAttribute("name").toString();
         <li><a href="" data-icon="grid" onclick="window.location.href='doctor_list'">医师管理</a></li>
         <li><a href="#" data-icon="grid" onclick="window.location.href='../diet/food_list'">食物管理</a></li>
         <li><a href="#" data-icon="grid" onclick="window.location.href='patient_list'">患者管理</a></li>
-        <li><a href="#" data-icon="grid" onclick="window.location.href='../dictionary/dictionary_list'">字典管理</a></li>
+        <li><a href="#" data-icon="grid" onclick="window.location.href='../dictionary/dictionary_list'">标准管理</a></li>
       </ul>
     </div>
   </div>

@@ -76,4 +76,6 @@ public interface  UserService {
 
 	public int countAdviceTotal(Map<String, Object> map);
 
+	public String delectDoctor(Map<String, Object> param);
+
 }

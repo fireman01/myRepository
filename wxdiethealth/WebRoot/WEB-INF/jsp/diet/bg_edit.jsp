@@ -35,12 +35,12 @@ String pId = session.getAttribute("pId").toString();
 				<c:choose>
 					<c:when test="${bg.bloodGlucoseBeforeBreakfast==0}">
 						<input type="text" name="bloodGlucoseBeforeBreakfast"
-							id="bloodGlucoseBeforeBreakfast" placeholder="早餐前血糖（mmol/L）"
+							id="bloodGlucoseBeforeBreakfast" placeholder="空腹血糖（mmol/L）"
 							value="">
 					</c:when>
 					<c:otherwise>
 						<input type="text" name="bloodGlucoseBeforeBreakfast"
-							id="bloodGlucoseBeforeBreakfast" placeholder="早餐前血糖（mmol/L）"
+							id="bloodGlucoseBeforeBreakfast" placeholder="空腹血糖（mmol/L）"
 							value="${bg.bloodGlucoseBeforeBreakfast }">
 					</c:otherwise>
 				</c:choose>
@@ -49,10 +49,10 @@ String pId = session.getAttribute("pId").toString();
     <label for="bloodGlucoseAfterBreakfast">早餐后：</label>
     	<c:choose>
 			<c:when test="${bg.bloodGlucoseAfterBreakfast==0}">
-				<input type="text" name="bloodGlucoseAfterBreakfast" id="bloodGlucoseAfterBreakfast" placeholder="早餐后血糖（mmol/L）" value="">
+				<input type="text" name="bloodGlucoseAfterBreakfast" id="bloodGlucoseAfterBreakfast" placeholder="早餐后2小时血糖（mmol/L）" value="">
 			</c:when>
 			<c:otherwise>
-				<input type="text" name="bloodGlucoseAfterBreakfast" id="bloodGlucoseAfterBreakfast" placeholder="早餐后血糖（mmol/L）" value="${bg.bloodGlucoseAfterBreakfast }">
+				<input type="text" name="bloodGlucoseAfterBreakfast" id="bloodGlucoseAfterBreakfast" placeholder="早餐后2小时血糖（mmol/L）" value="${bg.bloodGlucoseAfterBreakfast }">
 			</c:otherwise>
 		</c:choose>
      </div>
@@ -60,10 +60,10 @@ String pId = session.getAttribute("pId").toString();
     <label for="bloodGlucoseBeforeLunch">午餐前：</label>
    		 <c:choose>
 			<c:when test="${bg.bloodGlucoseBeforeLunch==0}">
-				<input type="text" name="bloodGlucoseBeforeLunch" id="bloodGlucoseBeforeLunch" placeholder="午餐前血糖（mmol/L）" value="">
+				<input type="text" name="bloodGlucoseBeforeLunch" id="bloodGlucoseBeforeLunch" placeholder="午餐前2小时血糖（mmol/L）" value="">
 			</c:when>
 			<c:otherwise>
-			<input type="text" name="bloodGlucoseBeforeLunch" id="bloodGlucoseBeforeLunch" placeholder="午餐前血糖（mmol/L）" value="${bg.bloodGlucoseBeforeLunch }">
+			<input type="text" name="bloodGlucoseBeforeLunch" id="bloodGlucoseBeforeLunch" placeholder="午餐前2小时血糖（mmol/L）" value="${bg.bloodGlucoseBeforeLunch }">
 			</c:otherwise>
 		</c:choose>
     </div>
@@ -71,10 +71,10 @@ String pId = session.getAttribute("pId").toString();
     <label for="bloodGlucoseAfterLunch">午餐后：</label>
      <c:choose>
 			<c:when test="${bg.bloodGlucoseAfterLunch==0}">
-			<input type="text" name="bloodGlucoseAfterLunch" id="bloodGlucoseAfterLunch" placeholder="午餐后血糖（mmol/L）" value="">
+			<input type="text" name="bloodGlucoseAfterLunch" id="bloodGlucoseAfterLunch" placeholder="午餐后2小时血糖（mmol/L）" value="">
 			</c:when>
 			<c:otherwise>
-			<input type="text" name="bloodGlucoseAfterLunch" id="bloodGlucoseAfterLunch" placeholder="午餐后血糖（mmol/L）" value="${bg.bloodGlucoseAfterLunch }">
+			<input type="text" name="bloodGlucoseAfterLunch" id="bloodGlucoseAfterLunch" placeholder="午餐后2小时血糖（mmol/L）" value="${bg.bloodGlucoseAfterLunch }">
 			</c:otherwise>
 		</c:choose>
      </div>
@@ -82,10 +82,10 @@ String pId = session.getAttribute("pId").toString();
     <label for="bloodGlucoseBeforeDinner">晚餐前：</label>
      	<c:choose>
 			<c:when test="${bg.bloodGlucoseBeforeDinner==0}">
-			<input type="text" name="bloodGlucoseBeforeDinner" id="bloodGlucoseBeforeDinner" placeholder="晚餐前血糖（mmol/L）" value="">
+			<input type="text" name="bloodGlucoseBeforeDinner" id="bloodGlucoseBeforeDinner" placeholder="晚餐前2小时血糖（mmol/L）" value="">
 			</c:when>
 			<c:otherwise>
-			<input type="text" name="bloodGlucoseBeforeDinner" id="bloodGlucoseBeforeDinner" placeholder="晚餐前血糖（mmol/L）" value="${bg.bloodGlucoseBeforeDinner }">
+			<input type="text" name="bloodGlucoseBeforeDinner" id="bloodGlucoseBeforeDinner" placeholder="晚餐前2小时血糖（mmol/L）" value="${bg.bloodGlucoseBeforeDinner }">
 			</c:otherwise>
 		</c:choose>
     </div>
@@ -93,10 +93,10 @@ String pId = session.getAttribute("pId").toString();
     <label for="bloodGlucoseAfterDinner">晚餐后：</label>
     	<c:choose>
 			<c:when test="${bg.bloodGlucoseAfterDinner==0}">
-			<input type="text" name="bloodGlucoseAfterDinner" id="bloodGlucoseAfterDinner" placeholder="晚餐后血糖（mmol/L）" value="">
+			<input type="text" name="bloodGlucoseAfterDinner" id="bloodGlucoseAfterDinner" placeholder="晚餐后2小时血糖（mmol/L）" value="">
 			</c:when>
 			<c:otherwise>
-			<input type="text" name="bloodGlucoseAfterDinner" id="bloodGlucoseAfterDinner" placeholder="晚餐后血糖（mmol/L）" value="${bg.bloodGlucoseAfterDinner }">
+			<input type="text" name="bloodGlucoseAfterDinner" id="bloodGlucoseAfterDinner" placeholder="晚餐后2小时血糖（mmol/L）" value="${bg.bloodGlucoseAfterDinner }">
 			</c:otherwise>
 		</c:choose>
     </div>
@@ -132,64 +132,64 @@ function onSubmit(){
 	var bloodGlucoseBeforeSleep = $('#bloodGlucoseBeforeSleep').val();
 	if(bloodGlucoseBeforeBreakfast!=""){
 		if(isNaN(bloodGlucoseBeforeBreakfast)){
-			alert("非法输入！");
+			alert("血糖范围或格式不正确！");
 			return;
 		}else if(bloodGlucoseBeforeBreakfast<0||bloodGlucoseBeforeBreakfast>20){
-			alert("非法输入！");
+			alert("血糖范围或格式不正确！");
 			return;
 		}
 	}
 	if(bloodGlucoseAfterBreakfast!=""){
 		if(isNaN(bloodGlucoseAfterBreakfast)){
-			alert("非法输入！");
+			alert("血糖范围或格式不正确！");
 			return;
 		}else if(bloodGlucoseAfterBreakfast<0||bloodGlucoseAfterBreakfast>20){
-			alert("非法输入！");
+			alert("血糖范围或格式不正确！");
 			return;
 		}
 	}
 	if(bloodGlucoseBeforeLunch!=""){
 		if(isNaN(bloodGlucoseBeforeLunch)){
-			alert("非法输入！");
+			alert("血糖范围或格式不正确！");
 			return;
 		}else if(bloodGlucoseBeforeLunch<0||bloodGlucoseBeforeLunch>20){
-			alert("非法输入！");
+			alert("血糖范围或格式不正确！");
 			return;
 		}
 	}
 	if(bloodGlucoseAfterLunch!=""){
 		if(isNaN(bloodGlucoseAfterLunch)){
-			alert("非法输入！");
+			alert("血糖范围或格式不正确！");
 			return;
 		}else if(bloodGlucoseAfterLunch<0||bloodGlucoseAfterLunch>20){
-			alert("非法输入！");
+			alert("血糖范围或格式不正确！");
 			return;
 		}
 	}
 	if(bloodGlucoseBeforeDinner!=""){
 		if(isNaN(bloodGlucoseBeforeDinner)){
-			alert("非法输入！");
+			alert("血糖范围或格式不正确！");
 			return;
 		}else if(bloodGlucoseBeforeDinner<0||bloodGlucoseBeforeDinner>20){
-			alert("非法输入！");
+			alert("血糖范围或格式不正确！");
 			return;
 		}
 	}
 	if(bloodGlucoseAfterDinner!=""){
 		if(isNaN(bloodGlucoseAfterDinner)){
-			alert("非法输入！");
+			alert("血糖范围或格式不正确！");
 			return;
 		}else if(bloodGlucoseAfterDinner<0||bloodGlucoseAfterDinner>20){
-			alert("非法输入！");
+			alert("血糖范围或格式不正确！");
 			return;
 		}
 	}
 	if(bloodGlucoseBeforeSleep!=""){
 		if(isNaN(bloodGlucoseBeforeSleep)){
-			alert("非法输入！");
+			alert("血糖范围或格式不正确！");
 			return;
 		}else if(bloodGlucoseBeforeSleep<0||bloodGlucoseBeforeSleep>20){
-			alert("非法输入！");
+			alert("血糖范围或格式不正确！");
 			return;
 		}
 	}

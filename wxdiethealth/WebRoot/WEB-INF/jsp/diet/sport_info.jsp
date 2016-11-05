@@ -30,15 +30,56 @@
 		<div data-role="fieldcontain">
 				<p>记录日期：${sportInfo.date }</p>
 			</div>
-		<c:forEach var="infoList" items="${sportInfo.sportList}" varStatus="s">
-			<div data-role="fieldcontain">
-				<p>运动类型：${infoList.type }</p>
-			</div>
-			<div data-role="fieldcontain">
-				<p>运动时间：${infoList.num }</p>
-			</div>
-			</c:forEach>
 			
+	<fieldset data-role="controlgroup">
+	    <legend>早餐前</legend>
+			<div data-role="fieldcontain">
+			<label>运动类型：${sprotType.beforebreakfasttype }</label>
+			<p>运动时间：${sportInfo.beforebreakfasttime }分钟</p>
+		</div>
+	  </fieldset>
+	  <fieldset data-role="controlgroup">
+	    <legend>早餐后</legend>
+			<div data-role="fieldcontain">
+			<label>运动类型：${sprotType.afterbreakfasttype }</label>
+			<p>运动时间：${sportInfo.afterbreakfasttime }分钟</p>
+		</div>
+	  </fieldset>
+	  <fieldset data-role="controlgroup">
+	    <legend>午餐前</legend>
+			<div data-role="fieldcontain">
+			<label>运动类型：${sprotType.beforelaunchtype }</label>
+			<p>运动时间：${sportInfo.beforelaunchtime }分钟</p>
+		</div>
+	  </fieldset>
+	  <fieldset data-role="controlgroup">
+	    <legend>午餐后</legend>
+			<div data-role="fieldcontain">
+			<label>运动类型：${sprotType.afterlaunchtype }</label>
+			<p>运动时间：${sportInfo.afterlaunchtime }分钟</p>
+		</div>
+	  </fieldset>
+	  <fieldset data-role="controlgroup">
+	    <legend>晚餐前</legend>
+			<div data-role="fieldcontain">
+			<label>运动类型：${sprotType.beforedinnertype }</label>
+			<p>运动时间：${sportInfo.beforedinnertime }分钟</p>
+		</div>
+	  </fieldset>
+	  <fieldset data-role="controlgroup">
+	    <legend>晚餐后</legend>
+			<div data-role="fieldcontain">
+			<label>运动类型：${sprotType.afterdinnertype }</label>
+			<p>运动时间：${sportInfo.afterdinnertime }分钟</p>
+		</div>
+	  </fieldset>
+	  <fieldset data-role="controlgroup">
+	    <legend>睡前</legend>
+			<div data-role="fieldcontain">
+			<label>运动类型：${sprotType.beforesleeptype }</label>
+			<p>运动时间：${sportInfo.beforesleeptime }分钟</p>
+		</div>
+	  </fieldset>
 		</div>
 	</div>
 </body>

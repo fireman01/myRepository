@@ -170,4 +170,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.countAdviceTotal(map);
 	}
 
+	@Override
+	public String delectDoctor(Map<String, Object> param) {
+		userDao.deleteDoctorInfo(param);
+		return "1";
+	}
+
 }

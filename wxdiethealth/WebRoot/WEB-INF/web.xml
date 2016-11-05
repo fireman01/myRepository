@@ -65,6 +65,14 @@
     <load-on-startup>1</load-on-startup>
     <async-supported>true</async-supported>
   </servlet>
+  <error-page>  
+    <exception-type>java.lang.Exception</exception-type>  
+    <location>/500.jsp</location>  
+</error-page>  
+<error-page>  
+    <error-code>404</error-code>  
+    <location>/404.jsp</location>  
+</error-page> 
   <servlet-mapping>
     <servlet-name>SpringMVC</servlet-name>
     <url-pattern>/</url-pattern>

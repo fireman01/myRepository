@@ -62,8 +62,12 @@
 	</insert>
 	
 	 <insert id="saveSportInfo" parameterType="object">
-	INSERT INTO sport(p_id,date,type,num)
-	values(#{pId},#{date},#{type},#{num})
+	INSERT INTO sport(p_id,date,beforebreakfasttype,beforebreakfasttime,afterbreakfasttype,
+	afterbreakfasttime,beforelaunchtype,beforelaunchtime,afterlaunchtype,afterlaunchtime,
+	beforedinnertype,beforedinnertime,afterdinnertype,afterdinnertime,beforesleeptype,beforesleeptime)
+	values(#{pId},#{date},#{beforebreakfasttype},#{beforebreakfasttime},#{afterbreakfasttype},
+	#{afterbreakfasttime},#{beforelaunchtype},#{beforelaunchtime},#{afterlaunchtype},#{afterlaunchtime},
+	#{beforedinnertype},#{beforedinnertime},#{afterdinnertype},#{afterdinnertime},#{beforesleeptype},#{beforesleeptime})
 	</insert>
 	
 	 <delete id="deleteFoodInfo">
@@ -184,7 +188,11 @@
 	</select>
 	
 	<update id="updateSportInfo" parameterType="object">
-	UPDATE sport SET type = #{type}, num=#{num}
+	UPDATE sport SET beforebreakfasttype = #{beforebreakfasttype}, beforebreakfasttime=#{beforebreakfasttime},
+	afterbreakfasttype=#{afterbreakfasttype},afterbreakfasttime=#{afterbreakfasttime},beforelaunchtype=#{beforelaunchtype},
+	beforelaunchtime=#{beforelaunchtime},afterlaunchtype=#{afterlaunchtype},afterlaunchtime=#{afterlaunchtime},
+	beforedinnertype=#{beforedinnertype},beforedinnertime=#{beforedinnertime},afterdinnertype=#{afterdinnertype},
+	afterdinnertime=#{afterdinnertime},beforesleeptype=#{beforesleeptype},beforesleeptime=#{beforesleeptime}
 	WHERE p_id = #{pId} and date = #{date} 
 	</update> 
 	

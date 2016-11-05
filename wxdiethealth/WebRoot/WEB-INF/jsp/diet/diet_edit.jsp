@@ -1,9 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%
- 	String path = request.getContextPath();
-	String pId = session.getAttribute("pId").toString(); 
+	String path = request.getContextPath();
+	String pId = session.getAttribute("pId").toString();
 %>
 <html>
 <head>
@@ -12,595 +12,501 @@
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta content="width=device-width" name="viewport" />
-<link rel="shortcut icon" href="<%=path %>/favicon.ico" />
-	<link rel="stylesheet" type="text/css"
-	href="<%=path%>/jquerymobile/pink.min.css"> 
- <link rel="stylesheet" type="text/css"
-	href="<%=path%>/jquerymobile/pink.icons.min.css"> 
-	<link rel="stylesheet" href="<%=path%>/jquerymobile/jquery.mobile.structure-1.4.5.min.css" />
+<link rel="shortcut icon" href="<%=path%>/favicon.ico" />
+<link rel="stylesheet" type="text/css"
+	href="<%=path%>/jquerymobile/pink.min.css">
+<link rel="stylesheet" type="text/css" href="<%=path%>/css/style.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=path%>/jquerymobile/pink.icons.min.css">
+<link rel="stylesheet"
+	href="<%=path%>/jquerymobile/jquery.mobile.structure-1.4.5.min.css" />
+
+<script src="<%=path%>/js/search-select.js"></script>
+<script src="<%=path%>/js/jquery-2.2.2.min.js"></script>
+<script src="<%=path%>/jquerymobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="<%=path%>/js/jqm.autoComplete-1.5.2.js"></script>
+<script src="<%=path%>/js/code.js"></script>
 <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> -->
+<style>
+</style>
 </head>
 
 <body>
 	<div data-role="page" id="pageone">
 		<div data-role="header">
-		<a href="" data-role="button" onclick="window.location.href='../user/user_index'">主页</a>
+			<a href="" data-role="button"
+				onclick="window.location.href='../user/user_index'">主页</a>
 			<h1>饮食录入</h1>
 		</div>
 		<div data-role="content">
 			<div data-role="fieldcontain">
-				<p style="text-align:center;">目标能量(kal)：<span id="targetenergy"></span></p>
-				<p style="text-align:center;">总能量(kal)：<span id="sumenergy">0</span></p>
+				<p style="text-align: center;">
+					目标能量(kal)：<span id="targetenergy"></span>
+				</p>
+				<p style="text-align: center;">
+					总能量(kal)：<span id="sumenergy">0</span>
+				</p>
 			</div>
 			<div data-role="fieldcontain">
-				<label for="diettype">餐饮类型：</label> 
-				<select name="diettype" id="diettype" required="true" onchange="setTargetEnergy()">
-				    <c:forEach var="diettype" items="${typeList}" varStatus="s">
-					    <option value="${diettype.value }">${diettype.name }</option>
-					 </c:forEach>
+				<label for="diettype">餐饮类型：</label> <select name="diettype"
+					id="diettype" required="true" onchange="setTargetEnergy()">
+					<c:forEach var="diettype" items="${typeList}" varStatus="s">
+						<option value="${diettype.value }">${diettype.name }</option>
+					</c:forEach>
 				</select>
 			</div>
 			<div data-role="collapsible">
 				<h1>主食</h1>
 				<div id="mainfood">
-				<div data-role="fieldcontain" name="mainfoodtype" id="mainfoodtype1">
-					<label for="diettype">种类：</label> <select name="mainfoodtype" onchange="typechange('mainfood','1')"
-						required="true">
-						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0" selected>请选择</option>
-						  <c:forEach var="mainfood" items="${mainfoodList}" varStatus="s">
-						  <option value="${mainfood.id }" energy="${mainfood.energy }" protein="${mainfood.protein }" fat="${mainfood.fat }" 
-						  carbohydrate="${mainfood.carbohydrate }" cellulose="${mainfood.cellulose }" calcium="${mainfood.calcium }" ferrum="${mainfood.ferrum }" zinc="${mainfood.zinc }" carotene="${mainfood.carotene }">${mainfood.name }</option>
-						   </c:forEach>
-					</select>
+					<div name="mainfoodtype" id="mainfoodtype1">
+						<p>
+							<input type="search" id="searchField_mainfood1" placeholder="请输入并选择食物">
+						    <ul id="suggestions_mainfood1" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" id="mainfoodnums1" name="mainfoodnum">
+						<label for="number">食量（克）：</label> <input type="range"
+							id="mainfoodnum1" name="number" required="true" value="200"
+							min="0" max="1000">
+					</div>
+					
+					<div name="mainfoodtype" id="mainfoodtype2" style="display: none">
+						<p>
+							<input type="search" id="searchField_mainfood2" placeholder="请输入并选择食物">
+						    <ul id="suggestions_mainfood2" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="mainfoodnum" id="mainfoodnums2" style="display: none">
+						<label for="number">食量（克）：</label> <input type="range"
+							id="mainfoodnum2" name="number" required="true" value="200"
+							min="0" max="1000">
+					</div>
+					
+					<div name="mainfoodtype" id="mainfoodtype3" style="display: none">
+						<p>
+							<input type="search" id="searchField_mainfood3" placeholder="请输入并选择食物">
+						    <ul id="suggestions_mainfood3" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" id="mainfoodnums3" name="mainfoodnum" style="display: none">
+						<label for="number">食量（克）：</label> <input type="range"
+							id="mainfoodnum3" name="number" required="true" value="200"
+							min="0" max="1000">
+					</div>
+					
+					<div name="mainfoodtype" id="mainfoodtype4" style="display: none">
+						<p>
+							<input type="search" id="searchField_mainfood4" placeholder="请输入并选择食物">
+						    <ul id="suggestions_mainfood4" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" id="mainfoodnums4" name="mainfoodnum" style="display: none">
+						<label for="number">食量（克）：</label> <input type="range"
+							id="mainfoodnum4" name="number" required="true" value="200"
+							min="0" max="1000">
+					</div>
+					
+					<div name="mainfoodtype" id="mainfoodtype5" style="display: none">
+						<p>
+							<input type="search" id="searchField_mainfood5" placeholder="请输入并选择食物">
+						    <ul id="suggestions_mainfood5" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" id="mainfoodnums5" name="mainfoodnum" style="display: none">
+						<label for="number">食量（克）：</label> <input type="range"
+							id="mainfoodnum5" name="number" required="true" value="200"
+							min="0" max="1000">
+					</div>
+
 				</div>
-				<div data-role="fieldcontain" name="mainfoodnum" id="mainfoodnum1" >
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'mainfood','1')"
-						required="true" value="200" min="0" max="1000">
+				<div data-role="fieldcontain">
+					<button onclick="addfood('mainfood');">新增</button>
+					<button onclick="removefood('mainfood');">移除</button>
 				</div>
-				
-				
-				
-				<div data-role="fieldcontain" name="mainfoodtype" id="mainfoodtype2" style="display:none;">
-					<label for="diettype">种类：</label> <select name="mainfoodtype" onchange="typechange('mainfood','2')"
-						required="true">
-						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						  <c:forEach var="mainfood" items="${mainfoodList}" varStatus="s">
-						  <option value="${mainfood.id }" energy="${mainfood.energy }" protein="${mainfood.protein }" fat="${mainfood.fat }" carbohydrate="${mainfood.carbohydrate }" 
-						  cellulose="${mainfood.cellulose }" calcium="${mainfood.calcium }" ferrum="${mainfood.ferrum }" zinc="${mainfood.zinc }" carotene="${mainfood.carotene }">${mainfood.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="mainfoodnum" id="mainfoodnum2" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'mainfood','2')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				<div data-role="fieldcontain" name="mainfoodtype" id="mainfoodtype3" style="display:none;">
-					<label for="diettype">种类：</label> <select name="mainfoodtype" onchange="typechange('mainfood','3')"
-						required="true">
-						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						  <c:forEach var="mainfood" items="${mainfoodList}" varStatus="s">
-						  <option value="${mainfood.id }" energy="${mainfood.energy }" protein="${mainfood.protein }" fat="${mainfood.fat }" carbohydrate="${mainfood.carbohydrate }" 
-						  cellulose="${mainfood.cellulose }" calcium="${mainfood.calcium }" ferrum="${mainfood.ferrum }" zinc="${mainfood.zinc }" carotene="${mainfood.carotene }">${mainfood.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="mainfoodnum" id="mainfoodnum3" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'mainfood','3')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				<div data-role="fieldcontain" name="mainfoodtype" id="mainfoodtype4" style="display:none;">
-					<label for="diettype">种类：</label> <select name="mainfoodtype" onchange="typechange('mainfood','4')"
-						required="true">
-						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						  <c:forEach var="mainfood" items="${mainfoodList}" varStatus="s">
-						  <option value="${mainfood.id }" energy="${mainfood.energy }" protein="${mainfood.protein }" fat="${mainfood.fat }" carbohydrate="${mainfood.carbohydrate }" 
-						  cellulose="${mainfood.cellulose }" calcium="${mainfood.calcium }" ferrum="${mainfood.ferrum }" zinc="${mainfood.zinc }" carotene="${mainfood.carotene }">${mainfood.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="mainfoodnum" id="mainfoodnum4" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'mainfood','4')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				<div data-role="fieldcontain" name="mainfoodtype" id="mainfoodtype5" style="display:none;">
-					<label for="diettype">种类：</label> <select name="mainfoodtype" onchange="typechange('mainfood',5')"
-						required="true">
-						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						  <c:forEach var="mainfood" items="${mainfoodList}" varStatus="s">
-						  <option value="${mainfood.id }" energy="${mainfood.energy }" protein="${mainfood.protein }" fat="${mainfood.fat }" carbohydrate="${mainfood.carbohydrate }" 
-						  cellulose="${mainfood.cellulose }" calcium="${mainfood.calcium }" ferrum="${mainfood.ferrum }" zinc="${mainfood.zinc }" carotene="${mainfood.carotene }">${mainfood.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="mainfoodnum" id="mainfoodnum5" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'mainfood','5')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-				</div>
-				 <div data-role="fieldcontain">
-			     <button onclick="addfood('mainfood');">新增</button>
-			     <button onclick="removefood('mainfood');">移除</button>
-			   </div> 
 			</div>
+			
 			<div data-role="collapsible">
 				<h1>肉类</h1>
 				<div id="meat">
-				<div data-role="fieldcontain" name="meattype" id="meattype1">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('meat','1')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						   <c:forEach var="meat" items="${meatList}" varStatus="s">
-						  <option value="${meat.id }" energy="${meat.energy }" protein="${meat.protein }" fat="${meat.fat }" carbohydrate="${meat.carbohydrate }" 
-						  cellulose="${meat.cellulose }" calcium="${meat.calcium }" ferrum="${meat.ferrum }" zinc="${meat.zinc }" carotene="${meat.carotene }">${meat.name }</option>
-						   </c:forEach>
-					</select>
+					<div name="meattype" id="meattype1">
+						<p>
+							<input type="search" id="searchField_meat1" placeholder="请输入并选择食物">
+						<ul id="suggestions_meat1" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="meatnum" id="meatnums1" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="meatnum1"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="meattype" id="meattype2" style="display: none">
+						<p>
+							<input type="search" id="searchField_meat2" placeholder="请输入并选择食物">
+						<ul id="suggestions_meat2" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="meatnum" id="meatnums2" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="meatnum2"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="meattype" id="meattype3" style="display: none">
+						<p>
+							<input type="search" id="searchField_meat3" placeholder="请输入并选择食物">
+						<ul id="suggestions_meat3" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="meatnum" id="meatnums3" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="meatnum3"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="meattype" id="meattype4" style="display: none">
+						<p>
+							<input type="search" id="searchField_meat4" placeholder="请输入并选择食物">
+						<ul id="suggestions_meat4" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="meatnum" id="meatnums4" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="meatnum4"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="meattype" id="meattype5" style="display: none">
+						<p>
+							<input type="search" id="searchField_meat5" placeholder="请输入并选择食物">
+						<ul id="suggestions_meat5" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="meatnum" id="meatnums5" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="meatnum5"
+							required="true" value="200" min="0" max="1000">
+					</div>
+
 				</div>
-				<div data-role="fieldcontain" name="meatnum"  id="meatnum1">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'meat','1')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-				
-				<div data-role="fieldcontain" name="meattype" id="meattype2" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('meat','2')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						   <c:forEach var="meat" items="${meatList}" varStatus="s">
-						  <option value="${meat.id }" energy="${meat.energy }" protein="${meat.protein }" fat="${meat.fat }" carbohydrate="${meat.carbohydrate }" 
-						  cellulose="${meat.cellulose }" calcium="${meat.calcium }" ferrum="${meat.ferrum }" zinc="${meat.zinc }" carotene="${meat.carotene }">${meat.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="meatnum"  id="meatnum2" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'meat','2')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-				<div data-role="fieldcontain" name="meattype" id="meattype3" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('meat','3')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						   <c:forEach var="meat" items="${meatList}" varStatus="s">
-						  <option value="${meat.id }" energy="${meat.energy }" protein="${meat.protein }" fat="${meat.fat }" carbohydrate="${meat.carbohydrate }" 
-						  cellulose="${meat.cellulose }" calcium="${meat.calcium }" ferrum="${meat.ferrum }" zinc="${meat.zinc }" carotene="${meat.carotene }">${meat.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="meatnum"  id="meatnum3" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'meat','3')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-				
-				<div data-role="fieldcontain" name="meattype" id="meattype4" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('meat','4')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						   <c:forEach var="meat" items="${meatList}" varStatus="s">
-						  <option value="${meat.id }" energy="${meat.energy }" protein="${meat.protein }" fat="${meat.fat }" carbohydrate="${meat.carbohydrate }" 
-						  cellulose="${meat.cellulose }" calcium="${meat.calcium }" ferrum="${meat.ferrum }" zinc="${meat.zinc }" carotene="${meat.carotene }">${meat.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="meatnum"  id="meatnum4" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'meat','4')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-				<div data-role="fieldcontain" name="meattype" id="meattype5" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('meat','5')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						   <c:forEach var="meat" items="${meatList}" varStatus="s">
-						  <option value="${meat.id }" energy="${meat.energy }" protein="${meat.protein }" fat="${meat.fat }" carbohydrate="${meat.carbohydrate }" 
-						  cellulose="${meat.cellulose }" calcium="${meat.calcium }" ferrum="${meat.ferrum }" zinc="${meat.zinc }" carotene="${meat.carotene }">${meat.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="meatnum"  id="meatnum5" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'meat','5')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
 				<div data-role="fieldcontain">
-			     <button onclick="addfood('meat');">新增</button>
-			     <button onclick="removefood('meat');">移除</button>
-			   </div>
+					<button onclick="addfood('meat');">新增</button>
+					<button onclick="removefood('meat');">移除</button>
 				</div>
 			</div>
+			
 			<div data-role="collapsible">
 				<h1>蔬菜</h1>
 				<div id="vegetables">
-				<div data-role="fieldcontain" name="vegetablestype" id="vegetablestype1">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('vegetables','1')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						  <c:forEach var="vegetables" items="${vegetablesList}" varStatus="s">
-						  <option value="${vegetables.id }" energy="${vegetables.energy }" protein="${vegetables.protein }" fat="${vegetables.fat }" carbohydrate="${vegetables.carbohydrate }" 
-						  cellulose="${vegetables.cellulose }" calcium="${vegetables.calcium }" ferrum="${vegetables.ferrum }" zinc="${vegetables.zinc }" carotene="${vegetables.carotene }">${vegetables.name }</option>
-						   </c:forEach>
-					</select>
+					<div name="vegetablestype" id="vegetablestype1">
+						<p>
+							<input type="search" id="searchField_vegetables1" placeholder="请输入并选择食物">
+						<ul id="suggestions_vegetables1" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="vegetablesnum" id="vegetablesnums1" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="vegetablesnum1"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="vegetablestype" id="vegetablestype2" style="display: none">
+						<p>
+							<input type="search" id="searchField_vegetables2" placeholder="请输入并选择食物">
+						<ul id="suggestions_vegetables2" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="vegetablesnum" id="vegetablesnums2" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="vegetablesnum2"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="vegetablestype" id="vegetablestype3" style="display: none">
+						<p>
+							<input type="search" id="searchField_vegetables3" placeholder="请输入并选择食物">
+						<ul id="suggestions_vegetables3" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="vegetablesnum" id="vegetablesnums3" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="vegetablesnum3"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="vegetablestype" id="vegetablestype4" style="display: none">
+						<p>
+							<input type="search" id="searchField_vegetables4" placeholder="请输入并选择食物">
+						<ul id="suggestions_vegetables4" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="vegetablesnum" id="vegetablesnums4" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="vegetablesnum4"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="vegetablestype" id="vegetablestype5" style="display: none">
+						<p>
+							<input type="search" id="searchField_vegetables5" placeholder="请输入并选择食物">
+						<ul id="suggestions_vegetables5" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="vegetablesnum" id="vegetablesnums5" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="vegetablesnum5"
+							required="true" value="200" min="0" max="1000">
+					</div>
+
 				</div>
-				<div data-role="fieldcontain" name="vegetablesnum" id="vegetablesnum1">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'vegetables','1')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-				<div data-role="fieldcontain" name="vegetablestype" id="vegetablestype2" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('vegetables','2')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						  <c:forEach var="vegetables" items="${vegetablesList}" varStatus="s">
-						  <option value="${vegetables.id }" energy="${vegetables.energy }" protein="${vegetables.protein }" fat="${vegetables.fat }" carbohydrate="${vegetables.carbohydrate }" 
-						  cellulose="${vegetables.cellulose }" calcium="${vegetables.calcium }" ferrum="${vegetables.ferrum }" zinc="${vegetables.zinc }" carotene="${vegetables.carotene }">${vegetables.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="vegetablesnum" id="vegetablesnum2" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'vegetables','2')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-					<div data-role="fieldcontain" name="vegetablestype" id="vegetablestype3" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('vegetables','3')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						  <c:forEach var="vegetables" items="${vegetablesList}" varStatus="s">
-						  <option value="${vegetables.id }" energy="${vegetables.energy }" protein="${vegetables.protein }" fat="${vegetables.fat }" carbohydrate="${vegetables.carbohydrate }" 
-						  cellulose="${vegetables.cellulose }" calcium="${vegetables.calcium }" ferrum="${vegetables.ferrum }" zinc="${vegetables.zinc }" carotene="${vegetables.carotene }">${vegetables.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="vegetablesnum" id="vegetablesnum3" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'vegetables','3')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-					<div data-role="fieldcontain" name="vegetablestype" id="vegetablestype4" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('vegetables','4')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						  <c:forEach var="vegetables" items="${vegetablesList}" varStatus="s">
-						  <option value="${vegetables.id }" energy="${vegetables.energy }" protein="${vegetables.protein }" fat="${vegetables.fat }" carbohydrate="${vegetables.carbohydrate }" 
-						  cellulose="${vegetables.cellulose }" calcium="${vegetables.calcium }" ferrum="${vegetables.ferrum }" zinc="${vegetables.zinc }" carotene="${vegetables.carotene }">${vegetables.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="vegetablesnum" id="vegetablesnum4" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'vegetables','4')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-					<div data-role="fieldcontain" name="vegetablestype" id="vegetablestype5" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('vegetables','5')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						  <c:forEach var="vegetables" items="${vegetablesList}" varStatus="s">
-						  <option value="${vegetables.id }" energy="${vegetables.energy }" protein="${vegetables.protein }" fat="${vegetables.fat }" carbohydrate="${vegetables.carbohydrate }" 
-						  cellulose="${vegetables.cellulose }" calcium="${vegetables.calcium }" ferrum="${vegetables.ferrum }" zinc="${vegetables.zinc }" carotene="${vegetables.carotene }">${vegetables.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="vegetablesnum" id="vegetablesnum5" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'vegetables','5')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
 				<div data-role="fieldcontain">
-			     <button onclick="addfood('vegetables');">新增</button>
-			     <button onclick="removefood('vegetables');">移除</button>
-			   </div>
+					<button onclick="addfood('vegetables');">新增</button>
+					<button onclick="removefood('vegetables');">移除</button>
 				</div>
 			</div>
+			
 			<div data-role="collapsible">
 				<h1>饮品</h1>
 				<div id="drink">
-				<div data-role="fieldcontain" name="drinktype" id="drinktype1">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('drink','1')"
-						required="true">
-						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0" selected>请选择</option>
-						 <c:forEach var="drink" items="${drinkList}" varStatus="s">
-						  <option value="${drink.id }" energy="${drink.energy }" protein="${drink.protein }" fat="${drink.fat }" carbohydrate="${drink.carbohydrate }" 
-						  cellulose="${drink.cellulose }" calcium="${drink.calcium }" ferrum="${drink.ferrum }" zinc="${drink.zinc }" carotene="${drink.carotene }">${drink.name }</option>
-						   </c:forEach>
-					</select>
+					<div name="drinktype" id="drinktype1">
+						<p>
+							<input type="search" id="searchField_drink1" placeholder="请输入并选择食物">
+						<ul id="suggestions_drink1" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="drinknum" id="drinknums1" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="drinknum1"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="drinktype" id="drinktype2" style="display: none">
+						<p>
+							<input type="search" id="searchField_drink2" placeholder="请输入并选择食物">
+						<ul id="suggestions_drink2" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="drinknum" id="drinknums2" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="drinknum2"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="drinktype" id="drinktype3" style="display: none">
+						<p>
+							<input type="search" id="searchField_drink3" placeholder="请输入并选择食物">
+						<ul id="suggestions_drink3" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="drinknum" id="drinknums3" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="drinknum3"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="drinktype" id="drinktype4" style="display: none">
+						<p>
+							<input type="search" id="searchField_drink4" placeholder="请输入并选择食物">
+						<ul id="suggestions_drink4" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="drinknum" id="drinknums4" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="drinknum4"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="drinktype" id="drinktype5" style="display: none">
+						<p>
+							<input type="search" id="searchField_drink5" placeholder="请输入并选择食物">
+						<ul id="suggestions_drink5" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="drinknum" id="drinknums5" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="drinknum5"
+							required="true" value="200" min="0" max="1000">
+					</div>
+
 				</div>
-				<div data-role="fieldcontain" name="dirnknum" id="drinknum1">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'drink','1')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-				<div data-role="fieldcontain" name="drinktype" id="drinktype2" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('drink','2')"
-						required="true">
-						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						 <c:forEach var="drink" items="${drinkList}" varStatus="s">
-						  <option value="${drink.id }" energy="${drink.energy }" protein="${drink.protein }" fat="${drink.fat }" carbohydrate="${drink.carbohydrate }" 
-						  cellulose="${drink.cellulose }" calcium="${drink.calcium }" ferrum="${drink.ferrum }" zinc="${drink.zinc }" carotene="${drink.carotene }">${drink.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="dirnknum" id="drinknum2" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'drink','2')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-								<div data-role="fieldcontain" name="drinktype" id="drinktype3" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('drink','3')"
-						required="true">
-						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						 <c:forEach var="drink" items="${drinkList}" varStatus="s">
-						  <option value="${drink.id }" energy="${drink.energy }" protein="${drink.protein }" fat="${drink.fat }" carbohydrate="${drink.carbohydrate }" 
-						  cellulose="${drink.cellulose }" calcium="${drink.calcium }" ferrum="${drink.ferrum }" zinc="${drink.zinc }" carotene="${drink.carotene }">${drink.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="dirnknum" id="drinknum3" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'drink','3')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-								<div data-role="fieldcontain" name="drinktype" id="drinktype4" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('drink','4')"
-						required="true">
-						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						 <c:forEach var="drink" items="${drinkList}" varStatus="s">
-						  <option value="${drink.id }" energy="${drink.energy }" protein="${drink.protein }" fat="${drink.fat }" carbohydrate="${drink.carbohydrate }" 
-						  cellulose="${drink.cellulose }" calcium="${drink.calcium }" ferrum="${drink.ferrum }" zinc="${drink.zinc }" carotene="${drink.carotene }">${drink.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="dirnknum" id="drinknum4" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'drink','4')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-								<div data-role="fieldcontain" name="drinktype" id="drinktype5" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype" onchange="typechange('drink','5')"
-						required="true">
-						<option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						 <c:forEach var="drink" items="${drinkList}" varStatus="s">
-						  <option value="${drink.id }" energy="${drink.energy }" protein="${drink.protein }" fat="${drink.fat }" carbohydrate="${drink.carbohydrate }" 
-						  cellulose="${drink.cellulose }" calcium="${drink.calcium }" ferrum="${drink.ferrum }" zinc="${drink.zinc }" carotene="${drink.carotene }">${drink.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="dirnknum" id="drinknum5" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'drink','5')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
 				<div data-role="fieldcontain">
-			     <button onclick="addfood('drink');">新增</button>
-			     <button onclick="removefood('drink');">移除</button>
-			   </div>
+					<button onclick="addfood('drink');">新增</button>
+					<button onclick="removefood('drink');">移除</button>
 				</div>
 			</div>
+			
 			<div data-role="collapsible">
 				<h1>干果/油/零食</h1>
 				<div id="nut">
-				<div data-role="fieldcontain" name="nuttype" id="nuttype1">
-					<label for="diettype">种类：</label> <select name="diettype"  onchange="typechange('nut','1')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						  <c:forEach var="nut" items="${nutList}" varStatus="s">
-						  <option value="${nut.id }" energy="${nut.energy }" protein="${nut.protein }" fat="${nut.fat }" carbohydrate="${nut.carbohydrate }" 
-						  cellulose="${nut.cellulose }" calcium="${nut.calcium }" ferrum="${nut.ferrum }" zinc="${nut.zinc }" carotene="${nut.carotene }">${nut.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="nutnum" id="nutnum1">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'nut','1')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-				<div data-role="fieldcontain" name="nuttype" id="nuttype2" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype"  onchange="typechange('nut','2')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						  <c:forEach var="nut" items="${nutList}" varStatus="s">
-						  <option value="${nut.id }" energy="${nut.energy }" protein="${nut.protein }" fat="${nut.fat }" carbohydrate="${nut.carbohydrate }" 
-						  cellulose="${nut.cellulose }" calcium="${nut.calcium }" ferrum="${nut.ferrum }" zinc="${nut.zinc }" carotene="${nut.carotene }">${nut.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="nutnum" id="nutnum2" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'nut','2')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-				<div data-role="fieldcontain" name="nuttype" id="nuttype3" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype"  onchange="typechange('nut','3')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						  <c:forEach var="nut" items="${nutList}" varStatus="s">
-						  <option value="${nut.id }" energy="${nut.energy }" protein="${nut.protein }" fat="${nut.fat }" carbohydrate="${nut.carbohydrate }" 
-						  cellulose="${nut.cellulose }" calcium="${nut.calcium }" ferrum="${nut.ferrum }" zinc="${nut.zinc }" carotene="${nut.carotene }">${nut.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="nutnum" id="nutnum3" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'nut','3')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				<div data-role="fieldcontain" name="nuttype" id="nuttype4" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype"  onchange="typechange('nut','4')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						  <c:forEach var="nut" items="${nutList}" varStatus="s">
-						  <option value="${nut.id }" energy="${nut.energy }" protein="${nut.protein }" fat="${nut.fat }" carbohydrate="${nut.carbohydrate }" 
-						  cellulose="${nut.cellulose }" calcium="${nut.calcium }" ferrum="${nut.ferrum }" zinc="${nut.zinc }" carotene="${nut.carotene }">${nut.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="nutnum" id="nutnum4" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'nut','4')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				<div data-role="fieldcontain" name="nuttype" id="nuttype5" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype"  onchange="typechange('nut','5')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						  <c:forEach var="nut" items="${nutList}" varStatus="s">
-						  <option value="${nut.id }" energy="${nut.energy }" protein="${nut.protein }" fat="${nut.fat }" carbohydrate="${nut.carbohydrate }" 
-						  cellulose="${nut.cellulose }" calcium="${nut.calcium }" ferrum="${nut.ferrum }" zinc="${nut.zinc }" carotene="${nut.carotene }">${nut.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="nutnum" id="nutnum5" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number" onchange="numberchange(this.value,'nut','5')"
-						required="true" value="200" min="0" max="1000">
+					<div name="nuttype" id="nuttype1">
+						<p>
+							<input type="search" id="searchField_nut1" placeholder="请输入并选择食物">
+						<ul id="suggestions_nut1" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="nutnum" id="nutnums1" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="nutnum1"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="nuttype" id="nuttype2" style="display: none">
+						<p>
+							<input type="search" id="searchField_nut2" placeholder="请输入并选择食物">
+						<ul id="suggestions_nut2" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="nutnum" id="nutnums2" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="nutnum2"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="nuttype" id="nuttype3" style="display: none">
+						<p>
+							<input type="search" id="searchField_nut3" placeholder="请输入并选择食物">
+						<ul id="suggestions_nut3" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="nutnum" id="nutnums3" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="nutnum3"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="nuttype" id="nuttype4" style="display: none">
+						<p>
+							<input type="search" id="searchField_nut4" placeholder="请输入并选择食物">
+						<ul id="suggestions_nut4" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="nutnum" id="nutnums4" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="nutnum4"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="nuttype" id="nuttype5" style="display: none">
+						<p>
+							<input type="search" id="searchField_nut5" placeholder="请输入并选择食物">
+						<ul id="suggestions_nut5" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="nutnum" id="nutnums5" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="nutnum5"
+							required="true" value="200" min="0" max="1000">
+					</div>
+
 				</div>
 				<div data-role="fieldcontain">
-			     <button onclick="addfood('nut');">新增</button>
-			     <button onclick="removefood('nut');">移除</button>
-			   </div>
+					<button onclick="addfood('nut');">新增</button>
+					<button onclick="removefood('nut');">移除</button>
 				</div>
 			</div>
+			
 			<div data-role="collapsible">
 				<h1>水果</h1>
 				<div id="fruits">
-				<div data-role="fieldcontain" name="fruitstype" id="fruitstype1">
-					<label for="diettype">种类：</label> <select name="diettype"  onchange="typechange('fruits','1')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						 <c:forEach var="fruits" items="${fruitsList}" varStatus="s">
-						  <option value="${fruits.id }" energy="${fruits.energy }" protein="${fruits.protein }" fat="${fruits.fat }" carbohydrate="${fruits.carbohydrate }" 
-						  cellulose="${fruits.cellulose }" calcium="${fruits.calcium }" ferrum="${fruits.ferrum }" zinc="${fruits.zinc }" carotene="${fruits.carotene }">${fruits.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="fruitsnum" id="fruitsnum1">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number"  onchange="numberchange(this.value,'fruits','1')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-				<div data-role="fieldcontain" name="fruitstype" id="fruitstype2" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype"  onchange="typechange('fruits','2')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						 <c:forEach var="fruits" items="${fruitsList}" varStatus="s">
-						  <option value="${fruits.id }" energy="${fruits.energy }" protein="${fruits.protein }" fat="${fruits.fat }" carbohydrate="${fruits.carbohydrate }" 
-						  cellulose="${fruits.cellulose }" calcium="${fruits.calcium }" ferrum="${fruits.ferrum }" zinc="${fruits.zinc }" carotene="${fruits.carotene }">${fruits.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="fruitsnum" id="fruitsnum2" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number"  onchange="numberchange(this.value,'fruits','2')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-				<div data-role="fieldcontain" name="fruitstype" id="fruitstype3" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype"  onchange="typechange('fruits','3')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						 <c:forEach var="fruits" items="${fruitsList}" varStatus="s">
-						  <option value="${fruits.id }" energy="${fruits.energy }" protein="${fruits.protein }" fat="${fruits.fat }" carbohydrate="${fruits.carbohydrate }" 
-						  cellulose="${fruits.cellulose }" calcium="${fruits.calcium }" ferrum="${fruits.ferrum }" zinc="${fruits.zinc }" carotene="${fruits.carotene }">${fruits.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="fruitsnum" id="fruitsnum3" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number"  onchange="numberchange(this.value,'fruits','3')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-				<div data-role="fieldcontain" name="fruitstype" id="fruitstype4" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype"  onchange="typechange('fruits','4')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						 <c:forEach var="fruits" items="${fruitsList}" varStatus="s">
-						  <option value="${fruits.id }" energy="${fruits.energy }" protein="${fruits.protein }" fat="${fruits.fat }" carbohydrate="${fruits.carbohydrate }" 
-						  cellulose="${fruits.cellulose }" calcium="${fruits.calcium }" ferrum="${fruits.ferrum }" zinc="${fruits.zinc }" carotene="${fruits.carotene }">${fruits.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="fruitsnum" id="fruitsnum4" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number"  onchange="numberchange(this.value,'fruits','4')"
-						required="true" value="200" min="0" max="1000">
-				</div>
-				
-				<div data-role="fieldcontain" name="fruitstype" id="fruitstype5" style="display:none;">
-					<label for="diettype">种类：</label> <select name="diettype"  onchange="typechange('fruits','5')"
-						 required="true">
-						 <option value="0" energy="0" protein="0" fat="0" carbohydrate="0" cellulose="0">请选择</option>
-						 <c:forEach var="fruits" items="${fruitsList}" varStatus="s">
-						  <option value="${fruits.id }" energy="${fruits.energy }" protein="${fruits.protein }" fat="${fruits.fat }" carbohydrate="${fruits.carbohydrate }" 
-						  cellulose="${fruits.cellulose }" calcium="${fruits.calcium }" ferrum="${fruits.ferrum }" zinc="${fruits.zinc }" carotene="${fruits.carotene }">${fruits.name }</option>
-						   </c:forEach>
-					</select>
-				</div>
-				<div data-role="fieldcontain" name="fruitsnum" id="fruitsnum5" style="display:none;">
-					<label for="number">食量（克）：</label> <input type="range"
-						name="number"  onchange="numberchange(this.value,'fruits','5')"
-						required="true" value="200" min="0" max="1000">
+					<div name="fruitstype" id="fruitstype1">
+						<p>
+							<input type="search" id="searchField_fruits1" placeholder="请输入并选择食物">
+						<ul id="suggestions_fruits1" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="fruitsnum" id="fruitsnums1" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="fruitsnum1"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="fruitstype" id="fruitstype2" style="display: none">
+						<p>
+							<input type="search" id="searchField_fruits2" placeholder="请输入并选择食物">
+						<ul id="suggestions_fruits2" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="fruitsnum" id="fruitsnums2" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="fruitsnum2"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="fruitstype" id="fruitstype3" style="display: none">
+						<p>
+							<input type="search" id="searchField_fruits3" placeholder="请输入并选择食物">
+						<ul id="suggestions_fruits3" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="fruitsnum" id="fruitsnums3" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="fruitsnum3"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="fruitstype" id="fruitstype4" style="display: none">
+						<p>
+							<input type="search" id="searchField_fruits4" placeholder="请输入并选择食物">
+						<ul id="suggestions_fruits4" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="fruitsnum" id="fruitsnums4" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="fruitsnum4"
+							required="true" value="200" min="0" max="1000">
+					</div>
+					
+					<div name="fruitstype" id="fruitstype5" style="display: none">
+						<p>
+							<input type="search" id="searchField_fruits5" placeholder="请输入并选择食物">
+						<ul id="suggestions_fruits5" data-role="listview" data-inset="true"></ul>
+						</p>
+					</div>
+					<div data-role="fieldcontain" name="fruitsnum" id="fruitsnums5" style="display: none" >
+						<label for="number">食量（克）：</label> <input type="range"
+							name="number" id="fruitsnum5"
+							required="true" value="200" min="0" max="1000">
+					</div>
+
 				</div>
 				<div data-role="fieldcontain">
-			     <button onclick="addfood('fruits');">新增</button>
-			     <button onclick="removefood('fruits');">移除</button>
-			   </div>
+					<button onclick="addfood('fruits');">新增</button>
+					<button onclick="removefood('fruits');">移除</button>
 				</div>
 			</div>
+
 			<div data-role="fieldcontain">
 				<label for="remarks">备注：</label>
 				<textarea name="remarks" id="remarks"></textarea>
 			</div>
 		</div>
 		<div id="detailcontent">
-			 <div class="ui-grid-c" id="detailtable"> 
-				<div class="ui-block-a" style="border: 1px solid black;text-align:center;width:31%;border-style:ridge ridge ridge ridge;">
-					食物名称
-				</div>
+			<div class="ui-grid-c" id="detailtable">
+				<div class="ui-block-a"
+					style="border: 1px solid black; text-align: center; width: 31%; border-style: ridge ridge ridge ridge;">
+					食物名称</div>
 				<div class="ui-block-b"
-					style="border: 1px solid black;text-align:center;width:22.5%;border-style:ridge ridge ridge none;">能量</div>
+					style="border: 1px solid black; text-align: center; width: 22.5%; border-style: ridge ridge ridge none;">能量</div>
 				<div class="ui-block-c"
-					style="border: 1px solid black;text-align:center;border-style:ridge ridge ridge none;">蛋白质</div>
-					<div class="ui-block-d"
-					style="border: 1px solid black;text-align:center;width:21.5%;border-style:ridge ridge ridge none;">脂肪</div>
-					
-					</div>
-	
+					style="border: 1px solid black; text-align: center; border-style: ridge ridge ridge none;">蛋白质</div>
+				<div class="ui-block-d"
+					style="border: 1px solid black; text-align: center; width: 21.5%; border-style: ridge ridge ridge none;">脂肪</div>
+
+			</div>
+
 			<div data-role="fieldcontain">
-     <input type="button" value="提交" onclick="onSubmit();">
-   </div>
+				<input type="button" value="提交" onclick="onSubmit();">
+			</div>
 		</div>
-		
+
 		<div data-role="footer">
 			<h1>&nbsp;</h1>
 		</div>
 	</div>
 </body>
-<script src="<%=path%>/js/jquery-2.2.2.min.js"></script>
-<script src="<%=path%>/jquerymobile/jquery.mobile-1.4.5.min.js"></script>
-<script>
+<script src="<%=path%>/js/search-select.js"></script>
+<script type="text/javascript">
+
 var mainfoodCount = 1;
 var meatCount = 1;
 var vegetablesCount = 1;
@@ -608,41 +514,35 @@ var drinkCount = 1;
 var nutCount = 1;
 var fruitsCount = 1;
 var targetsumenergy = parseInt(${energy});
-	var pId = "<%=pId%>"; 
-	function typechange(id,idnum){
-		var option = $('#'+id+"type"+idnum).find("select option:selected");
-		var num = parseInt($('#'+id+"num"+idnum).find("input").val());
+var pId = ""; 
+	function typechange(id,idnum,select){
+		var num = $('#mainfoodnum1').val();
 		var html ='<div class="ui-block-a" style="border: 1px solid black;text-align:center;width:31%;border-style:none ridge ridge ridge;">'
-		+option.text()+'</div><div class="ui-block-b"style="border: 1px solid black;text-align:center;width:22.5%;border-style:none ridge ridge none;" name="energyinfo">'
-		+parseFloat(num*parseFloat(option[0].attributes.energy.value)/100)
+		+select[1]+'</div><div class="ui-block-b"style="border: 1px solid black;text-align:center;width:22.5%;border-style:none ridge ridge none;" name="energyinfo">'
+		+num*select[2]/100
 		+'</div><div class="ui-block-c" style="border: 1px solid black;text-align:center;border-style:none ridge ridge none;">'
-		+parseFloat(num*parseFloat(option[0].attributes.protein.value)/100)+'</div>'
+		+num*select[3]/100+'</div>'
 		+'<div class="ui-block-d" style="border: 1px solid black;text-align:center;width:21.5%;border-style:none ridge ridge none;">'
-		+parseFloat(num*parseFloat(option[0].attributes.fat.value)/100)
+		+num*select[4]/100
 		+'</div>';
 			if($('#detail'+id+idnum).html()==undefined){
-			$('#detailtable').after("<div class='ui-grid-c' id='detail"+id+idnum+"'></div>");
-			$('#detail'+id+idnum).append(html);
-		}else{
-			if(option.text()=="请选择"){
-				$('#detail'+id+idnum).remove();
+				$('#detailtable').after("<div class='ui-grid-c' id='detail"+id+idnum+"'></div>");
+				$('#detail'+id+idnum).append(html);
 			}else{
-				$('#detail'+id+idnum).html(html);
-			}
-		}
+					$('#detail'+id+idnum).html(html);
+				}
 			updateEnergy();
 	}
-	function numberchange(num,id,idnum){
+	function numberchange(num,id,idnum,select){
 		var sumenergy = parseInt($('#sumenergy').text());
-		var option = $('#'+id+"type"+idnum).find("select option:selected");
-		if(option.val()!=0){
+		if(select != null){
 			var html ='<div class="ui-block-a" style="border: 1px solid black;text-align:center;width:31%;border-style:none ridge ridge ridge;">'
-				+option.text()+'</div><div class="ui-block-b"style="border: 1px solid black;text-align:center;width:22.5%;border-style:none ridge ridge none;" name="energyinfo">'
-				+parseFloat(num*parseFloat(option[0].attributes.energy.value)/100)
+				+select[1]+'</div><div class="ui-block-b"style="border: 1px solid black;text-align:center;width:22.5%;border-style:none ridge ridge none;" name="energyinfo">'
+				+num*select[2]/100
 				+'</div><div class="ui-block-c" style="border: 1px solid black;text-align:center;border-style:none ridge ridge none;">'
-				+parseFloat(num*parseFloat(option[0].attributes.protein.value)/100)+'</div>'
+				+num*select[3]/100+'</div>'
 				+'<div class="ui-block-d" style="border: 1px solid black;text-align:center;width:21.5%;border-style:none ridge ridge none;">'
-				+parseFloat(num*parseFloat(option[0].attributes.fat.value)/100)
+				+num*select[4]/100
 				+'</div>';
 			$('#detail'+id+idnum).html(html);
 		}
@@ -653,16 +553,12 @@ var targetsumenergy = parseInt(${energy});
 		var len = countChange(id,false);
 		if(len>0){
 			$('#'+id+'type'+len).hide();
-			$('#'+id+'num'+len).hide();
+			$('#'+id+'nums'+len).hide();
 			$('#detail'+id+len).remove();
 			updateEnergy();
 		}else{
-			 for(var i=1; i<6; i++){
-				$('#'+id+"type"+i).find("select option[value='0']").attr("selected","selected");
-			}
-			//alert("不可移除!");
+			alert("不可移除!");
 			countChange(id,true);
-			updateEnergy();
 		}
 		
 	}
@@ -671,7 +567,7 @@ var targetsumenergy = parseInt(${energy});
 		var len = countChange(id,true);
 		if(len<6){
 			$('#'+id+'type'+len).show();
-			$('#'+id+'num'+len).show();
+			$('#'+id+'nums'+len).show();
 			var detailDiv = $('#detail'+id+(len-1)).clone(false);
 			detailDiv.attr("id","detail"+id+len);
 			$('#detail'+id+(len-1)).after(detailDiv);
@@ -746,25 +642,218 @@ var targetsumenergy = parseInt(${energy});
 					alert("保存成功！");
 					window.location.href="../user/user_index";
 				}else{
-					alert("保存失败！")
+					alert("保存失败！");
 				}
 			}); 
 	}
 	
 	function parseFoodList(id){
-		var len = $('#'+id).find('div').filter("[name='"+id+"type']").length;;
 		var nums = $('#'+id).find('div').filter("[name='"+id+"num']");
 		var typevalues = "";
 		var numvalues = "";
-		for(var i=1; i<len; i++){
-			var option = $('#'+id+"type"+i).find("select option:selected");
-			typevalues+=option.val()+",";
-		}
-		typevalues += $('#'+id+"type"+len).find("select option:selected").val();
-		for(var i=1; i<len; i++){
-			numvalues+=$('#'+id+"num"+i).find("input").val()+",";
-		}
-		numvalues += $('#'+id+"num"+len).find("input").val();
+			if(id == "mainfood"){
+				if(mainfood_select1.length == 0){
+					typevalues = "0,";
+				}else{
+					typevalues = mainfood_select1[0]+",";
+				}
+				if(mainfood_select2.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += mainfood_select2[0]+",";
+				}
+				if(mainfood_select3.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += mainfood_select3[0]+",";
+				}
+				if(mainfood_select4.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += mainfood_select4[0]+",";
+				}
+				if(mainfood_select5.length == 0){
+					typevalues += "0";
+				}else{
+					typevalues += mainfood_select5[0];
+				}
+				
+				numvalues = $('#mainfoodnum1').val()+","+
+							$('#mainfoodnum2').val()+","+
+							$('#mainfoodnum3').val()+","+
+							$('#mainfoodnum4').val()+","+
+							$('#mainfoodnum5').val();
+			}
+			
+			if(id == "meat"){
+				if(meat_select1.length == 0){
+					typevalues = "0,";
+				}else{
+					typevalues = meat_select1[0]+",";
+				}
+				if(meat_select2.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += meat_select2[0]+",";
+				}
+				if(meat_select3.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += meat_select3[0]+",";
+				}
+				if(meat_select4.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += meat_select4[0]+",";
+				}
+				if(meat_select5.length == 0){
+					typevalues += "0";
+				}else{
+					typevalues += meat_select5[0];
+				}
+				
+				numvalues = $('#meatnum1').val()+","+
+				$('#meatnum2').val()+","+
+				$('#meatnum3').val()+","+
+				$('#meatnum4').val()+","+
+				$('#meatnum5').val();
+			}
+			
+			if(id == "vegetables"){
+				if(vegetables_select1.length == 0){
+					typevalues = "0,";
+				}else{
+					typevalues = vegetables_select1[0]+",";
+				}
+				if(vegetables_select2.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += vegetables_select2[0]+",";
+				}
+				if(vegetables_select3.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += vegetables_select3[0]+",";
+				}
+				if(vegetables_select4.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += vegetables_select4[0]+",";
+				}
+				if(vegetables_select5.length == 0){
+					typevalues += "0";
+				}else{
+					typevalues += vegetables_select5[0];
+				}
+				
+				numvalues = $('#vegetablesnum1').val()+","+
+				$('#vegetablesnum2').val()+","+
+				$('#vegetablesnum3').val()+","+
+				$('#vegetablesnum4').val()+","+
+				$('#vegetablesnum5').val();
+			}
+			
+			if(id == "drink"){
+				if(drink_select1.length == 0){
+					typevalues = "0,";
+				}else{
+					typevalues = drink_select1[0]+",";
+				}
+				if(drink_select2.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += drink_select2[0]+",";
+				}
+				if(drink_select3.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += drink_select3[0]+",";
+				}
+				if(drink_select4.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += drink_select4[0]+",";
+				}
+				if(drink_select5.length == 0){
+					typevalues += "0";
+				}else{
+					typevalues += drink_select5[0];
+				}
+				
+				numvalues = $('#drinknum1').val()+","+
+				$('#drinknum2').val()+","+
+				$('#drinknum3').val()+","+
+				$('#drinknum4').val()+","+
+				$('#drinknum5').val();
+			}
+			
+			if(id == "nut"){
+				if(nut_select1.length == 0){
+					typevalues = "0,";
+				}else{
+					typevalues = nut_select1[0]+",";
+				}
+				if(nut_select2.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += nut_select2[0]+",";
+				}
+				if(nut_select3.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += nut_select3[0]+",";
+				}
+				if(nut_select4.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += nut_select4[0]+",";
+				}
+				if(nut_select5.length == 0){
+					typevalues += "0";
+				}else{
+					typevalues += nut_select5[0];
+				}
+				
+				numvalues = $('#nutnum1').val()+","+
+				$('#nutnum2').val()+","+
+				$('#nutnum3').val()+","+
+				$('#nutnum4').val()+","+
+				$('#nutnum5').val();
+			}
+			
+			if(id == "fruits"){
+				if(fruits_select1.length == 0){
+					typevalues = "0,";
+				}else{
+					typevalues = fruits_select1[0]+",";
+				}
+				if(fruits_select2.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += fruits_select2[0]+",";
+				}
+				if(fruits_select3.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += fruits_select3[0]+",";
+				}
+				if(fruits_select4.length == 0){
+					typevalues += "0,";
+				}else{
+					typevalues += fruits_select4[0]+",";
+				}
+				if(fruits_select5.length == 0){
+					typevalues += "0";
+				}else{
+					typevalues += fruits_select5[0];
+				}
+				
+				numvalues = $('#fruitsnum1').val()+","+
+				$('#fruitsnum2').val()+","+
+				$('#fruitsnum3').val()+","+
+				$('#fruitsnum4').val()+","+
+				$('#fruitsnum5').val();
+			}
 		return eval("({'"+id+"':'"+typevalues+"','"+id+"Num"+"':'"+numvalues+"'})");
 	}
 	
@@ -793,6 +882,5 @@ var targetsumenergy = parseInt(${energy});
 		$('#targetenergy').text(tmpEnergy);	
 	}
 	setTargetEnergy();
-
 </script>
 </html>

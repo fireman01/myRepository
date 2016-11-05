@@ -1,13 +1,10 @@
 package com.user.controller;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -373,6 +370,19 @@ import com.user.service.UserService;
 				log.error(e);
 			}
 		}
+		
+		@RequestMapping("delectDoctor")
+		public void delectDoctor(HttpServletRequest request, HttpServletResponse response){
+			Map<String, Object> param = FormDataCollectUtil.getInstance().getFormData(request);
+			try {
+				String str = userService.delectDoctor(param);
+				response.setContentType("text/html;charset=utf-8");
+				response.getWriter().print(str);
+			} catch (Exception e) {
+				log.error(e);
+			}
+		}
+		
 		@RequestMapping("saveDoctorInfo")
 		public void saveDoctorInfo(HttpServletRequest request, HttpServletResponse response){
 			Map<String, Object> param = FormDataCollectUtil.getInstance().getFormData(request);
@@ -431,6 +441,7 @@ import com.user.service.UserService;
 			Map<String, Object> map = FormDataCollectUtil.getInstance().getFormDataWithPage(request);
 			HttpSession session = request.getSession();
 			String pId = (String)session.getAttribute("pId");
+			//String pId = "o-1WTwrETUJzX7hTvINWXPvJiSDU";
 			map.put("pId", pId);
 			List<Map<String, Object>> list = userService.getAdviceListWithPage(map);
 			model.addAttribute("adviceList",list);

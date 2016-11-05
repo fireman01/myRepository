@@ -1,6 +1,8 @@
 package com.diet.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.common.util.CacheUtil;
 import com.common.util.FormDataCollectUtil;
@@ -37,7 +40,7 @@ public class DietController {
 		String pId = (String)request.getSession().getAttribute("pId");
 		model.addAttribute("energy",dietService.getTargetEnergy(pId));
 		model.addAttribute("typeList",dietService.getTypeList(pId));
-        model.addAttribute("mainfoodList",CacheUtil.getInstance().getMainFoodList());
+		model.addAttribute("mainfoodList",CacheUtil.getInstance().getMainFoodList());
 		model.addAttribute("meatList",CacheUtil.getInstance().getMeatList());
 		model.addAttribute("vegetablesList",CacheUtil.getInstance().getVegetablesList());
 		model.addAttribute("drinkList",CacheUtil.getInstance().getDrinkList());
@@ -46,6 +49,53 @@ public class DietController {
 		return "diet/diet_edit";
 	}
 	
+	@RequestMapping("/mainfood")
+	@ResponseBody 
+	public List<Map<String, Object>> getMainfood(HttpServletRequest request, HttpServletResponse response){
+		 List<Map<String, Object>> list = null; 
+		 list = CacheUtil.getInstance().getMainFoodList();
+		 return list;
+	}
+	
+	@RequestMapping("/meat")
+	@ResponseBody 
+	public List<Map<String, Object>> getMeat(HttpServletRequest request, HttpServletResponse response){
+		 List<Map<String, Object>> list = null; 
+		 list = CacheUtil.getInstance().getMeatList();
+		 return list;
+	}
+	
+	@RequestMapping("/vegetables")
+	@ResponseBody 
+	public List<Map<String, Object>> getVegetables(HttpServletRequest request, HttpServletResponse response){
+		 List<Map<String, Object>> list = null; 
+		 list = CacheUtil.getInstance().getVegetablesList();
+		 return list;
+	}
+	
+	@RequestMapping("/drink")
+	@ResponseBody 
+	public List<Map<String, Object>> getDrink(HttpServletRequest request, HttpServletResponse response){
+		 List<Map<String, Object>> list = null; 
+		 list = CacheUtil.getInstance().getDrinkList();
+		 return list;
+	}
+	
+	@RequestMapping("/nut")
+	@ResponseBody 
+	public List<Map<String, Object>> getNut(HttpServletRequest request, HttpServletResponse response){
+		 List<Map<String, Object>> list = null; 
+		 list = CacheUtil.getInstance().getNutList();
+		 return list;
+	}
+	
+	@RequestMapping("/fruits")
+	@ResponseBody 
+	public List<Map<String, Object>> getFruits(HttpServletRequest request, HttpServletResponse response){
+		 List<Map<String, Object>> list = null; 
+		 list = CacheUtil.getInstance().getFruitsList();
+		 return list;
+	}
 	
 	@RequestMapping("food_add")
 	public String doctorAdd(HttpServletRequest request){
@@ -56,6 +106,7 @@ public class DietController {
 	public  void addUser(HttpServletRequest request,HttpServletResponse response){
 		Map<String, Object> map = FormDataCollectUtil.getInstance().getFormData(request);
 		String pId = request.getSession().getAttribute("pId").toString();
+		//String pId = "o-1WTwnmE5MzetfXjm_02IjLG8m4";
 		map.put("pId", pId);
 		try {
 			String result = dietService.saveDiet(map);
@@ -170,7 +221,7 @@ public class DietController {
 	@RequestMapping("sport_info")
 	public String getSportInfo(HttpServletRequest request, Model model){
 		Map<String, Object> param = FormDataCollectUtil.getInstance().getFormData(request);
-		model.addAttribute("sportInfo", dietService.showSportInfo(param));
+		model.addAttribute("sportInfo", dietService.getSportInfo(param));
 		return "diet/sport_info";
 	}
 	
@@ -200,7 +251,14 @@ public class DietController {
 	public String sportEdit(HttpServletRequest request, Model model){
 		DictionaryService dictionaryService = (DictionaryService)SpringContextUtil.getBeanById("DictionaryService");
 		model.addAttribute("sprotTypeList",dictionaryService.getDictionaryListByType("6"));
-		model.addAttribute("sportTimeList",dictionaryService.getDictionaryListByType("7"));
+		Map<String, Object> param = new HashMap<String, Object>();
+		HttpSession session = request.getSession();
+		String pId = (String)session.getAttribute("pId");
+		param.put("pId", pId);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String today = sdf.format(new Date());
+		param.put("date", today);
+		model.addAttribute("sportInfo",dietService.showSportInfo(param));
 		return "diet/sport_edit";
 	}
 	

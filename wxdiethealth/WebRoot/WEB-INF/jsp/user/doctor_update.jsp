@@ -55,6 +55,7 @@ String path = request.getContextPath();
 		</div>
 		<div data-role="fieldcontain">
 			<input type="button" value="确认审核" onclick="onSubmit();">
+			<input type="button" value="删除" onclick="onDelete();">
 			<input type="button" value="返回" onclick="window.location.href='doctor_list'">
 		</div>
 	</div>
@@ -78,6 +79,21 @@ function onSubmit(){
 			window.location.href="doctor_list";
 		}else{
 			alert("更新失败！")
+		}
+	   }); 
+	 }
+}
+function onDelete(){
+	var r=confirm("确认删除？");
+	if (r==true)
+	  {
+		var dId = $('#dId').val();
+	    $.post("delectDoctor",{dId:dId},function(text){
+		if(text=="1"){
+			alert("删除成功！");
+			window.location.href="doctor_list";
+		}else{
+			alert("删除失败！")
 		}
 	   }); 
 	 }

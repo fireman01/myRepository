@@ -109,6 +109,7 @@
 	
 	<select id="getAdviceListWithPage" parameterType="object" resultType="hashmap">
 		SELECT * FROM advice where p_id = #{pId}
+		order by date desc
 		LIMIT  #{pageNum},#{numPerPage}		
 	</select>
 	<select id="countAdviceTotal" parameterType="object"

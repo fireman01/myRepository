@@ -327,33 +327,7 @@ public class DietServiceImpl implements DietService {
 	
 	@Override
 	public Map<String, Object> showSportInfo(Map<String, Object> param) {
-		Map<String, Object> map = dietDao.showSportInfo(param);
-		if(map!=null){
-			DictionaryService dictionaryService = (DictionaryService)SpringContextUtil.getBeanById("DictionaryService");
-			List<Map<String, Object>> sprotTypeList = dictionaryService.getDictionaryListByType("6");
-			List<Map<String, Object>> sportTimeList = dictionaryService.getDictionaryListByType("7");
-			String[] types = map.get("type").toString().split(",");
-			String[] nums = map.get("num").toString().split(",");
-			List<Map<String, Object>> sportInfo = new ArrayList<Map<String,Object>>();
-			for(int i=0; i<types.length; i++){
-				Map<String, Object> tmp = new HashMap<String, Object>();
-				for(int j=0; j<sprotTypeList.size(); j++){
-					if(sprotTypeList.get(j).get("id").toString().equals(types[i])){
-						tmp.put("type", sprotTypeList.get(j).get("name").toString());
-						break;
-					}
-				}
-				for(int k=0; k<sportTimeList.size(); k++){
-					if(sportTimeList.get(k).get("id").toString().equals(nums[i])){
-						tmp.put("num", sportTimeList.get(k).get("name").toString());
-						break;
-					}
-				}
-				sportInfo.add(tmp);
-			}
-			map.put("sportList", sportInfo);
-		}
-		return map;
+		return dietDao.showSportInfo(param);
 	}
 	
 	@Override
@@ -438,5 +412,50 @@ public class DietServiceImpl implements DietService {
 	@Override
 	public Map<String, Object> getSnacks(Map<String, Object> param) {
 		return dietDao.getSnacks(param);
+	}
+
+	@Override
+	public Map<String, Object> getSportInfo(Map<String, Object> param) {
+		Map<String, Object> map = showSportInfo(param);
+		DictionaryService dictionaryService = (DictionaryService)SpringContextUtil.getBeanById("DictionaryService");
+		List<Map<String, Object>> list = dictionaryService.getDictionaryListByType("6");
+		for(Map<String, Object> tmp : list){
+			if(tmp.get("id").toString().equals(map.get("beforebreakfasttype"))){
+				map.put("beforebreakfasttype",tmp.get("name"));
+			}else{
+				map.put("beforebreakfasttype","无");
+			}
+			if(tmp.get("id").toString().equals(map.get("afterbreakfasttype"))){
+				map.put("afterbreakfasttype",tmp.get("name"));
+			}else{
+				map.put("afterbreakfasttype","无");
+			}
+			if(tmp.get("id").toString().equals(map.get("beforelaunchtype"))){
+				map.put("beforelaunchtype",tmp.get("name"));
+			}else{
+				map.put("beforelaunchtype","无");
+			}
+			if(tmp.get("id").toString().equals(map.get("afterlaunchtype"))){
+				map.put("afterlaunchtype",tmp.get("name"));
+			}else{
+				map.put("afterlaunchtype","无");
+			}
+			if(tmp.get("id").toString().equals(map.get("beforedinnertype"))){
+				map.put("beforedinnertype",tmp.get("name"));
+			}else{
+				map.put("beforedinnertype","无");
+			}
+			if(tmp.get("id").toString().equals(map.get("afterdinnertype"))){
+				map.put("afterdinnertype",tmp.get("name"));
+			}else{
+				map.put("afterdinnertype","无");
+			}
+			if(tmp.get("id").toString().equals(map.get("beforesleeptype"))){
+				map.put("beforesleeptype",tmp.get("name"));
+			}else{
+				map.put("beforesleeptype","无");
+			}
+		}
+		return map;
 	}
 }

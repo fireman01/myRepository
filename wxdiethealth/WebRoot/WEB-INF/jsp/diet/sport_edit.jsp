@@ -25,64 +25,154 @@
 		<a href="" data-role="button" onclick="window.location.href='../user/user_index'">主页</a>
 			<h1>运动量录入</h1>
 		</div>
-		 <div data-role="fieldcontain" name="type">
-		   <label for="sprotType">运动类型：</label>
-		   <select name="sprotType1" id="sprotType1" required="false" >
-		   <option value="0">请选择</option>
-		     <c:forEach var="sprotType" items="${sprotTypeList}" varStatus="s">
-		      <option value="${sprotType.id }">${sprotType.name }</option>
-		     </c:forEach>
-		   </select>
-		  </div>
-		  <div data-role="fieldcontain" name="time"> 
-		   <label for="time1">运动时间：</label>
-		   <select name="time1" id="time1" required="false">
-		   <option value="0">请选择</option>
-		     <c:forEach var="sprotTime" items="${sportTimeList}" varStatus="s">
-		      <option value="${sprotTime.id }">${sprotTime.name }</option>
-		     </c:forEach>
-		   </select>
-		  </div>
-		   <div data-role="fieldcontain" style="display:none;" id="typediv1">
-		   <label for="sprotType">运动类型：</label>
-		   <select name="sprotType2" id="sprotType2" required="false" >
-		   <option value="0">请选择</option>
-		     <c:forEach var="sprotType" items="${sprotTypeList}" varStatus="s">
-		      <option value="${sprotType.id }">${sprotType.name }</option>
-		     </c:forEach>
-		   </select>
-		  </div>
-		  <div data-role="fieldcontain" style="display:none;" id="timediv1">
-		   <label for="time2">运动时间：</label>
-		   <select name="time2" id="time2" required="false" >
-		   <option value="0">请选择</option>
-		     <c:forEach var="sprotTime" items="${sportTimeList}" varStatus="s">
-		      <option value="${sprotTime.id }">${sprotTime.name }</option>
-		     </c:forEach>
-		   </select>
-		  </div>
-		   <div data-role="fieldcontain" style="display:none;" id="typediv2">
-		   <label for="sprotType">运动类型：</label>
-		   <select name="sprotType3" id="sprotType3" required="false">
-		   <option value="0">请选择</option>
-		     <c:forEach var="sprotType" items="${sprotTypeList}" varStatus="s">
-		      <option value="${sprotType.id }">${sprotType.name }</option>
-		     </c:forEach>
-		   </select>
-		  </div>
-		  <div data-role="fieldcontain" style="display:none;" id="timediv2">
-		   <label for="time3">运动时间：</label>
-		   <select name="time3" id="time3" required="false">
-		   <option value="0">请选择</option>
-		     <c:forEach var="sprotTime" items="${sportTimeList}" varStatus="s">
-		      <option value="${sprotTime.id }">${sprotTime.name }</option>
-		     </c:forEach>
-		   </select>
-		  </div>
-		   <div data-role="fieldcontain">
-			     <button onclick="addSport();">新增</button>
-			     <button onclick="removeSport();">移除</button>
-		   </div> 
+		
+		<fieldset data-role="controlgroup">
+	    <legend>早餐前</legend>
+	       <c:forEach var="sprotType" items="${sprotTypeList}" varStatus="s">
+	       <c:choose>
+			<c:when test="${sportInfo.beforebreakfasttype==sprotType.id}">
+			<label for="beforebreakfast${s.index }">${sprotType.name }</label>
+	        <input type="radio" name="beforebreakfast" id="beforebreakfast${s.index }" value="${sprotType.id }" checked=true>
+			</c:when>
+			<c:otherwise>
+			<label for="beforebreakfast${s.index }">${sprotType.name }</label>
+	        <input type="radio" name="beforebreakfast" id="beforebreakfast${s.index }" value="${sprotType.id }">
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			<div data-role="fieldcontain">
+			<label for="beforebreakfasttime">运动时间（分钟）：</label> <input type="range"
+							id="beforebreakfast" name="beforebreakfasttime" required="true" value="${sportInfo.beforebreakfasttime }"
+							min="0" max="240">
+							</div>
+	  </fieldset>
+	 
+	  <fieldset data-role="controlgroup">
+	    <legend>早餐后</legend>
+	       <c:forEach var="sprotType" items="${sprotTypeList}" varStatus="s">
+	        <c:choose>
+			<c:when test="${sportInfo.afterbreakfasttype==sprotType.id}">
+			 <label for="afterbreakfast${s.index }">${sprotType.name }</label>
+	        <input type="radio" name="afterbreakfast" id="afterbreakfast${s.index }" value="${sprotType.id }" checked=true>
+			</c:when>
+			<c:otherwise>
+			 <label for="afterbreakfast${s.index }">${sprotType.name }</label>
+	        <input type="radio" name="afterbreakfast" id="afterbreakfast${s.index }" value="${sprotType.id }">
+			</c:otherwise>
+			</c:choose>
+	      
+			</c:forEach>
+			<div data-role="fieldcontain">
+			<label for="afterbreakfasttime">运动时间（分钟）：</label> <input type="range"
+							id="afterbreakfast" name="afterbreakfasttime" required="true" value="${sportInfo.afterbreakfasttime }"
+							min="0" max="240">
+							</div>
+	  </fieldset>
+	  <fieldset data-role="controlgroup">
+	    <legend>午餐前</legend>
+	       <c:forEach var="sprotType" items="${sprotTypeList}" varStatus="s">
+	       <c:choose>
+			<c:when test="${sportInfo.beforelaunchtype==sprotType.id}">
+			<label for="beforelaunch${s.index }">${sprotType.name }</label>
+	        <input type="radio" name="beforelaunch" id="beforelaunch${s.index }" value="${sprotType.id }" checked=true>
+			</c:when>
+			<c:otherwise>
+			 <label for="beforelaunch${s.index }">${sprotType.name }</label>
+	        <input type="radio" name="beforelaunch" id="beforelaunch${s.index }" value="${sprotType.id }">
+			</c:otherwise>
+			</c:choose>
+	       
+			</c:forEach>
+			<div data-role="fieldcontain">
+			<label for="beforelaunchtime">运动时间（分钟）：</label> <input type="range"
+							id="beforelaunch" name="beforelaunchtime" required="true" value="${sportInfo.beforelaunchtime }"
+							min="0" max="240">
+							</div>
+	  </fieldset>
+	  <fieldset data-role="controlgroup">
+	    <legend>午餐后</legend>
+	       <c:forEach var="sprotType" items="${sprotTypeList}" varStatus="s">
+	        <c:choose>
+			<c:when test="${sportInfo.afterlaunchtype==sprotType.id}">
+			 <label for="afterlaunch${s.index }">${sprotType.name }</label>
+	        <input type="radio" name="afterlaunch" id="afterlaunch${s.index }" value="${sprotType.id }" checked=true>
+			</c:when>
+			<c:otherwise>
+			 <label for="afterlaunch${s.index }">${sprotType.name }</label>
+	        <input type="radio" name="afterlaunch" id="afterlaunch${s.index }" value="${sprotType.id }">
+			</c:otherwise>
+			</c:choose>
+	      
+			</c:forEach>
+			<div data-role="fieldcontain">
+			<label for="afterlaunchtime">运动时间（分钟）：</label> <input type="range"
+							id="afterlaunch" name="afterlaunchtime" required="true" value="${sportInfo.afterlaunchtime }"
+							min="0" max="240">
+							</div>
+	  </fieldset>
+	  <fieldset data-role="controlgroup">
+	    <legend>晚餐前</legend>
+	       <c:forEach var="sprotType" items="${sprotTypeList}" varStatus="s">
+	       <c:choose>
+			<c:when test="${sportInfo.beforedinnertype==sprotType.id}">
+			 <label for="beforedinner${s.index }">${sprotType.name }</label>
+	        <input type="radio" name="beforedinner" id="beforedinner${s.index }" value="${sprotType.id }" checked=true>
+			</c:when>
+			<c:otherwise>
+			  <label for="beforedinner${s.index }">${sprotType.name }</label>
+	        <input type="radio" name="beforedinner" id="beforedinner${s.index }" value="${sprotType.id }">
+			</c:otherwise>
+			</c:choose>
+	      
+			</c:forEach>
+			<div data-role="fieldcontain">
+			<label for="beforedinnertime">运动时间（分钟）：</label> <input type="range"
+							id="beforedinner" name="beforedinnertime" required="true" value="${sportInfo.beforedinnertime }"
+							min="0" max="240">
+							</div>
+	  </fieldset>
+	  <fieldset data-role="controlgroup">
+	    <legend>晚餐后</legend>
+	       <c:forEach var="sprotType" items="${sprotTypeList}" varStatus="s">
+	        <c:choose>
+			<c:when test="${sportInfo.afterdinnertype==sprotType.id}">
+			<label for="afterdinner${s.index }">${sprotType.name }</label>
+	        <input type="radio" name="afterdinner" id="afterdinner${s.index }" value="${sprotType.id }" checked=true>
+			</c:when>
+			<c:otherwise>
+			 <label for="afterdinner${s.index }">${sprotType.name }</label>
+	        <input type="radio" name="afterdinner" id="afterdinner${s.index }" value="${sprotType.id }">
+			</c:otherwise>
+			</c:choose>
+	       
+			</c:forEach>
+			<div data-role="fieldcontain">
+			<label for="afterdinnertime">运动时间（分钟）：</label> <input type="range"
+							id="afterdinner" name="afterdinnertime" required="true" value="${sportInfo.afterdinnertime }"
+							min="0" max="240">
+							</div>
+	  </fieldset>
+	  
+	  <fieldset data-role="controlgroup">
+	    <legend>睡前</legend>
+	       <c:forEach var="sprotType" items="${sprotTypeList}" varStatus="s">
+	         <c:choose>
+			<c:when test="${sportInfo.beforesleeptype==sprotType.id}">
+			<label for="beforesleep${s.index }">${sprotType.name }</label>
+	        <input type="radio" name="beforesleep" id="beforesleep${s.index }" value="${sprotType.id }" checked=true>
+			</c:when>
+			<c:otherwise>
+			<label for="beforesleep${s.index }">${sprotType.name }</label>
+	        <input type="radio" name="beforesleep" id="beforesleep${s.index }" value="${sprotType.id }">
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			<div data-role="fieldcontain">
+			<label for="beforesleeptime">运动时间（分钟）：</label> <input type="range"
+							id="beforesleep" name="beforesleeptime" required="true" value="${sportInfo.beforesleeptime }"
+							min="0" max="240">
+							</div>
+	  </fieldset> 
 		<div data-role="fieldcontain">
      <input type="button" value="提交" onclick="onSubmit();">
    </div>
@@ -94,74 +184,26 @@
 <script src="<%=path%>/js/jquery-2.2.2.min.js"></script>
 <script src="<%=path%>/jquerymobile/jquery.mobile-1.4.5.min.js"></script>
 <script>
-var num = 1;
-function addSport(){
-	if(num>=3){
-		alert("已达上限！");
-	}else{
-		$("#typediv"+num).show();
-		$("#timediv"+num).show();
-		num++;
-	}
-}
-
-function removeSport(){
-	if(num<=1){
-		alert("不可移除！");
-	}else{
-		num--;
-		$("#typediv"+num).hide();
-		$("#timediv"+num).hide();
-	}
-}
-
 function onSubmit(){
-	var sprotType1 = $('#sprotType1').val();
-	var sprotType2 = $('#sprotType2').val();
-	var sprotType3 = $('#sprotType3').val();
-	var time1 = $('#time1').val();
-	var time2 = $('#time2').val();
-	var time3 = $('#time3').val();
-	var time = "";
-	var type = "";
-	if(sprotType1!="0"){
-		if(sprotType1==sprotType2||sprotType1==sprotType3){
-			alert("运动类型重复！");
-			return;
-		}else if(time1=="0"){
-			alert("运动时间不能为空！");
-			return;
-		}else{
-			type+=sprotType1;
-			time += time1;
-		}
-	}else{
-		alert("请选择运动类型！");
-		return;
-	}
-	if(sprotType2!="0"){
-		if(sprotType2==sprotType3){
-			alert("运动类型重复！");
-			return;
-		}else if(time2=="0"){
-			alert("运动时间不能为空！");
-			return;
-		}else{
-			type+=","+sprotType2;
-			time +=","+ time2;
-		}
-	}
-	if(sprotType3!="0"){
-		if(time3=="0"){
-			alert("运动时间不能为空！");
-			return;
-		}else{
-			type+=","+sprotType3;
-			time +=","+ time3;
-		}
-		
-	}
-	 $.post("../diet/saveSport",{type:type,num:time},function(text){
+	var beforebreakfasttype = $('[name="beforebreakfast"]:checked').val();
+	var beforebreakfasttime = $('#beforebreakfast').val();
+	var afterbreakfasttype = $('[name="afterbreakfast"]:checked').val();
+	var afterbreakfasttime = $('#afterbreakfast').val(); 
+	var beforelaunchtype = $('[name="beforelaunch"]:checked').val();
+	var beforelaunchtime = $('#beforelaunch').val(); 
+	var afterlaunchtype = $('[name="afterlaunch"]:checked').val();
+	var afterlaunchtime = $('#afterlaunch').val(); 
+	var beforedinnertype = $('[name="beforedinner"]:checked').val();
+	var beforedinnertime = $('#beforedinner').val(); 
+	var afterdinnertype = $('[name="afterdinner"]:checked').val();
+	var afterdinnertime = $('#afterdinner').val(); 
+	var beforesleeptype = $('[name="beforesleep"]:checked').val();
+	var beforesleeptime = $('#beforesleep').val(); 
+	  $.post("../diet/saveSport",{beforebreakfasttype:beforebreakfasttype,beforebreakfasttime:beforebreakfasttime,
+		  afterbreakfasttype:afterbreakfasttype,afterbreakfasttime:afterbreakfasttime,beforelaunchtype:beforelaunchtype,
+		  beforelaunchtime:beforelaunchtime,afterlaunchtype:afterlaunchtype,afterlaunchtime:afterlaunchtime,
+		  beforedinnertype:beforedinnertype,beforedinnertime:beforedinnertime,afterdinnertype:afterdinnertype,
+		  afterdinnertime:afterdinnertime,beforesleeptype:beforesleeptype,beforesleeptime:beforesleeptime},function(text){
 			if(text=="1"){
 				alert("保存成功！");
 				window.location.href="../user/user_index";

@@ -83,5 +83,7 @@ public interface UserMapper {
 	Map<String, Object> getAdviceInfo(Map<String, Object> map);
 
 	int countAdviceTotal(Map<String, Object> map);
+
+	void deleteDoctorInfo(Map<String, Object> param);
     
 }
