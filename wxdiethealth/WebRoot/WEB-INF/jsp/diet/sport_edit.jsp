@@ -41,9 +41,20 @@
 			</c:choose>
 			</c:forEach>
 			<div data-role="fieldcontain">
-			<label for="beforebreakfasttime">运动时间（分钟）：</label> <input type="range"
+			<label for="beforebreakfasttime">运动时间（分钟）：</label>
+			 <c:choose>
+			<c:when test="${sportInfo.beforebreakfasttime!=null}">
+			 <input type="range"
 							id="beforebreakfast" name="beforebreakfasttime" required="true" value="${sportInfo.beforebreakfasttime }"
 							min="0" max="240">
+			</c:when>
+			<c:otherwise>
+			 <input type="range"
+							id="beforebreakfast" name="beforebreakfasttime" required="true" value="0"
+							min="0" max="240">
+			</c:otherwise>
+			</c:choose>
+			
 							</div>
 	  </fieldset>
 	 
@@ -63,9 +74,20 @@
 	      
 			</c:forEach>
 			<div data-role="fieldcontain">
-			<label for="afterbreakfasttime">运动时间（分钟）：</label> <input type="range"
+			<label for="afterbreakfasttime">运动时间（分钟）：</label> 
+			 <c:choose>
+			<c:when test="${sportInfo.afterbreakfasttime!=null}">
+			 <input type="range"
 							id="afterbreakfast" name="afterbreakfasttime" required="true" value="${sportInfo.afterbreakfasttime }"
 							min="0" max="240">
+			</c:when>
+			<c:otherwise>
+			<input type="range"
+							id="afterbreakfast" name="afterbreakfasttime" required="true" value="0"
+							min="0" max="240">
+			</c:otherwise>
+			</c:choose>
+			
 							</div>
 	  </fieldset>
 	  <fieldset data-role="controlgroup">
@@ -84,9 +106,20 @@
 	       
 			</c:forEach>
 			<div data-role="fieldcontain">
-			<label for="beforelaunchtime">运动时间（分钟）：</label> <input type="range"
+			<label for="beforelaunchtime">运动时间（分钟）：</label> 
+			 <c:choose>
+			<c:when test="${sportInfo.beforelaunchtime!=null}">
+			<input type="range"
 							id="beforelaunch" name="beforelaunchtime" required="true" value="${sportInfo.beforelaunchtime }"
 							min="0" max="240">
+			</c:when>
+			<c:otherwise>
+			<input type="range"
+							id="beforelaunch" name="beforelaunchtime" required="true" value="0"
+							min="0" max="240">
+			</c:otherwise>
+			</c:choose>
+			
 							</div>
 	  </fieldset>
 	  <fieldset data-role="controlgroup">
@@ -105,9 +138,20 @@
 	      
 			</c:forEach>
 			<div data-role="fieldcontain">
-			<label for="afterlaunchtime">运动时间（分钟）：</label> <input type="range"
+			<label for="afterlaunchtime">运动时间（分钟）：</label>
+				 <c:choose>
+			<c:when test="${sportInfo.afterlaunchtime!=null}">
+			<input type="range"
 							id="afterlaunch" name="afterlaunchtime" required="true" value="${sportInfo.afterlaunchtime }"
 							min="0" max="240">
+			</c:when>
+			<c:otherwise>
+			<input type="range"
+							id="afterlaunch" name="afterlaunchtime" required="true" value="0"
+							min="0" max="240">
+			</c:otherwise>
+			</c:choose>
+			 
 							</div>
 	  </fieldset>
 	  <fieldset data-role="controlgroup">
@@ -126,9 +170,20 @@
 	      
 			</c:forEach>
 			<div data-role="fieldcontain">
-			<label for="beforedinnertime">运动时间（分钟）：</label> <input type="range"
+			<label for="beforedinnertime">运动时间（分钟）：</label>
+				 <c:choose>
+			<c:when test="${sportInfo.beforedinnertime!=null}">
+			 <input type="range"
 							id="beforedinner" name="beforedinnertime" required="true" value="${sportInfo.beforedinnertime }"
 							min="0" max="240">
+			</c:when>
+			<c:otherwise>
+			 <input type="range"
+							id="beforedinner" name="beforedinnertime" required="true" value="0"
+							min="0" max="240">
+			</c:otherwise>
+			</c:choose>
+			
 							</div>
 	  </fieldset>
 	  <fieldset data-role="controlgroup">
@@ -147,9 +202,20 @@
 	       
 			</c:forEach>
 			<div data-role="fieldcontain">
-			<label for="afterdinnertime">运动时间（分钟）：</label> <input type="range"
+			<label for="afterdinnertime">运动时间（分钟）：</label>
+			 <c:choose>
+			<c:when test="${sportInfo.afterdinnertime!=null}">
+			  <input type="range"
 							id="afterdinner" name="afterdinnertime" required="true" value="${sportInfo.afterdinnertime }"
 							min="0" max="240">
+			</c:when>
+			<c:otherwise>
+			 <input type="range"
+							id="afterdinner" name="afterdinnertime" required="true" value="0"
+							min="0" max="240">
+			</c:otherwise>
+			</c:choose>
+			
 							</div>
 	  </fieldset>
 	  
@@ -168,9 +234,20 @@
 			</c:choose>
 			</c:forEach>
 			<div data-role="fieldcontain">
-			<label for="beforesleeptime">运动时间（分钟）：</label> <input type="range"
+			<label for="beforesleeptime">运动时间（分钟）：</label>
+			 <c:choose>
+			<c:when test="${sportInfo.beforesleeptime!=null}">
+			   <input type="range"
 							id="beforesleep" name="beforesleeptime" required="true" value="${sportInfo.beforesleeptime }"
 							min="0" max="240">
+			</c:when>
+			<c:otherwise>
+			  <input type="range"
+							id="beforesleep" name="beforesleeptime" required="true" value="0"
+							min="0" max="240">
+			</c:otherwise>
+			</c:choose>
+			
 							</div>
 	  </fieldset> 
 		<div data-role="fieldcontain">

@@ -422,38 +422,24 @@ public class DietServiceImpl implements DietService {
 		for(Map<String, Object> tmp : list){
 			if(tmp.get("id").toString().equals(map.get("beforebreakfasttype"))){
 				map.put("beforebreakfasttype",tmp.get("name"));
-			}else{
-				map.put("beforebreakfasttype","无");
 			}
 			if(tmp.get("id").toString().equals(map.get("afterbreakfasttype"))){
 				map.put("afterbreakfasttype",tmp.get("name"));
-			}else{
-				map.put("afterbreakfasttype","无");
 			}
 			if(tmp.get("id").toString().equals(map.get("beforelaunchtype"))){
 				map.put("beforelaunchtype",tmp.get("name"));
-			}else{
-				map.put("beforelaunchtype","无");
 			}
 			if(tmp.get("id").toString().equals(map.get("afterlaunchtype"))){
 				map.put("afterlaunchtype",tmp.get("name"));
-			}else{
-				map.put("afterlaunchtype","无");
 			}
 			if(tmp.get("id").toString().equals(map.get("beforedinnertype"))){
 				map.put("beforedinnertype",tmp.get("name"));
-			}else{
-				map.put("beforedinnertype","无");
 			}
 			if(tmp.get("id").toString().equals(map.get("afterdinnertype"))){
 				map.put("afterdinnertype",tmp.get("name"));
-			}else{
-				map.put("afterdinnertype","无");
 			}
 			if(tmp.get("id").toString().equals(map.get("beforesleeptype"))){
 				map.put("beforesleeptype",tmp.get("name"));
-			}else{
-				map.put("beforesleeptype","无");
 			}
 		}
 		return map;
