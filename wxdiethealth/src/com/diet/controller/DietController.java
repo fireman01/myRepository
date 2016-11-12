@@ -230,7 +230,7 @@ public class DietController {
 		Map<String, Object> param = FormDataCollectUtil.getInstance().getFormData(request);
 		model.addAttribute("dietList", dietService.showDietInfo(param));
 		model.addAttribute("bg", dietService.showBloodGlucoseInfo(param));
-		model.addAttribute("sportInfo", dietService.showSportInfo(param));
+		model.addAttribute("sportInfo", dietService.getSportInfo(param));
 		model.addAttribute("advice", dietService.showAdviceInfo(param));
 		model.addAttribute("date", param.get("date"));
 		model.addAttribute("pId", param.get("pId"));

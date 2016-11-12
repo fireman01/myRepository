@@ -362,14 +362,74 @@
 						name="before">${bg.bloodGlucoseBeforeSleep }</div>
 			</div>
 			<h3 style="text-align:center;">运动量记录</h3>
-				<c:forEach var="infoList" items="${sportInfo.sportList}" varStatus="s">
+			<div data-role="content">
 			<div data-role="fieldcontain">
-				<p>运动类型：${infoList.type }</p>
+				<p>记录日期：${sportInfo.date }</p>
 			</div>
-			<div data-role="fieldcontain">
-				<p>运动时间：${infoList.num }</p>
-			</div>
-			</c:forEach>
+			<c:if test="${sportInfo.beforebreakfasttime!=0 && sportInfo.beforebreakfasttype!=null}">
+				<fieldset data-role="controlgroup">
+					<legend>早餐前</legend>
+					<div data-role="fieldcontain">
+						<label>运动类型：${sportInfo.beforebreakfasttype }</label>
+						<p>运动时间：${sportInfo.beforebreakfasttime }分钟</p>
+					</div>
+				</fieldset>
+			</c:if>
+			<c:if test="${sportInfo.afterbreakfasttime!=0 && sportInfo.afterbreakfasttype!=null}">
+			<fieldset data-role="controlgroup">
+				<legend>早餐后</legend>
+				<div data-role="fieldcontain">
+					<label>运动类型：${sportInfo.afterbreakfasttype }</label>
+					<p>运动时间：${sportInfo.afterbreakfasttime }分钟</p>
+				</div>
+			</fieldset>
+			</c:if>
+			<c:if test="${sportInfo.beforelaunchtime!=0 && sportInfo.beforelaunchtype!=null}">
+			<fieldset data-role="controlgroup">
+				<legend>午餐前</legend>
+				<div data-role="fieldcontain">
+					<label>运动类型：${sportInfo.beforelaunchtype }</label>
+					<p>运动时间：${sportInfo.beforelaunchtime }分钟</p>
+				</div>
+			</fieldset>
+			</c:if>
+			<c:if test="${sportInfo.afterlaunchtime!=0 && sportInfo.afterlaunchtype!=null}">
+			<fieldset data-role="controlgroup">
+				<legend>午餐后</legend>
+				<div data-role="fieldcontain">
+					<label>运动类型：${sportInfo.afterlaunchtype }</label>
+					<p>运动时间：${sportInfo.afterlaunchtime }分钟</p>
+				</div>
+			</fieldset>
+			</c:if>
+			<c:if test="${sportInfo.beforedinnertime!=0 && sportInfo.beforedinnertype!=null}">
+			<fieldset data-role="controlgroup">
+				<legend>晚餐前</legend>
+				<div data-role="fieldcontain">
+					<label>运动类型：${sportInfo.beforedinnertype }</label>
+					<p>运动时间：${sportInfo.beforedinnertime }分钟</p>
+				</div>
+			</fieldset>
+			</c:if>
+			<c:if test="${sportInfo.afterdinnertime!=0 && sportInfo.afterdinnertype!=null}">
+			<fieldset data-role="controlgroup">
+				<legend>晚餐后</legend>
+				<div data-role="fieldcontain">
+					<label>运动类型：${sportInfo.afterdinnertype }</label>
+					<p>运动时间：${sportInfo.afterdinnertime }分钟</p>
+				</div>
+			</fieldset>
+			</c:if>
+			<c:if test="${sportInfo.beforesleeptime!=0 && sportInfo.beforesleeptype!=null}">
+			<fieldset data-role="controlgroup">
+				<legend>睡前</legend>
+				<div data-role="fieldcontain">
+					<label>运动类型：${sportInfo.beforesleeptype }</label>
+					<p>运动时间：${sportInfo.beforesleeptime }分钟</p>
+				</div>
+			</fieldset>
+			</c:if>
+		</div>
 			<div data-role="fieldcontain">
 			<input type="hidden" value="${pId }" id="pId">
 			<input type="hidden" value="${date}" id="bgdate">

@@ -37,15 +37,15 @@ String path = request.getContextPath();
     <input type="date" name="birthday" id="birthday" placeholder="您的出生日期" required="true" value="${user.birthday }">
     </div>
      <div data-role="fieldcontain">
-    <label for="height">身高：</label>
+    <label for="height">身高（cm）：</label>
     <input type="range" name="height" id="height" placeholder="您的身高（cm）" required="true"  min="50" max="250" value="${user.height }"> 
    </div>
     <div data-role="fieldcontain">
-    <label for="prepregnancyWeight">孕前体重：</label>
+    <label for="prepregnancyWeight">孕前体重（kg）：</label>
     <input type="range" name="prepregnancyWeight" id="prepregnancyWeight" required="true"  min="40" max="100" value="${user.prepregnancyWeight}">
    </div>
      <div data-role="fieldcontain">
-    <label for="weight">当前体重：</label>
+    <label for="weight">当前体重（kg）：</label>
     <input type="range" name="weight" id="weight" required="true"  min="40" max="100" value="${user.weight }">
    </div>
     <div data-role="fieldcontain">
@@ -72,7 +72,7 @@ String path = request.getContextPath();
 		</div>
 		<div data-role="fieldcontain">
 			<label for="weight">药物使用量：</label> <input type="range" name="drugNum"
-				id="drugNum" required="true" min="0" max="100" value="2" value="${user.drugNum }">
+				id="drugNum" required="true" min="0" max="100" value="${user.drugNum }">
 		</div>
 		</div>
     <div data-role="fieldcontain">

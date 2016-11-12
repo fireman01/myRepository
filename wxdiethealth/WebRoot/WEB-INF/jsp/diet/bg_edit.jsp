@@ -123,6 +123,8 @@ String pId = session.getAttribute("pId").toString();
 <script type="text/javascript">
 function onSubmit(){
 	var pId = $('#pId').val();
+	var timestamp = Date.parse(new Date());
+	var isSuccess = true;
 	var bloodGlucoseBeforeBreakfast = $('#bloodGlucoseBeforeBreakfast').val();
 	var bloodGlucoseAfterBreakfast = $('#bloodGlucoseAfterBreakfast').val();
 	var bloodGlucoseBeforeLunch = $('#bloodGlucoseBeforeLunch').val();
@@ -132,78 +134,109 @@ function onSubmit(){
 	var bloodGlucoseBeforeSleep = $('#bloodGlucoseBeforeSleep').val();
 	if(bloodGlucoseBeforeBreakfast!=""){
 		if(isNaN(bloodGlucoseBeforeBreakfast)){
-			alert("血糖范围或格式不正确！");
-			return;
-		}else if(bloodGlucoseBeforeBreakfast<0||bloodGlucoseBeforeBreakfast>20){
-			alert("血糖范围或格式不正确！");
-			return;
+			alert("血糖格式不正确！");
+			setTimeout(1000);
+			window.location.href="../user/user_index";
+			isSuccess = false;
+		}else if(parseFloat(bloodGlucoseBeforeBreakfast)<0||parseFloat(bloodGlucoseBeforeBreakfast)>20){
+			alert("血糖范围不正确！");
+			setTimeout(1000);
+			window.location.href="../user/user_index";
+			isSuccess = false;
 		}
 	}
 	if(bloodGlucoseAfterBreakfast!=""){
 		if(isNaN(bloodGlucoseAfterBreakfast)){
-			alert("血糖范围或格式不正确！");
-			return;
-		}else if(bloodGlucoseAfterBreakfast<0||bloodGlucoseAfterBreakfast>20){
-			alert("血糖范围或格式不正确！");
-			return;
+			alert("血糖格式不正确！");
+			setTimeout(1000);
+			window.location.href="../user/user_index";
+			isSuccess = false;
+		}else if(parseFloat(bloodGlucoseAfterBreakfast)<0||parseFloat(bloodGlucoseAfterBreakfast)>20){
+			alert("血糖范围不正确！");
+			setTimeout(1000);
+			window.location.href="../user/user_index";
+			isSuccess = false;
 		}
 	}
 	if(bloodGlucoseBeforeLunch!=""){
 		if(isNaN(bloodGlucoseBeforeLunch)){
-			alert("血糖范围或格式不正确！");
-			return;
-		}else if(bloodGlucoseBeforeLunch<0||bloodGlucoseBeforeLunch>20){
-			alert("血糖范围或格式不正确！");
-			return;
+			alert("血糖格式不正确！");
+			setTimeout(1000);
+			window.location.href="../user/user_index";
+			isSuccess = false;
+		}else if(parseFloat(bloodGlucoseBeforeLunch)<0||parseFloat(bloodGlucoseBeforeLunch)>20){
+			alert("血糖范围不正确！");
+			setTimeout(1000);
+			window.location.href="../user/user_index";
+			isSuccess = false;
 		}
 	}
 	if(bloodGlucoseAfterLunch!=""){
 		if(isNaN(bloodGlucoseAfterLunch)){
-			alert("血糖范围或格式不正确！");
-			return;
-		}else if(bloodGlucoseAfterLunch<0||bloodGlucoseAfterLunch>20){
-			alert("血糖范围或格式不正确！");
-			return;
+			alert("血糖格式不正确！");
+			setTimeout(1000);
+			window.location.href="../user/user_index";
+			isSuccess = false;
+		}else if(parseFloat(bloodGlucoseAfterLunch)<0||parseFloat(bloodGlucoseAfterLunch)>20){
+			alert("血糖范围不正确！");
+			setTimeout(1000);
+			window.location.href="../user/user_index";
+			isSuccess = false;
 		}
 	}
 	if(bloodGlucoseBeforeDinner!=""){
 		if(isNaN(bloodGlucoseBeforeDinner)){
-			alert("血糖范围或格式不正确！");
-			return;
-		}else if(bloodGlucoseBeforeDinner<0||bloodGlucoseBeforeDinner>20){
-			alert("血糖范围或格式不正确！");
-			return;
+			alert("血糖格式不正确！");
+			setTimeout(1000);
+			window.location.href="../user/user_index";
+			isSuccess = false;
+		}else if(parseFloat(bloodGlucoseBeforeDinner)<0||parseFloat(bloodGlucoseBeforeDinner)>20){
+			alert("血糖范围不正确！");
+			setTimeout(1000);
+			window.location.href="../user/user_index";
+			isSuccess = false;
 		}
 	}
 	if(bloodGlucoseAfterDinner!=""){
 		if(isNaN(bloodGlucoseAfterDinner)){
-			alert("血糖范围或格式不正确！");
-			return;
-		}else if(bloodGlucoseAfterDinner<0||bloodGlucoseAfterDinner>20){
-			alert("血糖范围或格式不正确！");
-			return;
+			alert("血糖格式不正确！");
+			setTimeout(1000);
+			window.location.href="../user/user_index";
+			isSuccess = false;
+		}else if(parseFloat(bloodGlucoseAfterDinner)<0||parseFloat(bloodGlucoseAfterDinner)>20){
+			alert("血糖范围不正确！");
+			setTimeout(1000);
+			window.location.href="../user/user_index";
+			isSuccess = false;
 		}
 	}
 	if(bloodGlucoseBeforeSleep!=""){
 		if(isNaN(bloodGlucoseBeforeSleep)){
-			alert("血糖范围或格式不正确！");
-			return;
-		}else if(bloodGlucoseBeforeSleep<0||bloodGlucoseBeforeSleep>20){
-			alert("血糖范围或格式不正确！");
-			return;
+			alert("血糖格式不正确！");
+			setTimeout(1000);
+			window.location.href="../user/user_index";
+			isSuccess = false;
+		}else if(parseFloat(bloodGlucoseBeforeSleep)<0||parseFloat(bloodGlucoseBeforeSleep)>20){
+			alert("血糖范围不正确！");
+			setTimeout(1000);
+			window.location.href="../user/user_index";
+			isSuccess = false;
 		}
 	}
 	
-	$.post("saveBloodGlucose",{pId:pId,bloodGlucoseBeforeBreakfast:bloodGlucoseBeforeBreakfast,bloodGlucoseAfterBreakfast:bloodGlucoseAfterBreakfast,
-		bloodGlucoseBeforeLunch:bloodGlucoseBeforeLunch,bloodGlucoseAfterLunch:bloodGlucoseAfterLunch,bloodGlucoseBeforeDinner:bloodGlucoseBeforeDinner,
-		bloodGlucoseAfterDinner:bloodGlucoseAfterDinner,bloodGlucoseBeforeSleep:bloodGlucoseBeforeSleep},function(text){
-			if(text=="1"){
-				alert("保存成功！");
-				window.location.href="../user/user_index";
-			}else{
-				alert("保存失败！");
-			}
-		}); 
+	if(isSuccess){
+		$.post("saveBloodGlucose",{pId:pId,bloodGlucoseBeforeBreakfast:bloodGlucoseBeforeBreakfast,bloodGlucoseAfterBreakfast:bloodGlucoseAfterBreakfast,
+			bloodGlucoseBeforeLunch:bloodGlucoseBeforeLunch,bloodGlucoseAfterLunch:bloodGlucoseAfterLunch,bloodGlucoseBeforeDinner:bloodGlucoseBeforeDinner,
+			bloodGlucoseAfterDinner:bloodGlucoseAfterDinner,bloodGlucoseBeforeSleep:bloodGlucoseBeforeSleep},function(text){
+				if(text=="1"){
+					alert("保存成功！");
+					setTimeout(1000);
+					window.location.href="../user/user_index";
+				}else{
+					alert("保存失败！");
+				}
+			}); 
+	}
 	
 }
 </script>

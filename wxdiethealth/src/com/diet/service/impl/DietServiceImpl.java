@@ -417,6 +417,7 @@ public class DietServiceImpl implements DietService {
 	@Override
 	public Map<String, Object> getSportInfo(Map<String, Object> param) {
 		Map<String, Object> map = showSportInfo(param);
+		if(map==null)return null;
 		DictionaryService dictionaryService = (DictionaryService)SpringContextUtil.getBeanById("DictionaryService");
 		List<Map<String, Object>> list = dictionaryService.getDictionaryListByType("6");
 		for(Map<String, Object> tmp : list){

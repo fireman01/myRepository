@@ -37,7 +37,7 @@ String path = request.getContextPath();
 			 <select name="office"
 				id="office" required="true" value="${doctor.office}">
 				<c:forEach var="dict" items="${dictList}" varStatus="s">
-				<option value="${dict.id}">${dict.name }</option>
+				<option <c:if test="${doctor.office==dict.id}">selected</c:if> value="${dict.id}">${dict.name }</option>
 				</c:forEach>
 			</select> 
 		</div>

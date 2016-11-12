@@ -64,23 +64,14 @@ String path = request.getContextPath();
       <span>是</span>
      </c:if>
    </div>
-    <div data-role="fieldcontain">
-   <label for="diabetesType">是否使用降糖药物：</label>
-    <c:if test="${user.isUsedDrug==0}">
-      <span>否</span>
-     </c:if>
-      <c:if test="${user.isUsedDrug==1}">
-      <span>是</span>
-     </c:if>
-   </div>
    <div id="hiddenDIV" style="display:none;">
 		<div data-role="fieldcontain">
 		 <label for="diabetesType">药物类型：</label>
 		    <c:if test="${user.effectType==0}">
-		      <span>否</span>
+		      <span>长效</span>
 		     </c:if>
 		      <c:if test="${user.effectType==1}">
-		      <span>是</span>
+		      <span>短效</span>
 		     </c:if>
 		</div>
 		<div data-role="fieldcontain">

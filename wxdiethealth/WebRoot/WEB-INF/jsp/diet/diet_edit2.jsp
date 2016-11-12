@@ -1188,7 +1188,6 @@ var targetsumenergy = parseInt(${energy});
 	var pId = ""; 
 	function typechange(id,idnum){
 		var option = $('#'+id+"type"+idnum).find("select option:selected");
-		$('')
 		var num = parseInt($('#'+id+"num"+idnum).find("input").val());
 		var html ='<div class="ui-block-a" style="border: 1px solid black;text-align:center;width:31%;border-style:none ridge ridge ridge;">'
 		+option.text()+'</div><div class="ui-block-b"style="border: 1px solid black;text-align:center;width:22.5%;border-style:none ridge ridge none;" name="energyinfo">'
